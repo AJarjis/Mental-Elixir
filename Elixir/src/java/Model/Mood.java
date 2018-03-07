@@ -9,13 +9,14 @@ import java.util.Date;
  *
  * Date : 06-Mar-2018
  *
- * Description : Code for class Assessment, based on the WEMWBS assessment a
- * user takes on the Mental Health Application.
+ * Description : Code for class Mood. This class is based upon a user entering
+ * a mood along with the date an optional notes.
  *
  * Author : Ashley Black
  *
  *****************************************************************************
  */
+
 public class Mood {
 
     /**
@@ -41,7 +42,7 @@ public class Mood {
      * @param date
      *
      */
-    Mood(MoodTypes moodType, Date date) {
+    public Mood(MoodTypes moodType, Date date) {
 
         this.moodType = moodType;
         this.date = date;
@@ -68,6 +69,7 @@ public class Mood {
      * @return the moodType
      */
     public MoodTypes getMoodType() {
+        
         return moodType;
     }
 
@@ -75,6 +77,7 @@ public class Mood {
      * @param moodType the moodType to set
      */
     public void setMoodType(MoodTypes moodType) {
+        
         this.moodType = moodType;
     }
 
@@ -82,6 +85,7 @@ public class Mood {
      * @return the notes
      */
     public String getNotes() {
+        
         return notes;
     }
 
@@ -89,6 +93,7 @@ public class Mood {
      * @param notes the notes to set
      */
     public void setNotes(String notes) {
+        
         this.notes = notes;
     }
 
@@ -96,6 +101,7 @@ public class Mood {
      * @return the date
      */
     public Date getDate() {
+        
         return date;
     }
 
@@ -103,6 +109,7 @@ public class Mood {
      * @param date the date to set
      */
     public void setDate(Date date) {
+        
         this.date = date;
     }
 
