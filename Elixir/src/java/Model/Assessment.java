@@ -8,13 +8,13 @@ Date        : 06-Mar-2018
 
 Description : A class 
 
-Author      : Ali Jarjis
+Author      : Ashley Black
 
 ******************************************************************************/
 
 /**
  *
- * @author Ali Jarjis
+ * @author Ashley Black
  */
 public class Assessment {
 
