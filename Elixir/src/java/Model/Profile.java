@@ -2,7 +2,7 @@ package Model;
 
 /*****************************************************************************
 
-File        : Account.java
+File        : User.java
 
 Date        : 06-Mar-2018
 
@@ -16,6 +16,6 @@ Author      : Ali Jarjis
  *
  * @author Ali Jarjis
  */
-public class Account {
+public class User {
 
 }
