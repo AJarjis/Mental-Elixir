@@ -58,13 +58,69 @@ public class Profile {
     }
     
     /**
-     * Method to remove goal specified. Truth 
+     * Method to remove goal specified. 
      * @param goal
-     * @return 
+     * @return true if found and removed, false otherwise
      */
     public boolean removeGoal(Goal goal){
        return this.goal.remove(goal);
     }
     
+    /**
+     * Adds mood to list of moods
+     * @param mood object for mood.
+     */
+    public void addMood(Mood mood)
+    {
+        this.mood.add(mood);
+    }
+    
+    /**
+     * Removed a mood object from the user's list.
+     * @param mood object for mood
+     * @return true if found and removed.
+     */
+    public boolean removeMood(Mood mood)
+    {
+        return this.mood.remove(mood);
+    }
+    
+    /**
+     * Adds Assessment object to list of Assessments.
+     * @param assessment object for assessment.
+     */
+    public void addAssessment(Assessment assessment)
+    {
+        this.assessment.add(assessment);
+    }
+    
+    /**
+     * Removes an assessment object from the assessment list.
+     * @param assessment object to remove from list.
+     * @return true if found & removed.
+     */
+    public boolean removeAssessment(Assessment assessment)
+    {
+        return this.assessment.remove(assessment);
+    }
+    
+    /**
+     * Adds a group to user's list of groups
+     * @param group object to be added
+     */
+    public void addGroup(Group group)
+    {
+        this.group.add(group);
+    }
+    
+    /**
+     * removes a group from user's group list
+     * @param group object to be removed
+     * @return true if object found and removed.
+     */
+    public boolean removeGroup(Group group)
+    {
+        return this.group.remove(group);
+    }
 
 }
