@@ -4,7 +4,7 @@ package Model;
 
 File        : Account.java
 
-Date        : 06-Mar-2018
+Date        : 07-Mar-2018
 
 Description : User class will be in charge of managing the user fields.
 
@@ -15,14 +15,15 @@ Author      : Daniel Carey
 
 public class User {
     
-    private String userName;
-    private String firstName;
-    private String surname;
-    private String email;
-    private String password;
+    private String userName;//nickname chosen by the user 
+    private String firstName;//first name that belongs to the user
+    private String surname;//surname that belongs to the user
+    private String email;//email that can be used to contact the user
+    private String password;//password that belongs to user
+                            //NEEDS TO BE ENCRYPTED BY HASHING AND SALT
 
     /**
-     * Creates a new new user object in the system
+     * Creates a new new user object in the system by user on regestration
      * @param userName
      * @param firstName
      * @param surname
