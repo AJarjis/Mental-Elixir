@@ -37,9 +37,9 @@ target/
 .project
 
 # NetBeans specific
-nbproject/private/
-build/
-nbbuild/
+Elixir/nbproject/private/
+Elixir/build/
+Elixir/nbbuild/
 dist/
 nbdist/
 nbactions.xml
