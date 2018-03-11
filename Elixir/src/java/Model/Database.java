@@ -7,7 +7,7 @@ import java.sql.*;
  * @author Kieran Woodcock
  */
 public class Database {
-    private final String URL = "jdbc:mysql://localhost/healthtracker";
+    private final String URL = "jdbc:postgresql://localhost:5432/HealthTracker";
     private final String USER = "localhost";
     private final String PASS = "password";
     private  Connection CONN = null;
