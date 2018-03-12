@@ -7,24 +7,14 @@
  * Description : A class for dealing with accessing a user account, including
  *               logging in and registering.
  *
- * Author      : Ali Jarjis
+ * Author      : Ali Jarjis and Daniel Carey
  *
  ******************************************************************************/
 package Controller;
 
 import Model.User;
+import org.mindrot.jbcrypt.BCrypt;
 
-Date        : 12-Mar-2018
-
-Description : A class 
-
-Author      : Ali Jarjis and Daniel Carey
-
-******************************************************************************/
-
-package Controller;
-
-    import org.mindrot.jbcrypt.BCrypt;
 
 public class AccessController {
 
@@ -56,9 +46,9 @@ public class AccessController {
         // TODO: validate user details
         User newUser = new User(username, firstName, surname, email, password);
         
-        //UserController userController = new UserController(newUser);
+        UserController userController = new UserController(newUser);
 
-        return null; // replace with userController
+        return userController;
     }
     
     /**
@@ -84,6 +74,7 @@ public class AccessController {
     }
     
     
+    // Main for testing class, TODO: Delete at some point
     public static void main(String[] args) {
         String plain = "cool";
         String hashed = genHashed(plain);
