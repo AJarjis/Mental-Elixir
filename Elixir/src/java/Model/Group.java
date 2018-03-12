@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.List;
-import org.hibernate.validator.constraints.Email;
 
 /*****************************************************************************
 
@@ -113,7 +112,7 @@ public class Group {
      * Need more clarifications on the vision on this.
      * @param email 
      */
-    public void shareGroup(Email email){
-        //Needs to be developed later
-    }
+//    public void shareGroup(Email email){
+//        //Needs to be developed later
+//    }
 }
