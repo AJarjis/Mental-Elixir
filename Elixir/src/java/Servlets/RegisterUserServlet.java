@@ -5,9 +5,9 @@
  */
 package Servlets;
 
-import Model.User;  // TODO: DELETE THIS
+import Controller.AccessController;
+import Controller.UserController;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,12 +40,11 @@ public class RegisterUserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
-        // TODO: Should be UserController class not User Class
-        User newUser = new User(userName, firstName, surname, email, password);
+        UserController userController = AccessController.registerUser(userName, 
+                firstName, surname, email, password);
         
-        request.setAttribute("user", newUser);
+        request.setAttribute("user", userController);
 
-        // TODO: index.html needs to be a jsp file 
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  
         rd.forward(request, response);  
    }
