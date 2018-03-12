@@ -44,7 +44,7 @@ public class AccessController {
     public static UserController registerUser(String username, String firstName,
             String surname, String email, String password) {
         // TODO: validate user details
-        User newUser = new User(username, firstName, surname, email, password);
+        User newUser = new User(username, firstName, surname, email, genHashed(password));
         
         UserController userController = new UserController(newUser);
 
