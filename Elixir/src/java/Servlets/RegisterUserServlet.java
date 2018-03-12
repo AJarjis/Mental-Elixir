@@ -33,17 +33,20 @@ public class RegisterUserServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // TODO: Require sanitisation before accepting
         String userName = request.getParameter("userName");
         String firstName = request.getParameter("firstName");
         String surname = request.getParameter("surname");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
+        // TODO: Should be UserController class not User Class
         User newUser = new User(userName, firstName, surname, email, password);
         
         request.setAttribute("user", newUser);
 
-        RequestDispatcher rd = request.getRequestDispatcher("index.html");  
+        // TODO: index.html needs to be a jsp file 
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  
         rd.forward(request, response);  
    }
 
