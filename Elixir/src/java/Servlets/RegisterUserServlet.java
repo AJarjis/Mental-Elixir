@@ -40,8 +40,11 @@ public class RegisterUserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
+        System.out.println("userName: " + userName + " firstName: " + firstName
+        + " surname: " + surname + " email: " + email + " password: " + password);
         UserController userController = AccessController.registerUser(userName, 
                 firstName, surname, email, password);
+        
         
         request.setAttribute("user", userController);
 
