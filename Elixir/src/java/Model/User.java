@@ -1,5 +1,8 @@
 package Model;
 
+import Other.Database;
+import java.sql.SQLException;
+
 /*****************************************************************************
 
 File        : Account.java
@@ -21,21 +24,40 @@ public class User {
     private String email;//email that can be used to contact the user
     private String password;//password that belongs to user
                             //NEEDS TO BE ENCRYPTED BY HASHING AND SALT
+    private Profile profile;
 
     /**
-     * Creates a new new user object in the system by user on regestration
+     * Creates a new new user object in the system by user on registration
+     * and submits it to the SQL database
      * @param userName
      * @param firstName
      * @param surname
      * @param email
      * @param password 
      */
-    public User(String userName, String firstName, String surname, String email, String password) {
+    public User(String userName, String firstName, String surname, String email, String password) throws SQLException {
         this.userName = userName;
         this.firstName = firstName;
         this.surname = surname;
         this.email = email;
         this.password = password;
+        this.profile = new Profile();
+        String command = String.format("INSERT INTO account VALUES('%s','%s','%s','%s','%s');"
+                , this.userName, this.firstName, this.surname, this.email, this.password);
+         Database data = new Database();
+         data.insert(command);
+         data.closeConn();
+    }
+    
+    public User(){ 
+    }
+   
+    
+    public User getUserFromDB(String username) throws SQLException{
+        Database data = new Database();
+        User usr = data.selectUser(username);
+        data.closeConn();
+        return usr;
     }
     
     
