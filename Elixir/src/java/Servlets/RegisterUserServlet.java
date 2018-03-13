@@ -5,9 +5,12 @@
  */
 package Servlets;
 
-import Model.User;  // TODO: DELETE THIS
+import Controller.AccessController;
+import Controller.UserController;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,21 +36,28 @@ public class RegisterUserServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO: Require sanitisation before accepting
-        String userName = request.getParameter("userName");
-        String firstName = request.getParameter("firstName");
-        String surname = request.getParameter("surname");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        
-        // TODO: Should be UserController class not User Class
-        User newUser = new User(userName, firstName, surname, email, password);
-        
-        request.setAttribute("user", newUser);
-
-        // TODO: index.html needs to be a jsp file 
-        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  
-        rd.forward(request, response);  
+        try {
+            // TODO: Require sanitisation before accepting
+            String userName = request.getParameter("userName");
+            String firstName = request.getParameter("firstName");
+            String surname = request.getParameter("surname");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            
+            System.out.println("userName: " + userName + " firstName: " + firstName
+                    + " surname: " + surname + " email: " + email + " password: " + password);
+            UserController userController = AccessController.registerUser(userName,
+                    firstName, surname, email, password);
+            
+            
+            request.setAttribute("user", userController);
+            
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  
+            rd.forward(request, response);
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
    }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

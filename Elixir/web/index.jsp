@@ -1,4 +1,4 @@
-<%@page import="Model.User"%>
+<%@page import="Controller.UserController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,7 +110,7 @@
                                     Initialises user here.
                                 -->
                                 <% 
-                                    User user = (User) request.getAttribute("user");
+                                    UserController user = (UserController) request.getAttribute("user");
                                     if (user != null) { 
                                 %>
                                     <!-- Displays user details, if they exist -->
@@ -118,12 +118,8 @@
                                         out.print(user.getUserName());
                                         %>
                                     </p>
-                                    <p><b>First Name: </b><%
-                                        out.print(user.getFirstName());
-                                        %>
-                                    </p>
-                                    <p><b>Surname: </b><%
-                                        out.print(user.getSurname());
+                                    <p><b>Full Name: </b><%
+                                        out.print(user.getFullName());
                                         %>
                                     </p>
                                     <p><b>Email: </b><%
