@@ -25,6 +25,15 @@ public class UserController {
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
     Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     
+    //Minimum eight characters, at least one letter and one number.
+    public static final Pattern VALID_PASSWORD_REGEX = 
+    Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
+    
+    //Minimum three characters, simple profanity filter in place.
+    public static final Pattern VALID_USERNAME_REGEX = 
+    Pattern.compile("^[a-zA-Z0-9._-]*(fuck|shit|wank|cunt|nigger|twat|fag"
+            + "{3,}$");
+    
     private User user;
     
     public UserController(User user){
@@ -102,6 +111,28 @@ public class UserController {
     }
 
     /**
+     * Method to check that the username is valid and not been used before.
+     * @param userName: The username
+     * @return true if valid, else false
+     */
+    public static boolean validateUserName(String userName) {
+        //Search through database for match with given username
+        //if found return false
+        //if else, return true
+        return false;
+    }
+    
+    /**
+     *
+     * @param password: The password
+     * @return true if password is valid, else false.
+     */
+    public static boolean validatePassword(String password) {
+        Matcher matcher = VALID_PASSWORD_REGEX .matcher(password);
+        return matcher.find();
+    }
+    
+    /**
      * @param email the email to set
      */
     public void setEmail(String email) {
@@ -118,7 +149,13 @@ public class UserController {
      * @param password the password to set
      */
     public void setPassword(String password) {
-        this.user.setPassword(password);
+         if (validatePassword(password)) {
+            this.user.setPassword(password);
+        }
+        else{
+            System.out.println("ERROR: password has not been set, " + password 
+                    + " is INVALID.");
+        }
     }
 
 }

@@ -13,6 +13,7 @@
 package Controller;
 
 import Model.User;
+import java.sql.SQLException;
 import org.mindrot.jbcrypt.BCrypt;
 
 
@@ -42,7 +43,7 @@ public class AccessController {
      *                      logged in user
      */
     public static UserController registerUser(String username, String firstName,
-            String surname, String email, String password) {
+            String surname, String email, String password) throws SQLException {
         // TODO: validate user details
         User newUser = new User(username, firstName, surname, email, genHashed(password));
         
