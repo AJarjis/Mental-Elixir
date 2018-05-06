@@ -2,8 +2,6 @@ package Other;
 
 import Model.User;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  * Database connection class
  * TODO: Add checking for connection & password security
@@ -74,6 +72,18 @@ public class Database {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
         }
+    }
+    
+   
+    /**
+     * Method used to add a user to the SQL server
+     * @param user object
+     */
+    public void addUserToDb(User user){
+        String command = String.format("INSERT INTO account VALUES('%s','%s','%s','%s','%s');"
+                , user.getUserName(), user.getFirstName(), user.getSurname(), 
+                user.getEmail(), user.getPassword());
+        this.insert(command);
     }
    
     /**

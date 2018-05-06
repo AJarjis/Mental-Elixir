@@ -31,7 +31,7 @@ public class UserController {
     
     //Minimum three characters, simple profanity filter in place.
     public static final Pattern VALID_USERNAME_REGEX = 
-    Pattern.compile("^[a-zA-Z0-9._-]*(fuck|shit|wank|cunt|nigger|twat|fag"
+    Pattern.compile("^[a-zA-Z0-9._-]*(fuck|shit|wank|cunt|nigger|twat|fag)"
             + "{3,}$");
     
     private User user;
