@@ -42,6 +42,7 @@ public class AccessController {
      * @param password      user's password (hashed)
      * @return              an instance of the userController with the currently
      *                      logged in user
+     * @throws java.sql.SQLException
      */
     public static UserController registerUser(String username, String firstName,
             String surname, String email, String password) throws SQLException {
@@ -50,6 +51,7 @@ public class AccessController {
         Database database = new Database();
         DatabaseController db = new DatabaseController(database);
         db.AddUser(newUser);
+        db.closeConnection();
         UserController userController = new UserController(newUser);
 
         return userController;

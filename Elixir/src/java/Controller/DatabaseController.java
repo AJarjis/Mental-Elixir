@@ -53,4 +53,15 @@ public class DatabaseController {
         this.database.addUserToDb(user);
     }
     
+    /**
+     * Method that returns a user object from the database based 
+     * on the username that was inserted
+     * NEEDS MORE WORK ON ERROR DETECTION
+     * @param username 
+     * @return  USER object
+     */
+    public User getUserByUsername(String username){
+        return this.database.selectUser(username);
+    }
+    
 }

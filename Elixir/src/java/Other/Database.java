@@ -104,7 +104,7 @@ public class Database {
     }
    
     /**
-     * ------------------WIP------------------
+     * 
      * Method that will allow retrieval of the user information. This will then 
      * go into a user object which will be returned for further processing
      * @param username unique string that allows to you to find the user details
@@ -115,20 +115,31 @@ public class Database {
         User user = null;
         try {
             this.stmt = this.conn.createStatement();
-            String command = "SELECT * FROM account WHERE username = " 
-                                + username;
+            String command = String.format
+        ("SELECT * FROM account WHERE username ='%s'", username);
             ResultSet rs = this.stmt.executeQuery(command);
+            while (rs.next()) {
                 String usrName = rs.getString("Username");
                 String firstName = rs.getString("FirstName");
                 String surname = rs.getString("Surname");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
             user = new User(usrName, firstName, surname, email, password);
+            } 
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
         }
         return user;
+    }
+    
+    public static void main(String[] args) throws SQLException {
+        Database db = new Database();
+        User test = new User();
+        System.out.println("This is a test.");
+        test = db.selectUser("test");
+        System.out.println(test.getFirstName() + " " + test.getPassword());
+        db.closeConn();
     }
     
     
