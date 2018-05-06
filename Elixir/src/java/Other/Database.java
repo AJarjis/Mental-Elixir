@@ -2,10 +2,12 @@ package Other;
 
 import Model.User;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * Database connection class
  * TODO: Add checking for connection & password security
- * @author Kieran Woodcock
+ * @author Daniel Carey
  */
 public class Database {
     private final String URL = "jdbc:postgresql://elixir.postgres.database.azure.com:5432/postgres";
@@ -25,7 +27,8 @@ public class Database {
         try{
             System.out.println("CONNECTING TO DATABASE..........");
             Class.forName("org.postgresql.Driver");
-            this.conn = DriverManager.getConnection(URL, USER, PASS);
+            this.conn = DriverManager.getConnection(this.URL, this.USER, 
+                                                    this.PASS);
             System.out.println("CONNECTION ESTABLISHED!");
         }
         catch (Exception e){
@@ -50,6 +53,20 @@ public class Database {
         }
     }
     
+    /**
+     * Method used to create a connection to the database
+     */
+    public void connect(){
+        try {
+            this.conn = DriverManager.getConnection(this.URL, this.USER, this.PASS);
+            System.out.println("CONNECTION REOPENED");
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+    }
+    
+    //MAYBE NEEDED
 //    public void commit(){
 //        try {
 //            this.conn.commit();

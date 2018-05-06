@@ -13,6 +13,7 @@
 package Controller;
 
 import Model.User;
+import Other.Database;
 import java.sql.SQLException;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -46,7 +47,9 @@ public class AccessController {
             String surname, String email, String password) throws SQLException {
         // TODO: validate user details
         User newUser = new User(username, firstName, surname, email, genHashed(password));
-        
+        Database database = new Database();
+        DatabaseController db = new DatabaseController(database);
+        db.AddUser(newUser);
         UserController userController = new UserController(newUser);
 
         return userController;
