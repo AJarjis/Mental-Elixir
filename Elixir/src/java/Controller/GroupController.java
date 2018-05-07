@@ -55,6 +55,7 @@ public class GroupController {
 
     /**
      *
+     * @return 
      * @ returns a list of all members in a group
      */
     public List<User> getMembers() {

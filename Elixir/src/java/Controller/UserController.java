@@ -14,7 +14,6 @@ Author      : Daniel Carey
 package Controller;
 
 import Model.User;
-import Other.Database;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,15 +35,43 @@ public class UserController {
             + "{3,}$");
     
     private User user;
-    private Database database = new Database();
-    private DatabaseController db = new DatabaseController(database);
     
+    /**
+     * UserController constructor using a user object
+     * @param user 
+     */
     public UserController(User user){
         this.user = user;
-        db.connectToDatabase();
-        db.AddUser(this.user);
-        db.closeConnection();
-
+    }
+    
+    /**
+     * Creates a user controller based on 
+     * @param userName
+     * @param firstName
+     * @param surname
+     * @param email
+     * @param password 
+     */
+    public UserController(String userName, String firstName, String surname, 
+            String email, String password){
+        this.user = new User(userName,firstName,surname,email,password);
+    }
+    
+    /**
+     * Method used to create a user object on the database
+     */
+    public void sendUserToDb(){
+        DatabaseController.connectToDatabase();
+        DatabaseController.AddUser(this.user);
+        DatabaseController.closeConnection();
+    }
+    
+    /**
+     * Method to get the user object that is currently being stored
+     * @return 
+     */
+    public User getUser(){
+        return this.user;
     }
     
      /**
@@ -91,7 +118,7 @@ public class UserController {
      */
     public void setUserName(String userName) {
         this.user.setUserName(userName);
-        this.db.updateUsername(this.user.getUserName(), userName);
+        DatabaseController.updateUsername(this.user.getUserName(), userName);
     }
 
     /**
@@ -99,7 +126,7 @@ public class UserController {
      */
     public void setFirstName(String firstName) {
         this.user.setFirstName(firstName);
-        this.db.updateFirstName(this.user.getUserName(), firstName);
+        DatabaseController.updateFirstName(this.user.getUserName(), firstName);
     }
 
     /**
@@ -107,7 +134,7 @@ public class UserController {
      */
     public void setSurname(String surname) {
         this.user.setSurname(surname);
-        this.db.updateSurname(this.user.getUserName(), surname);
+        DatabaseController.updateSurname(this.user.getUserName(), surname);
     }
     
         /**
@@ -148,7 +175,7 @@ public class UserController {
     public void setEmail(String email) {
         if (validateEmail(email)) {
             this.user.setEmail(email);
-            this.db.updateEmail(this.user.getUserName(), email);
+            DatabaseController.updateEmail(this.user.getUserName(), email);
         }
         else{
             System.out.println("ERROR: email has not been set, " + email 
@@ -162,7 +189,7 @@ public class UserController {
     public void setPassword(String password) {
          if (validatePassword(password)) {
             this.user.setPassword(password);
-            this.db.updatePassword(this.user.getUserName(), password);
+            DatabaseController.updatePassword(this.user.getUserName(), password);
         }
         else{
             System.out.println("ERROR: password has not been set, " + password 

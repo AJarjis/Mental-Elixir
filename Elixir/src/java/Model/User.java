@@ -1,8 +1,5 @@
 package Model;
 
-import Other.Database;
-import java.sql.SQLException;
-
 /*****************************************************************************
 
 File        : Account.java
@@ -35,7 +32,7 @@ public class User {
      * @param email
      * @param password 
      */
-    public User(String userName, String firstName, String surname, String email, String password) throws SQLException {
+    public User(String userName, String firstName, String surname, String email, String password){
         this.userName = userName;
         this.firstName = firstName;
         this.surname = surname;

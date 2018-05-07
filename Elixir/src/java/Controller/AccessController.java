@@ -13,13 +13,11 @@
 package Controller;
 
 import Model.User;
-import Other.Database;
 import java.sql.SQLException;
 import org.mindrot.jbcrypt.BCrypt;
 
 
 public class AccessController {
-
     /**
      * Attempts to log a user into their account.
      * 
@@ -29,7 +27,21 @@ public class AccessController {
      *                      logged in user
      */
     public static UserController login(String username, String password) {
-        return null;
+        DatabaseController.connectToDatabase();
+        String hashedPass = DatabaseController.getPasswordForLogin(username);
+        if (checkPassword(password, hashedPass)) {
+            User temp = DatabaseController.getUserByUsername(username);
+            UserController user = 
+                    new UserController(temp);
+            DatabaseController.closeConnection();
+            return user;
+        }
+        else{
+            DatabaseController.closeConnection();
+            System.err.println("Invalid Username or password!");
+            return null;
+        }
+        
     }
 
     /**
@@ -47,9 +59,9 @@ public class AccessController {
     public static UserController registerUser(String username, String firstName,
             String surname, String email, String password) throws SQLException {
         // TODO: validate user details
-        User newUser = new User(username, firstName, surname, email, genHashed(password));
-        UserController userController = new UserController(newUser);
-
+        UserController userController = new UserController(username, firstName, 
+                surname, email, genHashed(password));
+        userController.sendUserToDb();
         return userController;
     }
     
@@ -83,5 +95,9 @@ public class AccessController {
         System.out.println("plain: " + plain);
         System.out.println("hashed plain: " + hashed);
         System.out.println("check Password of " + plain + ": " + checkPassword(plain, hashed));
+        
+        UserController newUser = login("LoginTest", "qweewq");
+        System.out.println("User deet: " + newUser.getFullName());
+
     }
 }
