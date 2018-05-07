@@ -14,6 +14,7 @@ Author      : Daniel Carey
 package Controller;
 
 import Model.User;
+import Other.Database;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,9 +36,15 @@ public class UserController {
             + "{3,}$");
     
     private User user;
+    private Database database = new Database();
+    private DatabaseController db = new DatabaseController(database);
     
     public UserController(User user){
-       this.user = user;
+        this.user = user;
+        db.connectToDatabase();
+        db.AddUser(this.user);
+        db.closeConnection();
+
     }
     
      /**
@@ -80,10 +87,11 @@ public class UserController {
     }
 
     /**
-     * @param userName the userName to set
+     * @param userName the userName to set SHOULD NOT BE USED BY USER!
      */
     public void setUserName(String userName) {
-        this.user.setSurname(userName);
+        this.user.setUserName(userName);
+        this.db.updateUsername(this.user.getUserName(), userName);
     }
 
     /**
@@ -91,6 +99,7 @@ public class UserController {
      */
     public void setFirstName(String firstName) {
         this.user.setFirstName(firstName);
+        this.db.updateFirstName(this.user.getUserName(), firstName);
     }
 
     /**
@@ -98,6 +107,7 @@ public class UserController {
      */
     public void setSurname(String surname) {
         this.user.setSurname(surname);
+        this.db.updateSurname(this.user.getUserName(), surname);
     }
     
         /**
@@ -138,6 +148,7 @@ public class UserController {
     public void setEmail(String email) {
         if (validateEmail(email)) {
             this.user.setEmail(email);
+            this.db.updateEmail(this.user.getUserName(), email);
         }
         else{
             System.out.println("ERROR: email has not been set, " + email 
@@ -151,6 +162,7 @@ public class UserController {
     public void setPassword(String password) {
          if (validatePassword(password)) {
             this.user.setPassword(password);
+            this.db.updatePassword(this.user.getUserName(), password);
         }
         else{
             System.out.println("ERROR: password has not been set, " + password 

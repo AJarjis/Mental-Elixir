@@ -20,23 +20,11 @@ public class Database {
      * BASED ON https://www.tutorialspoint.com/postgresql/postgresql_java.htm
      * Establishes the connection with the SQL server as well as loading the 
      * required postgreSQL drivers
-     * @throws SQLException 
+     * 
      */
-    public Database() throws SQLException
+    public Database()
     {
-        try{
-            System.out.println("CONNECTING TO DATABASE..........");
-            Class.forName("org.postgresql.Driver");
-            this.conn = DriverManager.getConnection(this.URL, this.USER, 
-                                                    this.PASS);
-            System.out.println("CONNECTION ESTABLISHED!");
-        }
-        catch (Exception e){
-            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-            System.exit(0);
-        }
-        System.out.println("OPENED CONNECTION SUCCESSFULY.");
-        
+    
     }
     
     /**
@@ -58,6 +46,12 @@ public class Database {
      */
     public void connect(){
         try {
+            System.out.println("CONNECTING TO DATABASE..........");
+            try {
+                Class.forName("org.postgresql.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.conn = DriverManager.getConnection(this.URL, this.USER, this.PASS);
             System.out.println("CONNECTION REOPENED");
         } catch (SQLException e) {
@@ -80,7 +74,7 @@ public class Database {
      * Method that allows sending of the SQL statement to the server
      * @param command 
      */
-    public void insert(String command){
+    public void execute(String command){
         try {
             this.stmt = this.conn.createStatement();
             this.stmt.executeUpdate(command);
@@ -100,7 +94,7 @@ public class Database {
         String command = String.format("INSERT INTO account VALUES('%s','%s','%s','%s','%s');"
                 , user.getUserName(), user.getFirstName(), user.getSurname(), 
                 user.getEmail(), user.getPassword());
-        this.insert(command);
+        this.execute(command);
     }
    
     /**
@@ -133,12 +127,49 @@ public class Database {
         return user;
     }
     
+    /**
+     * Method used to update records concerning the account table in 
+     * SQL. Will be used as utility method
+     * @param fieldName SQL field name for the table account
+     * @param dataToUpdate new data to be used in SQL
+     * @param username
+     */
+    public void updateUser(String fieldName, String dataToUpdate, String username){
+        String command = String.format("UPDATE account SET %s = '%s' WHERE %s = '%s'"
+        , fieldName, dataToUpdate, fieldName, username);
+        this.execute(command);
+    }
+    
+    /**
+     * Get any of the user details that are present in the account table 
+     * of SQL
+     * @param field
+     * @param username
+     * @return 
+     */
+    public String getUserDetails(String field ,String username){
+        String userDetails = null;
+        try {
+            this.stmt = this.conn.createStatement();
+            String command = String.format
+                ("SELECT %s FROM account WHERE username ='%s'",field,username);
+            ResultSet rs = this.stmt.executeQuery(command);
+            while (rs.next()) {
+                userDetails = rs.getString(field);
+            }
+        } catch (SQLException e) {
+           System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+           System.exit(0);
+        }
+        return userDetails;
+    }
+    
     public static void main(String[] args) throws SQLException {
         Database db = new Database();
         User test = new User();
         System.out.println("This is a test.");
         test = db.selectUser("test");
-        System.out.println(test.getFirstName() + " " + test.getPassword());
+        System.out.println(db.getUserDetails("firstname", "GoMan"));
         db.closeConn();
     }
     

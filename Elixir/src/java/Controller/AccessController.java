@@ -48,10 +48,6 @@ public class AccessController {
             String surname, String email, String password) throws SQLException {
         // TODO: validate user details
         User newUser = new User(username, firstName, surname, email, genHashed(password));
-        Database database = new Database();
-        DatabaseController db = new DatabaseController(database);
-        db.AddUser(newUser);
-        db.closeConnection();
         UserController userController = new UserController(newUser);
 
         return userController;
