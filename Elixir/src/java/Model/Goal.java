@@ -20,7 +20,7 @@ Author      : Daniel Carey
 public class Goal {
 
     private List<Activity> activities; //activities that user will commit to
-    private Date targerDate; //date by which user wants to complete their activities
+    private Date targetDate; //date by which user wants to complete their activities
     private boolean completionStatus = false; //tracks the status of the goal false by default. 
     
     /**
@@ -32,7 +32,7 @@ public class Goal {
      */
     public Goal(List<Activity> activities, Date targerDate) {
         this.activities = activities;
-        this.targerDate = targerDate;
+        this.targetDate = targerDate;
     }
     
     /**
@@ -52,17 +52,17 @@ public class Goal {
     }
 
     /**
-     * @return the targerDate
+     * @return the targetDate
      */
-    public Date getTargerDate() {
-        return targerDate;
+    public Date getTargetDate() {
+        return targetDate;
     }
 
     /**
-     * @param targerDate the targerDate to set
+     * @param targetDate the targetDate to set
      */
-    public void setTargerDate(Date targerDate) {
-        this.targerDate = targerDate;
+    public void setTargetDate(Date targetDate) {
+        this.targetDate = targetDate;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Goal {
      * method that allows the user to remove a target date
      */
     public void removeTargerDate(){
-        this.targerDate = null;
+        this.targetDate = null;
     }
     
     /**

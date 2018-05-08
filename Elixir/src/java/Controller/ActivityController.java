@@ -12,9 +12,17 @@ Author      : Ashley Black
 
 package Controller;
 
+<<<<<<< HEAD
 import Model.Activity;
 import Model.ActivityTypes;
 
+=======
+
+/**
+ *
+ * @author Ali Jarjis
+ */
+>>>>>>> master
 public class ActivityController {
     
     private Activity activity;
@@ -87,5 +95,8 @@ public class ActivityController {
         
         
     }
+
+
+
 
 }

@@ -31,13 +31,47 @@ public class UserController {
     
     //Minimum three characters, simple profanity filter in place.
     public static final Pattern VALID_USERNAME_REGEX = 
-    Pattern.compile("^[a-zA-Z0-9._-]*(fuck|shit|wank|cunt|nigger|twat|fag"
+    Pattern.compile("^[a-zA-Z0-9._-]*(fuck|shit|wank|cunt|nigger|twat|fag)"
             + "{3,}$");
     
     private User user;
     
+    /**
+     * UserController constructor using a user object
+     * @param user 
+     */
     public UserController(User user){
-       this.user = user;
+        this.user = user;
+    }
+    
+    /**
+     * Creates a user controller based on 
+     * @param userName
+     * @param firstName
+     * @param surname
+     * @param email
+     * @param password 
+     */
+    public UserController(String userName, String firstName, String surname, 
+            String email, String password){
+        this.user = new User(userName,firstName,surname,email,password);
+    }
+    
+    /**
+     * Method used to create a user object on the database
+     */
+    public void sendUserToDb(){
+        DatabaseController.connectToDatabase();
+        DatabaseController.AddUser(this.user);
+        DatabaseController.closeConnection();
+    }
+    
+    /**
+     * Method to get the user object that is currently being stored
+     * @return 
+     */
+    public User getUser(){
+        return this.user;
     }
     
      /**
@@ -80,10 +114,11 @@ public class UserController {
     }
 
     /**
-     * @param userName the userName to set
+     * @param userName the userName to set SHOULD NOT BE USED BY USER!
      */
     public void setUserName(String userName) {
-        this.user.setSurname(userName);
+        this.user.setUserName(userName);
+        DatabaseController.updateUsername(this.user.getUserName(), userName);
     }
 
     /**
@@ -91,6 +126,7 @@ public class UserController {
      */
     public void setFirstName(String firstName) {
         this.user.setFirstName(firstName);
+        DatabaseController.updateFirstName(this.user.getUserName(), firstName);
     }
 
     /**
@@ -98,6 +134,7 @@ public class UserController {
      */
     public void setSurname(String surname) {
         this.user.setSurname(surname);
+        DatabaseController.updateSurname(this.user.getUserName(), surname);
     }
     
         /**
@@ -138,6 +175,7 @@ public class UserController {
     public void setEmail(String email) {
         if (validateEmail(email)) {
             this.user.setEmail(email);
+            DatabaseController.updateEmail(this.user.getUserName(), email);
         }
         else{
             System.out.println("ERROR: email has not been set, " + email 
@@ -151,6 +189,7 @@ public class UserController {
     public void setPassword(String password) {
          if (validatePassword(password)) {
             this.user.setPassword(password);
+            DatabaseController.updatePassword(this.user.getUserName(), password);
         }
         else{
             System.out.println("ERROR: password has not been set, " + password 

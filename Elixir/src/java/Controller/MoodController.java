@@ -17,7 +17,7 @@ import java.util.Date;
 
 public class MoodController {
 
-    private Mood mood;
+    private final Mood mood;
     /**
      * 
      * @param mood Object for users mood; Type of mood, notes and date.

@@ -1,8 +1,5 @@
 package Model;
 
-import Other.Database;
-import java.sql.SQLException;
-
 /*****************************************************************************
 
 File        : Account.java
@@ -35,33 +32,21 @@ public class User {
      * @param email
      * @param password 
      */
-    public User(String userName, String firstName, String surname, String email, String password) throws SQLException {
+    public User(String userName, String firstName, String surname, String email, String password){
         this.userName = userName;
         this.firstName = firstName;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.profile = new Profile();
-        String command = String.format("INSERT INTO account VALUES('%s','%s','%s','%s','%s');"
-                , this.userName, this.firstName, this.surname, this.email, this.password);
-         Database data = new Database();
-         data.insert(command);
-         data.closeConn();
     }
     
+    /**
+     * default user constructor
+     */
     public User(){ 
     }
-   
-    
-    public User getUserFromDB(String username) throws SQLException{
-        Database data = new Database();
-        User usr = data.selectUser(username);
-        data.closeConn();
-        return usr;
-    }
-    
-    
-
+  
     /**
      * @return the userName
      */
