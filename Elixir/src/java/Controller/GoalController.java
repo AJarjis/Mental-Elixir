@@ -38,9 +38,9 @@ public class GoalController {
     /**
      * @return the date for the specified goal
      */
-    public Date getTargerDate() {
+    public Date getTargetDate() {
         
-        return goal.getTargerDate();
+        return goal.getTargetDate();
     }
     
     /**
@@ -88,7 +88,7 @@ public class GoalController {
      */
     public void setTargetDate(Date date) {
         
-        this.goal.setTargerDate(date);
+        this.goal.setTargetDate(date);
     }
     
     /**
@@ -106,12 +106,7 @@ public class GoalController {
      */
     public void removeTargetDate() {
         
-        this.goal.removeTargerDate();
-    }
-    
-    public static Goal recommendGoal(User user) {
-        
-  
+        this.goal.removeTargetDate();
     }
 }
 

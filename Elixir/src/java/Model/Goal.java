@@ -73,7 +73,7 @@ public class Goal {
     }
     
     /**
-     * Method that will set completeion status to true when called
+     * Method that will set completion status to true when called
      */
     public void completeGoal(){
         this.completionStatus = true;
@@ -98,7 +98,7 @@ public class Goal {
     /**
      * method that allows the user to remove a target date
      */
-    public void removeTargerDate(){
+    public void removeTargetDate(){
         this.targetDate = null;
     }
     
