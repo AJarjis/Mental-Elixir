@@ -37,7 +37,6 @@ public class Mood {
 
     /**
      * @description constructor for the Mood without any notes being entered.
-     *
      * @param moodType
      * @param date
      *
@@ -47,6 +46,15 @@ public class Mood {
         this.moodType = moodType;
         this.date = date;
 
+    }
+    
+    /**
+     * Creates a new mood for addition into database. Useful when the user 
+     * is making an entry into their profile
+     * @param moodType 
+     */
+    public Mood(MoodTypes moodType){
+        this.moodType = moodType;
     }
 
     /**

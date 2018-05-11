@@ -12,6 +12,7 @@
  ******************************************************************************/
 package Controller;
 
+import Model.MoodTypes;
 import Model.User;
 import java.sql.SQLException;
 import org.mindrot.jbcrypt.BCrypt;
@@ -90,14 +91,21 @@ public class AccessController {
     
     // Main for testing class, TODO: Delete at some point
     public static void main(String[] args) {
-        String plain = "cool";
-        String hashed = genHashed(plain);
-        System.out.println("plain: " + plain);
-        System.out.println("hashed plain: " + hashed);
-        System.out.println("check Password of " + plain + ": " + checkPassword(plain, hashed));
+//        String plain = "cool";
+//        String hashed = genHashed(plain);
+//        System.out.println("plain: " + plain);
+//        System.out.println("hashed plain: " + hashed);
+//        System.out.println("check Password of " + plain + ": " + checkPassword(plain, hashed));
         
-        UserController newUser = login("LoginTest", "qweewq");
+        UserController newUser = login("FirstRec", "qweewq");
         System.out.println("User deet: " + newUser.getFullName());
+        
+        ProfileController testProf = new ProfileController(newUser.getUser());
+        MoodController testMood = new MoodController(MoodTypes.Joy);
+        testMood.setNotes("Hello, from Ali");
+        DatabaseController.connectToDatabase();
+        DatabaseController.addMoodEntry(newUser.getUserName(), testMood.getMood());
+        DatabaseController.closeConnection();
 
     }
 }

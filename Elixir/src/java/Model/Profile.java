@@ -23,6 +23,29 @@ public class Profile {
     private List<Group> group;
 
     /**
+     * Used to create profile during session
+     * @param user 
+     */
+    public Profile(User user){
+        this.user = user;
+    }
+    
+    /**
+     * Creates an empty profile
+     */
+    public Profile(){
+        
+    }
+    
+    /**
+     * Method used to retrieve the user object
+     * @return 
+     */
+    public User getUser(){
+        return this.user;
+    }
+    
+    /**
      * @return the goal
      */
     public List<Goal> getGoal() {
@@ -49,6 +72,15 @@ public class Profile {
     public List<Group> getGroup() {
         return group;
     }
+    
+    /**
+     * Method used to set the user of the profile
+     * @param user 
+     */
+    public void setUser(User user){
+        this.user = user;
+    }
+    
     /**
      * Method to add a goal to the list of goals
      * @param goal object you wish to add to the list

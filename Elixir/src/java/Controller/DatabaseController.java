@@ -12,16 +12,15 @@ Author      : Daniel Carey
 
 package Controller;
 
+import Model.Mood;
 import Model.User;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class DatabaseController {
-    private static final String URL = "jdbc:postgresql://elixir.postgres.database.azure.com:5432/postgres";
-    private static final String USER = "elixirAdmin@elixir";
-    private static final String PASS = "Elixir1221";
+    private static final String URL = "jdbc:postgresql://elixir-ver2.postgres.database.azure.com:5432/postgres";
+    private static final String USER = "elixir@elixir-ver2";
+    private static final String PASS = "Softeng1221";
     private static Connection conn = null;
     private static Statement  stmt = null;
     
@@ -247,6 +246,13 @@ public class DatabaseController {
             System.exit(0);
         }
         return userDetails;
+    }
+    
+    public static void addMoodEntry(String username, Mood mood){
+        String command = String.format("INSERT INTO mood (mood_id, moodtype, notes, date, username)"
+                + "VALUES (DEFAULT , '%s', '%s', DEFAULT , '%s');", 
+                mood.getMoodType().convertToString(), mood.getNotes(), username);
+        execute(command);
     }
     
 }

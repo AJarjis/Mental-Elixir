@@ -20,6 +20,7 @@ import Model.Profile;
 import Model.Assessment;
 import Model.Group;
 import Model.Activity;
+import Model.User;
 import java.util.Date;
 import java.util.List;
 
@@ -27,9 +28,26 @@ public class ProfileController {
     
     private Profile profile;
     
+    /**
+     * Method that creates an empty profile
+     * useful to retrieve data from database 
+     * @param user
+     */
+    public ProfileController(User user){
+        this.profile = new Profile(user);
+    }
+    
+    /**
+     * Used to create a profile controller
+     * @param profile 
+     */
     public ProfileController(Profile profile) {
         
         this.profile = profile;
+    }
+    
+    public User getUser(){
+        return this.profile.getUser();
     }
     
     /**
@@ -88,14 +106,15 @@ public class ProfileController {
     }
     
     /**
-     * @param moodtype, date
+     * @param moodType
      * 
      * Description: Takes the moodType and date to create a new mood, before 
      *              adding this to the profile
      */
-    public void addMood(MoodTypes moodType, Date date) {
+    public void addMood(MoodTypes moodType) {
         
-        Mood mood = new Mood(moodType, date);
+        Mood mood = new Mood(moodType);
+        
         
         this.profile.addMood(mood);
     }
@@ -115,6 +134,7 @@ public class ProfileController {
      * 
      * Description: Takes the score and date to create a new assessment, before 
      *              adding this to the profile
+     * @param date
      */
     public void addAssessment(int score, Date date) {
         
@@ -132,4 +152,5 @@ public class ProfileController {
         
         this.profile.removeAssessment(assessment);
     }
+    
 }

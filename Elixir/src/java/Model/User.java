@@ -21,7 +21,6 @@ public class User {
     private String email;//email that can be used to contact the user
     private String password;//password that belongs to user
                             //NEEDS TO BE ENCRYPTED BY HASHING AND SALT
-    private Profile profile;
 
     /**
      * Creates a new new user object in the system by user on registration
@@ -38,7 +37,6 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.profile = new Profile();
     }
     
     /**
