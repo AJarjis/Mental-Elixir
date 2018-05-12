@@ -29,6 +29,32 @@ public enum MoodTypes {
             default:
                 return "ERROR: NO ENUM! in MoodTypes";
          }
-        
     }
+        
+    public static MoodTypes convertToMoodType(String mood){
+        System.out.println("STRING PASSED INTO CONVERT TO MOOD: " + mood);
+        switch (mood) {
+            case "Fear":
+                return Fear;
+            case "Anger":
+                return Anger;
+            case "Sadness":
+                return Sadness;
+            case "Joy":
+                return Joy;
+            case "Disgust":
+                return Disgust;
+            case "Surprise":
+                return Surprise;
+            case "Trust":
+                return Trust;
+            case "Anticipation":
+                return Anticipation;
+            default:
+                System.err.println("ERROR IN CONVERSIONS FROM STRING TO MOODTYPE");
+                return null;
+                
+        }
+    }
+        
 }

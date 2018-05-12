@@ -65,7 +65,7 @@ public class Mood {
      * @param notes
      *
      */
-    Mood(MoodTypes moodType, Date date, String notes) {
+    public Mood(MoodTypes moodType, Date date, String notes) {
 
         this.moodType = moodType;
         this.date = date;
@@ -119,6 +119,15 @@ public class Mood {
     public void setDate(Date date) {
         
         this.date = date;
+    }
+    
+    /**
+     * Method to return mood info for debug
+     * @return 
+     */
+    @Override
+    public String toString(){
+        return "Mood: " + this.moodType.convertToString() + " Date: " + this.date.toString() + " Notes: " + this.notes + "\n";
     }
 
 }

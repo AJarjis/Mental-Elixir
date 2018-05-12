@@ -12,9 +12,15 @@ Author      : Daniel Carey
 
 package Controller;
 
+import Model.Assessment;
 import Model.Mood;
+import Model.MoodTypes;
 import Model.User;
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class DatabaseController {
@@ -24,6 +30,7 @@ public class DatabaseController {
     private static Connection conn = null;
     private static Statement  stmt = null;
     
+    /**********************BASIC DATABASE COMMANDS****************************/
     /**
      * Method used to close the connection to the database and commit 
      * changes
@@ -80,7 +87,7 @@ public class DatabaseController {
             System.exit(0);
         }
     }
-    
+    /**********************ACCOUNT DATABASE COMMANDS***************************/
     /**
      * Method used to add a user to the SQL server
      * @param user object
@@ -100,8 +107,8 @@ public class DatabaseController {
      * @param username
      */
     public static void updateUser(String fieldName, String dataToUpdate, String username){
-        String command = String.format("UPDATE account SET %s = '%s' WHERE %s = '%s'"
-        , fieldName, dataToUpdate, fieldName, username);
+        String command = String.format("UPDATE account SET %s = '%s' WHERE username = '%s'"
+        , fieldName, dataToUpdate, username);
         execute(command);
     }
     
@@ -247,7 +254,12 @@ public class DatabaseController {
         }
         return userDetails;
     }
-    
+    /**********************MOOD DATABASE COMMANDS****************************/
+    /**
+     * Method used to add new mood entries to the database
+     * @param username
+     * @param mood 
+     */
     public static void addMoodEntry(String username, Mood mood){
         String command = String.format("INSERT INTO mood (mood_id, moodtype, notes, date, username)"
                 + "VALUES (DEFAULT , '%s', '%s', DEFAULT , '%s');", 
@@ -255,4 +267,75 @@ public class DatabaseController {
         execute(command);
     }
     
+    /**
+     * Method that allows to get all the moods entries that are related 
+     * to the username passed in
+     * @param username String username
+     * @return 
+     */
+    public static List<Mood> getUserMoodsAsList(String username){
+        stmt = null;
+        List<Mood> moodList = new LinkedList<>();
+        try {
+            stmt = conn.createStatement();
+            String command = String.format("SELECT * FROM mood WHERE username ="
+                    + "'%s';", username);
+            ResultSet rs = stmt.executeQuery(command);
+            while(rs.next()){
+                MoodTypes mood = MoodTypes.convertToMoodType(rs.getString("moodtype"));
+                String notes = rs.getString("notes");
+                Date stamp = new Date(rs.getTimestamp("date").getTime());
+                Mood temp = new Mood(mood, stamp, notes);
+                moodList.add(temp);
+            }
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        return moodList;
+    }
+    
+    /**
+     * WIP MORE NEEDED AFTER FURTHER TESTING. SHOULD THE USER BE ABLE TO 
+     * UPDATE THEIR MOODS?
+     * General method used to update mood data on the database
+     * @param username
+     * @param fieldName
+     * @param dataToUpdate 
+     */
+    public static void updateMoodTable(String username, String fieldName, String dataToUpdate){
+        String command = String.format("UPDATE mood SET %s = '%s' WHERE %s = '%s'"
+        , fieldName, dataToUpdate, fieldName, username);
+        execute(command);
+    }
+    
+    public static void updateMoodType(String username, String moodType){
+        updateMoodTable(username, "moodtype", moodType);
+    }
+    
+    public static void updateNotes(String username, String notes){
+        updateMoodTable(username, "notes", notes);
+    }
+    
+    /*********************ASSESSMENT DATABASE COMMANDS*************************/
+    
+    /**
+     * Method to add new assessment entries to the database
+     * @param entry 
+     * @param username 
+     */
+    public static void addAssessmentEntry(Assessment entry, String username){
+        String command = String.format("INSERT INTO assessment (assessment_id, score, date, username)"
+                + "VALUES (DEFAULT , '%d', DEFAULT , '%s');", 
+                entry.getScore(), username);
+        execute(command);
+    }
+    public static void main(String[] args) {
+        DatabaseController.connectToDatabase();
+//        Assessment test = new Assessment(5);
+//        DatabaseController.addAssessmentEntry(test, "SecondTest");
+        List<Mood> mood = DatabaseController.getUserMoodsAsList("FirstRec");
+        DatabaseController.closeConnection();
+        System.out.println("MOOD LIST:\n" + mood.toString());
+    }
 }
