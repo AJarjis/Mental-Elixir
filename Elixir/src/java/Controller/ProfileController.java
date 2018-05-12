@@ -7,7 +7,7 @@ Date        : 11-Mar-2018
 Description : A class for dealing with a user's profile. This involves dealing
               with all aspects of the profile, goals, assessments, groups etc.   
 
-Author      : Ashley Black
+Author      : Ashley Black & Daniel Carey
 
 ******************************************************************************/
 
@@ -80,6 +80,46 @@ public class ProfileController {
     public List<Group> getGroups() {
         
         return profile.getGroup();
+    }
+    
+    /**
+     * Method to set the user for the profile
+     * @param user user object
+     */
+    public void setUser(User user){
+        this.profile.setUser(user);
+    }
+    
+    /**
+     * Method to set goals for the profile
+     * @param goal list of goals 
+     */
+    public void setGoals(List<Goal> goal){
+        this.profile.setGoal(goal);
+    }
+    
+    /**
+     * Method to set the moods for the profile
+     * @param mood list of moods
+     */
+    public void setMoods(List<Mood> mood){
+        this.profile.setMood(mood);
+    }
+    
+    /**
+     * Method to set the assessments for the profile
+     * @param assessment list of assessments
+     */
+    public void setAssessments(List<Assessment> assessment){
+        this.profile.setAssessment(assessment);
+    }
+    
+    /**
+     * Method to set the groups for the profile
+     * @param group 
+     */
+    public void setGroups(List<Group> group){
+        this.profile.setGroup(group);
     }
     
     /**

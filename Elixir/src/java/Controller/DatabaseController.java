@@ -548,8 +548,8 @@ public class DatabaseController {
 //        DatabaseController.addGroup(groupTest);
 //        List<Group> testGroup = DatabaseController.getAllGroups();
 //        List<Group> testUserGroups = DatabaseController.getAllGroupsThatBelongToUser("FirstRec");
-        DatabaseController.addUserToGroup("FirstRec", "other Cool GHuys");
-        DatabaseController.closeConnection();
+//        DatabaseController.addUserToGroup("FirstRec", "other Cool GHuys");
+//        DatabaseController.closeConnection();
 //        System.out.println("GROUP LIST:\n" + testGroup);
 //        System.out.println("GROUP LIST:\n" + testUserGroups);
 //        System.out.println("MOOD LIST:\n" + mood.toString());

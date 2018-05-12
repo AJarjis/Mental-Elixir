@@ -90,6 +90,14 @@ public class Profile {
     }
     
     /**
+     * Method to set the goal list to the one passed in as the argument
+     * @param goal list of goals
+     */
+    public void setGoal(List<Goal> goal){
+        this.goal = goal;
+    }
+    
+    /**
      * Method to remove goal specified. 
      * @param goal
      * @return true if found and removed, false otherwise
@@ -105,6 +113,15 @@ public class Profile {
     public void addMood(Mood mood)
     {
         this.mood.add(mood);
+    }
+    
+    /**
+     * Method to set the list stored in the profile to the one passed in as 
+     * an argument
+     * @param mood list of moods 
+     */
+    public void setMood(List<Mood> mood){
+        this.mood = mood;
     }
     
     /**
@@ -127,6 +144,14 @@ public class Profile {
     }
     
     /**
+     * Method to set the assessment list to the one passed in as argument
+     * @param assessment assessment list 
+     */
+    public void setAssessment(List<Assessment> assessment){
+        this.assessment = assessment;
+    }
+    
+    /**
      * Removes an assessment object from the assessment list.
      * @param assessment object to remove from list.
      * @return true if found & removed.
@@ -143,6 +168,14 @@ public class Profile {
     public void addGroup(Group group)
     {
         this.group.add(group);
+    }
+    
+    /**
+     * Method to set the group list to list passed in
+     * @param group group list
+     */
+    public void setGroup(List<Group> group){
+        this.group = group;
     }
     
     /**

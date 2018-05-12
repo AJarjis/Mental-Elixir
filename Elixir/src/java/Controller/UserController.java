@@ -112,6 +112,14 @@ public class UserController {
     public String getPassword() {
         return this.user.getPassword();
     }
+    
+    /**
+     * Set the user of the controller
+     * @param user 
+     */
+    public void setUser(User user){
+        this.user = user;
+    }
 
     /**
      * @param userName the userName to set SHOULD NOT BE USED BY USER!
