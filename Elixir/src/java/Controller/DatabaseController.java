@@ -16,6 +16,7 @@ import Model.Activity;
 import Model.ActivityTypes;
 import Model.Assessment;
 import Model.Goal;
+import Model.Group;
 import Model.Mood;
 import Model.MoodTypes;
 import Model.User;
@@ -421,7 +422,7 @@ public class DatabaseController {
     }
             
     public static List<Goal> getAllGoalsForUser(String username){
-         stmt = null;
+        stmt = null;
         List<Goal> goalList = new LinkedList<>();
         try {
             stmt = conn.createStatement();
@@ -446,6 +447,87 @@ public class DatabaseController {
         }
         return goalList;
     }
+    
+    /***********************GROUP DATABASE COMMANDS*************************/
+    
+    /**
+     * Method to add group to the database
+     * @param group 
+     */
+    public static void addGroup(Group group){
+        String command = String.format
+        ("INSERT INTO trackergroup (groupname, description, ownerusername) "
+                + "VALUES ('%s', '%s', '%s');", 
+                group.getGroupName(), group.getDescription()
+                ,group.getCreator().getUserName());
+        execute(command);
+    }
+    
+    /**
+     * Method used to retrieve all the groups from the database
+     * @return list of groups
+     */
+    public static List<Group> getAllGroups(){
+        stmt = null;
+        List<Group> groupList = new LinkedList<>();
+        try {
+            stmt = conn.createStatement();
+            String command = "SELECT * FROM trackergroup;";
+            ResultSet rs = stmt.executeQuery(command);
+            while (rs.next()) {
+                String groupName = rs.getString("groupname");
+                String description = rs.getString("description");
+                String username = rs.getString("ownerusername");
+                User tempUsr = selectUser(username);
+                Group tempGroup = new Group(groupName, description, tempUsr);
+                groupList.add(tempGroup);
+            }
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        return groupList;
+    }
+    
+    /**
+     * Method used to get all the groups that belong to the user
+     * @param username
+     * @return list of groups
+     */
+    public static List<Group> getAllGroupsThatBelongToUser(String username){
+        stmt = null;
+        List<Group> groupList = new LinkedList<>();
+        try {
+            stmt = conn.createStatement();
+            String command = String.format("SELECT * FROM trackergroup "
+                    + "WHERE ownerusername = '%s';", username);
+            ResultSet rs = stmt.executeQuery(command);
+            while (rs.next()) {
+                String groupName = rs.getString("groupname");
+                String description = rs.getString("description");
+                User tempUsr = selectUser(username);
+                Group tempGroup = new Group(groupName, description, tempUsr);
+                groupList.add(tempGroup);
+            }
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        return groupList;
+    }
+    
+    /**
+     * Method used to add user to the an existing group
+     * @param username
+     * @param groupName 
+     */
+    public static void addUserToGroup(String username, String groupName){
+        String command = String.format
+        ("INSERT INTO usergroup (username, groupname) VALUES ('%s', '%s');", 
+                username, groupName);
+        execute(command);
+    }
+    
             
             
     public static void main(String[] args) {
@@ -459,11 +541,20 @@ public class DatabaseController {
 //        List<Activity> act = DatabaseController.getAllActivitiesForGoal(1);
 //        Goal goal = new Goal("Do well");
 //        DatabaseController.addGoalEntry(goal, "FirstRec");
-        List<Goal> testGoal = DatabaseController.getAllGoalsForUser("FirstRec");
+//        List<Goal> testGoal = DatabaseController.getAllGoalsForUser("FirstRec");
+//        User bestUsr = new User();
+//        bestUsr.setUserName("SecondTest");
+//        Group groupTest = new Group("other Cool GHuys", "This group is better than the cool guys", bestUsr);
+//        DatabaseController.addGroup(groupTest);
+//        List<Group> testGroup = DatabaseController.getAllGroups();
+//        List<Group> testUserGroups = DatabaseController.getAllGroupsThatBelongToUser("FirstRec");
+        DatabaseController.addUserToGroup("FirstRec", "other Cool GHuys");
         DatabaseController.closeConnection();
+//        System.out.println("GROUP LIST:\n" + testGroup);
+//        System.out.println("GROUP LIST:\n" + testUserGroups);
 //        System.out.println("MOOD LIST:\n" + mood.toString());
 //        System.out.println("ASSESSMENT LIST: " + assmt.toString());
 //        System.out.println("ACT LIST:\n " + act.toString());
-        System.out.println("GOAL LIST: \n" + testGoal.toString());
+//        System.out.println("GOAL LIST: \n" + testGoal.toString());
     }
 }

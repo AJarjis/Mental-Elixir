@@ -85,6 +85,14 @@ public class GroupController {
     public void addMember(User user) {
         group.addMember(user);
     }
+    
+    /**
+     * Method to set all the members to a different list
+     * @param members 
+     */
+    public void setMembers(List<User> members){
+        this.group.setMembers(members);
+    }
 
     /**
      *
