@@ -17,6 +17,7 @@ import Model.Goal;
 import Model.Group;
 import Model.Mood;
 import Model.MoodTypes;
+import Model.Profile;
 import Model.User;
 import java.sql.SQLException;
 import java.util.List;
@@ -32,7 +33,7 @@ public class AccessController {
      * @return              an instance of the userController with the currently
      *                      logged in user
      */
-    public static ProfileController login(String username, String password) {
+    public static UserController login(String username, String password) {
         DatabaseController.connectToDatabase();
         String hashedPass = DatabaseController.getPasswordForLogin(username);
         if (checkPassword(password, hashedPass)) {
@@ -45,11 +46,12 @@ public class AccessController {
             List<Group> ownedGroupsTemp = DatabaseController.getAllGroupsThatBelongToUser(username);
             List<Group> partOfGroupsTemp = DatabaseController.getAllGroupsThatTheUserIsPartOf(username);
             DatabaseController.closeConnection();
-            ProfileController existingProfile 
-                    = new ProfileController(user.getUser(), goalsTemp, 
+            Profile existingProfile 
+                    = new Profile(goalsTemp, 
                             moodsTemp, asmtTemp, ownedGroupsTemp, 
                             partOfGroupsTemp);
-            return existingProfile;
+            user.setProfile(existingProfile);
+            return user;
         }
         else{
             DatabaseController.closeConnection();
@@ -71,14 +73,13 @@ public class AccessController {
      *                      logged in user
      * @throws java.sql.SQLException
      */
-    public static ProfileController registerUser(String username, String firstName,
+    public static UserController registerUser(String username, String firstName,
             String surname, String email, String password) throws SQLException {
         // TODO: validate user details
         UserController userController = new UserController(username, firstName, 
                 surname, email, genHashed(password));
         userController.sendUserToDb();
-        ProfileController newProfile = new ProfileController(userController.getUser());
-        return newProfile;
+        return userController;
     }
     
     /**
@@ -115,13 +116,9 @@ public class AccessController {
 //        UserController newUser = login("FirstRec", "qweewq");
 //        System.out.println("User deet: " + newUser.getFullName());
 //        
-        ProfileController testProf = login("FirstRec", "qweewq");
-//        MoodController testMood = new MoodController(MoodTypes.Joy);
 //        testMood.setNotes("Hello, from Ali");
 //        DatabaseController.connectToDatabase();
 //        DatabaseController.addMoodEntry(newUser.getUserName(), testMood.getMood());
 //        DatabaseController.closeConnection();
-        System.out.println(testProf.getGoals().toString());
-
     }
 }

@@ -13,6 +13,7 @@ Author      : Daniel Carey
 
 package Controller;
 
+import Model.Profile;
 import Model.User;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -51,6 +52,7 @@ public class UserController {
      * @param surname
      * @param email
      * @param password 
+     * @param profile 
      */
     public UserController(String userName, String firstName, String surname, 
             String email, String password){
@@ -72,6 +74,14 @@ public class UserController {
      */
     public User getUser(){
         return this.user;
+    }
+    
+    /**
+     * Method to get the profile of the user
+     * @return Profile object
+     */
+    public Profile getProfile(){
+        return this.user.getProfile();
     }
     
      /**
@@ -119,6 +129,14 @@ public class UserController {
      */
     public void setUser(User user){
         this.user = user;
+    }
+    
+    /**
+     * Method to set the profile of the user
+     * @param profile 
+     */
+    public void setProfile(Profile profile){
+        this.user.setProfile(profile);
     }
 
     /**

@@ -45,7 +45,7 @@ public class RegisterUserServlet extends HttpServlet {
             
             System.out.println("userName: " + userName + " firstName: " + firstName
                     + " surname: " + surname + " email: " + email + " password: " + password);
-            ProfileController userController = AccessController.registerUser(userName,
+            UserController userController = AccessController.registerUser(userName,
                     firstName, surname, email, password);
             
             

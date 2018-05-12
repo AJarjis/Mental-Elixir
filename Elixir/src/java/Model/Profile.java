@@ -16,20 +16,11 @@ Author      : Daniel Carey
 ******************************************************************************/
 
 public class Profile {
-    private User user;
     private List<Goal> goal;
     private List<Mood> mood;
     private List<Assessment> assessment;
     private List<Group> ownedGroups;
     private List<Group> partOfGroups;
-
-    /**
-     * Used to create profile during session
-     * @param user 
-     */
-    public Profile(User user){
-        this.user = user;
-    }
     
     /**
      * Creates an empty profile
@@ -41,30 +32,20 @@ public class Profile {
     /**
      * Method that creates a profile object with all properties populated
      * Used for population from database on login
-     * @param user user object
      * @param goals list of goals
      * @param moods list of moods
      * @param assessments list of assessments
      * @param ownedGroups list of ownedGroups
      * @param partOfGroups list of groups the user is part of
      */
-    public Profile(User user, List<Goal> goals, List<Mood> moods, 
+    public Profile(List<Goal> goals, List<Mood> moods, 
             List<Assessment> assessments, List<Group> ownedGroups,
             List<Group> partOfGroups){
-        this.user = user;
         this.goal = goals;
         this.mood = moods;
         this.assessment = assessments;
         this.ownedGroups = ownedGroups;
         this.partOfGroups = partOfGroups;
-    }
-    
-    /**
-     * Method used to retrieve the user object
-     * @return 
-     */
-    public User getUser(){
-        return this.user;
     }
     
     /**
@@ -101,14 +82,6 @@ public class Profile {
      */
     public List<Group> getPartOfGroups(){
         return this.partOfGroups;
-    }
-    
-    /**
-     * Method used to set the user of the profile
-     * @param user 
-     */
-    public void setUser(User user){
-        this.user = user;
     }
     
     /**

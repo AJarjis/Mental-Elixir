@@ -31,28 +31,27 @@ public class ProfileController {
     /**
      * Method that creates an empty profile
      * useful to retrieve data from database 
-     * @param user
      */
-    public ProfileController(User user){
-        this.profile = new Profile(user);
+    public ProfileController(){
+
     }
     
-    /**
-     * Constructor to create new profile that is populated with data from 
-     * the SQL database
-     * @param user
-     * @param goals
-     * @param moods
-     * @param assessments
-     * @param ownedGroups
-     * @param partOfGroups 
-     */
-    public ProfileController(User user, List<Goal> goals, List<Mood> moods, 
-            List<Assessment> assessments, List<Group> ownedGroups,
-            List<Group> partOfGroups){
-        this.profile = new Profile(user, goals, moods, assessments,
-        ownedGroups, partOfGroups);
-    }
+//    /**
+//     * Constructor to create new profile that is populated with data from 
+//     * the SQL database
+//     * @param user
+//     * @param goals
+//     * @param moods
+//     * @param assessments
+//     * @param ownedGroups
+//     * @param partOfGroups 
+//     */
+//    public ProfileController(List<Goal> goals, List<Mood> moods, 
+//            List<Assessment> assessments, List<Group> ownedGroups,
+//            List<Group> partOfGroups){
+//        this.profile = new Profile(goals, moods, assessments,
+//        ownedGroups, partOfGroups);
+//    }
     
     /**
      * Used to create a profile controller
@@ -63,8 +62,12 @@ public class ProfileController {
         this.profile = profile;
     }
     
-    public User getUser(){
-        return this.profile.getUser();
+    /**
+     * Method to get the profile object stored in the controller
+     * @return 
+     */
+    public Profile getProfile(){
+        return this.profile;
     }
     
     /**
@@ -108,11 +111,11 @@ public class ProfileController {
     }
     
     /**
-     * Method to set the user for the profile
-     * @param user user object
+     * Set the profile object
+     * @param profile 
      */
-    public void setUser(User user){
-        this.profile.setUser(user);
+    public void setProfile(Profile profile){
+        this.profile = profile;
     }
     
     /**
