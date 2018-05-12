@@ -38,6 +38,23 @@ public class ProfileController {
     }
     
     /**
+     * Constructor to create new profile that is populated with data from 
+     * the SQL database
+     * @param user
+     * @param goals
+     * @param moods
+     * @param assessments
+     * @param ownedGroups
+     * @param partOfGroups 
+     */
+    public ProfileController(User user, List<Goal> goals, List<Mood> moods, 
+            List<Assessment> assessments, List<Group> ownedGroups,
+            List<Group> partOfGroups){
+        this.profile = new Profile(user, goals, moods, assessments,
+        ownedGroups, partOfGroups);
+    }
+    
+    /**
      * Used to create a profile controller
      * @param profile 
      */

@@ -40,6 +40,7 @@ public class Profile {
     
     /**
      * Method that creates a profile object with all properties populated
+     * Used for population from database on login
      * @param user user object
      * @param goals list of goals
      * @param moods list of moods

@@ -528,6 +528,35 @@ public class DatabaseController {
         execute(command);
     }
     
+    /**
+     * Method that returns a list of groups that the user is part of
+     * @param username 
+     * @return list of groups
+     */
+    public static List<Group> getAllGroupsThatTheUserIsPartOf(String username){
+        stmt = null;
+        List<Group> groupList = new LinkedList<>();
+        try {
+            stmt = conn.createStatement();
+            String command = String.format("SELECT tg.groupname, tg.description, "
+                    + "tg.ownerusername FROM trackergroup AS tg\n" 
+                    +"INNER JOIN usergroup u on tg.groupname = u.groupname\n" 
+                    + "WHERE u.username = '%s';", username);
+            ResultSet rs = stmt.executeQuery(command);
+            while (rs.next()) {
+                String groupName = rs.getString("groupname");
+                String description = rs.getString("description");
+                User tempUsr = selectUser(username);
+                Group tempGroup = new Group(groupName, description, tempUsr);
+                groupList.add(tempGroup);
+            }
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        return groupList;
+    }
+    
             
             
     public static void main(String[] args) {
@@ -549,12 +578,14 @@ public class DatabaseController {
 //        List<Group> testGroup = DatabaseController.getAllGroups();
 //        List<Group> testUserGroups = DatabaseController.getAllGroupsThatBelongToUser("FirstRec");
 //        DatabaseController.addUserToGroup("FirstRec", "other Cool GHuys");
-//        DatabaseController.closeConnection();
+        List<Group> testPartOfGroups = DatabaseController.getAllGroupsThatTheUserIsPartOf("FirstRec");
+        DatabaseController.closeConnection();
 //        System.out.println("GROUP LIST:\n" + testGroup);
 //        System.out.println("GROUP LIST:\n" + testUserGroups);
 //        System.out.println("MOOD LIST:\n" + mood.toString());
 //        System.out.println("ASSESSMENT LIST: " + assmt.toString());
 //        System.out.println("ACT LIST:\n " + act.toString());
 //        System.out.println("GOAL LIST: \n" + testGoal.toString());
+        System.out.println("PART OF GROUPS: \n" + testPartOfGroups);
     }
 }

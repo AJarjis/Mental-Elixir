@@ -12,9 +12,14 @@
  ******************************************************************************/
 package Controller;
 
+import Model.Assessment;
+import Model.Goal;
+import Model.Group;
+import Model.Mood;
 import Model.MoodTypes;
 import Model.User;
 import java.sql.SQLException;
+import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
 
@@ -27,15 +32,24 @@ public class AccessController {
      * @return              an instance of the userController with the currently
      *                      logged in user
      */
-    public static UserController login(String username, String password) {
+    public static ProfileController login(String username, String password) {
         DatabaseController.connectToDatabase();
         String hashedPass = DatabaseController.getPasswordForLogin(username);
         if (checkPassword(password, hashedPass)) {
             User temp = DatabaseController.getUserByUsername(username);
             UserController user = 
                     new UserController(temp);
+            List<Goal> goalsTemp = DatabaseController.getAllGoalsForUser(username);
+            List<Mood> moodsTemp = DatabaseController.getUserMoodsAsList(username);
+            List<Assessment> asmtTemp = DatabaseController.getAllAssessmentsForUser(username);
+            List<Group> ownedGroupsTemp = DatabaseController.getAllGroupsThatBelongToUser(username);
+            List<Group> partOfGroupsTemp = DatabaseController.getAllGroupsThatTheUserIsPartOf(username);
             DatabaseController.closeConnection();
-            return user;
+            ProfileController existingProfile 
+                    = new ProfileController(user.getUser(), goalsTemp, 
+                            moodsTemp, asmtTemp, ownedGroupsTemp, 
+                            partOfGroupsTemp);
+            return existingProfile;
         }
         else{
             DatabaseController.closeConnection();
@@ -57,13 +71,14 @@ public class AccessController {
      *                      logged in user
      * @throws java.sql.SQLException
      */
-    public static UserController registerUser(String username, String firstName,
+    public static ProfileController registerUser(String username, String firstName,
             String surname, String email, String password) throws SQLException {
         // TODO: validate user details
         UserController userController = new UserController(username, firstName, 
                 surname, email, genHashed(password));
         userController.sendUserToDb();
-        return userController;
+        ProfileController newProfile = new ProfileController(userController.getUser());
+        return newProfile;
     }
     
     /**
@@ -97,15 +112,16 @@ public class AccessController {
 //        System.out.println("hashed plain: " + hashed);
 //        System.out.println("check Password of " + plain + ": " + checkPassword(plain, hashed));
         
-        UserController newUser = login("FirstRec", "qweewq");
-        System.out.println("User deet: " + newUser.getFullName());
-        
-        ProfileController testProf = new ProfileController(newUser.getUser());
-        MoodController testMood = new MoodController(MoodTypes.Joy);
-        testMood.setNotes("Hello, from Ali");
-        DatabaseController.connectToDatabase();
-        DatabaseController.addMoodEntry(newUser.getUserName(), testMood.getMood());
-        DatabaseController.closeConnection();
+//        UserController newUser = login("FirstRec", "qweewq");
+//        System.out.println("User deet: " + newUser.getFullName());
+//        
+        ProfileController testProf = login("FirstRec", "qweewq");
+//        MoodController testMood = new MoodController(MoodTypes.Joy);
+//        testMood.setNotes("Hello, from Ali");
+//        DatabaseController.connectToDatabase();
+//        DatabaseController.addMoodEntry(newUser.getUserName(), testMood.getMood());
+//        DatabaseController.closeConnection();
+        System.out.println(testProf.getGoals().toString());
 
     }
 }

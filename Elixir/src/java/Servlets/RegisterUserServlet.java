@@ -6,6 +6,7 @@
 package Servlets;
 
 import Controller.AccessController;
+import Controller.ProfileController;
 import Controller.UserController;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -44,7 +45,7 @@ public class RegisterUserServlet extends HttpServlet {
             
             System.out.println("userName: " + userName + " firstName: " + firstName
                     + " surname: " + surname + " email: " + email + " password: " + password);
-            UserController userController = AccessController.registerUser(userName,
+            ProfileController userController = AccessController.registerUser(userName,
                     firstName, surname, email, password);
             
             
