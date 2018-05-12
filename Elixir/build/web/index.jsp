@@ -53,10 +53,17 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <span class="navbar-text">A health potion for the mind.</span>
                 <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link justify-content-end" href="#">
+                            <form action="Logout" method="POST">
+                                <input class="btn btn-primary" type="submit" value="Log Out">
+                            </form>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link justify-content-end" href="#">
                             <img class="img-fluid" src="images/home.svg" style="height: 30px" alt="home icon" >
-
                         </a>
                     </li>
                     <li class="nav-item">
