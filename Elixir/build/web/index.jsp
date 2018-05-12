@@ -26,6 +26,15 @@
 
 
     </head>
+    
+    <!-- Checks if a user is logged in, redirecting them to register/login page if not-->
+    <% 
+        UserController user = (UserController) session.getAttribute("user");
+        if (user == null) { 
+            RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");  
+            rd.forward(request, response);
+        }
+    %>
 
 
     <body>
@@ -106,27 +115,16 @@
                             <img class="card-img-top" src="images/goals.svg" alt="Card image cap" style="height: 20vh; padding-bottom: 20px">
                             <h4 class="card-header">About You</h4>
                             <div class="card-body">
-                                <!-- 
-                                    Initialises user here.
-                                -->
-                                <% 
-                                    UserController user = (UserController) request.getAttribute("user");
-                                    if (user != null) { 
-                                %>
-                                    <!-- Displays user details, if they exist -->
-                                    <p><b>UserName: </b><%
-                                        out.print(user.getUserName());
-                                        %>
+                                    <!-- Displays user details -->
+                                    <p><b>UserName: </b>
+                                        <% out.print(user.getUserName()); %>
                                     </p>
-                                    <p><b>Full Name: </b><%
-                                        out.print(user.getFullName());
-                                        %>
+                                    <p><b>Full Name: </b>
+                                        <% out.print(user.getFullName()); %>
                                     </p>
-                                    <p><b>Email: </b><%
-                                        out.print(user.getEmail());
-                                        %>
+                                    <p><b>Email: </b>
+                                        <% out.print(user.getEmail()); %>
                                     </p>
-                                <% } %>
                             </div>
                             <div class="card-footer">
                             </div>

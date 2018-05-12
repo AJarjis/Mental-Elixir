@@ -1,3 +1,4 @@
+<%@page import="Controller.UserController"%>
 <%@page import="Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,10 +24,17 @@
 
             }
         </style>
-
-
     </head>
 
+    <!-- Checks if a user is logged in, redirecting them to register/login page if not-->
+    <% 
+        UserController user = (UserController) session.getAttribute("user");
+        if (user != null) { 
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  
+            rd.forward(request, response);
+        }
+    %>
+    
 
     <body>
         <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #FDFFFC">

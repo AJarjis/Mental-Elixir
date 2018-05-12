@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,20 +38,25 @@ public class RegisterUserServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             // TODO: Require sanitisation before accepting
+            // Retreives the data of a new user to register from form
             String userName = request.getParameter("userName");
             String firstName = request.getParameter("firstName");
             String surname = request.getParameter("surname");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             
-            System.out.println("userName: " + userName + " firstName: " + firstName
-                    + " surname: " + surname + " email: " + email + " password: " + password);
-            UserController userController = AccessController.registerUser(userName,
-                    firstName, surname, email, password);
+            // Creates new user
+            UserController userController = AccessController.registerUser
+                            (userName,firstName, surname, email, password);
             
+            // Gives JSP access to user details
+            //request.setAttribute("user", userController);
             
-            request.setAttribute("user", userController);
+            // Creates a session for logged in user
+            HttpSession session = request.getSession();
+            session.setAttribute("user", userController);
             
+            // Redirects user to profile page
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  
             rd.forward(request, response);
         } catch (SQLException e) {
