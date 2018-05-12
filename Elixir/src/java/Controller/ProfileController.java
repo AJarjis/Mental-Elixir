@@ -55,7 +55,7 @@ public class ProfileController {
      */
     public List<Goal> getGoals() {
         
-        return profile.getGoal();   
+        return this.profile.getGoal();   
     }
     
     /**
@@ -63,7 +63,7 @@ public class ProfileController {
      */
     public List<Mood> getMoods() {
         
-        return profile.getMood();
+        return this.profile.getMood();
     }
     
     /**
@@ -71,15 +71,23 @@ public class ProfileController {
      */
     public List<Assessment> getAssessments() {
         
-        return profile.getAssessment();
+        return this.profile.getAssessment();
     }
     
     /**
      * @return the list of groups for the user
      */
-    public List<Group> getGroups() {
+    public List<Group> getOwnedGroups() {
         
-        return profile.getGroup();
+        return this.profile.getOwnedGroups();
+    }
+    
+    /**
+     * 
+     * @return list of groups the user is part of
+     */
+    public List<Group> getPartOfGroups(){
+        return this.profile.getPartOfGroups();
     }
     
     /**
@@ -115,11 +123,19 @@ public class ProfileController {
     }
     
     /**
-     * Method to set the groups for the profile
+     * Method to set the groups the user owns
      * @param group 
      */
-    public void setGroups(List<Group> group){
-        this.profile.setGroup(group);
+    public void setOwnedGroups(List<Group> group){
+        this.profile.setOwnedGroups(group);
+    }
+    
+    /**
+     * Method to set the groups the user is part of
+     * @param group 
+     */
+    public void setPartOfGroups(List<Group> group){
+        this.profile.setPartOfGroup(group);
     }
     
     /**
@@ -127,6 +143,7 @@ public class ProfileController {
      * 
      * Description: creates a new goal from the list of activities entered as a
      *              param, before adding this goal to the profile
+     * @param description
      */
     public void addGoal(List<Activity> activities, String description) {
         
@@ -191,6 +208,24 @@ public class ProfileController {
     public void removeAssessment(Assessment assessment) {
         
         this.profile.removeAssessment(assessment);
+    }
+    
+    /**
+     * Removes the specified group that the user owns
+     * @param group group object
+     * @return true if successful false otherwise
+     */
+    public boolean removeOwnedGroup(Group group){
+        return this.profile.removeOwnedGroup(group);
+    }
+    
+    /**
+     * Removes the user from the group that they are part of 
+     * @param group group object
+     * @return true if successful false otherwise
+     */
+    public boolean removePartOfGroup(Group group){
+        return this.profile.removePartOfGroup(group);
     }
     
 }
