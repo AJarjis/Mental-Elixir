@@ -7,7 +7,11 @@ package Model;
 public enum MoodTypes {
         
         Fear, Anger, Sadness, Joy, Disgust, Surprise, Trust, Anticipation;
-        
+    
+    /**
+     * Used to convert mood type enum to string
+     * @return string that represents the enum
+     */
     public String convertToString(){
         switch (this) {
             case Fear:
@@ -27,10 +31,16 @@ public enum MoodTypes {
             case Anticipation:
                 return "Anticipation";    
             default:
+                //Shouldnt reach this
                 return "ERROR: NO ENUM! in MoodTypes";
          }
     }
-        
+    
+    /**
+     * Method that converts strings to enum types
+     * @param mood string that represents one of the enums
+     * @return enum variable
+     */
     public static MoodTypes convertToMoodType(String mood){
         System.out.println("STRING PASSED INTO CONVERT TO MOOD: " + mood);
         switch (mood) {

@@ -12,16 +12,17 @@ Author      : Daniel Carey
 
 package Controller;
 
+import Model.Activity;
+import Model.ActivityTypes;
 import Model.Assessment;
+import Model.Goal;
 import Model.Mood;
 import Model.MoodTypes;
 import Model.User;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import java.util.Date;
 
 public class DatabaseController {
     private static final String URL = "jdbc:postgresql://elixir-ver2.postgres.database.azure.com:5432/postgres";
@@ -330,12 +331,139 @@ public class DatabaseController {
                 entry.getScore(), username);
         execute(command);
     }
+    public static List<Assessment> getAllAssessmentsForUser(String username){
+        stmt = null;
+        List<Assessment> assessmentList = new LinkedList<>();
+        try {
+            stmt = conn.createStatement();
+            String command = String.format("SELECT * FROM assessment "
+                    + "WHERE username = '%s';", username);
+            ResultSet rs = stmt.executeQuery(command);
+            while (rs.next()) {
+                int score = rs.getInt("score");
+                Date stamp = new Date(rs.getTimestamp("date").getTime());
+                Assessment temp = new Assessment(score, stamp);
+                assessmentList.add(temp);
+            }
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        return assessmentList;
+    }
+    
+    /***********************ACTIVITY DATABASE COMMANDS*************************/
+    
+    /**
+     * Method used to add a new activity entry to the databse using 
+     * the username
+     * @param entry 
+     * @param goal_id 
+     */
+    public static void addActivityEntry(Activity entry, int goal_id){
+        String command = String.format
+        ("INSERT INTO activity (activity_id, activitytype, "
+                + "description, completionstatus, goal_id)" 
+                +"VALUES (DEFAULT, '%s', '%s', DEFAULT , %d);", 
+                entry.getActivityType().convertToString(), 
+                entry.getDescription(), goal_id);
+        execute(command);
+    }
+    
+    /**
+     * Method used to retrieve all the activities for a goal
+     * @param goal_id
+     * @return 
+     */
+    public static List<Activity> getAllActivitiesForGoal(Integer goal_id){
+        stmt = null;
+        List<Activity> activityList = new LinkedList<>();
+        try {
+            stmt = conn.createStatement();
+            String command = String.format("SELECT * FROM activity "
+                    + "WHERE goal_id = '%d';", goal_id);
+            ResultSet rs = stmt.executeQuery(command);
+            while (rs.next()) {
+                ActivityTypes actType = ActivityTypes.convertToMoodType(rs.getString("activityType"));
+                String description = rs.getString("description");
+                boolean stat = rs.getBoolean("completionstatus");
+                Activity temp = new Activity(actType, description, stat);
+                activityList.add(temp);
+            }
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        return activityList;
+    }
+    
+    /***********************GOAL DATABASE COMMANDS*************************/
+    
+    /**
+     * Method used to add a goal entry to the database
+     * @param entry
+     * @param username 
+     */
+    public static void addGoalEntry(Goal entry, String username){
+        String command = "";
+        if (entry.getTargetDate() == null) {
+            command = String.format
+        ("INSERT INTO goal (completion_status, target_date, description, username)" +
+"    VALUES  (DEFAULT , %s, '%s', '%s');", 
+                "DEFAULT", entry.getDescription(), username);
+        } else{
+            command = String.format
+        ("INSERT INTO goal (completion_status, target_date, description, username)" +
+"    VALUES  (DEFAULT , %d, '%s', '%s');", 
+                entry.getTargetDate().getTime(), entry.getDescription(), username);
+        }
+        execute(command);
+    }
+            
+    public static List<Goal> getAllGoalsForUser(String username){
+         stmt = null;
+        List<Goal> goalList = new LinkedList<>();
+        try {
+            stmt = conn.createStatement();
+            String command = String.format("SELECT * FROM goal "
+                    + "WHERE username = '%s';", username);
+            ResultSet rs = stmt.executeQuery(command);
+            Date date;
+            while (rs.next()) {
+                boolean stat = rs.getBoolean("completion_status");
+                if (rs.getTimestamp("target_date") == null) {
+                    date = null;
+                } else{
+                    date = new Date(rs.getTimestamp("target_date").getTime());
+                }
+                String description = rs.getString("description");
+                Goal temp = new Goal(stat, date, description);
+                goalList.add(temp);
+            }
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        return goalList;
+    }
+            
+            
     public static void main(String[] args) {
         DatabaseController.connectToDatabase();
 //        Assessment test = new Assessment(5);
 //        DatabaseController.addAssessmentEntry(test, "SecondTest");
-        List<Mood> mood = DatabaseController.getUserMoodsAsList("FirstRec");
+//        List<Mood> mood = DatabaseController.getUserMoodsAsList("FirstRec");
+//        List<Assessment> assmt = DatabaseController.getAllAssessmentsForUser("SecondTest");
+//        Activity test = new Activity(Love, "do good for others");
+//        DatabaseController.addActivityEntry(test, 1);
+//        List<Activity> act = DatabaseController.getAllActivitiesForGoal(1);
+//        Goal goal = new Goal("Do well");
+//        DatabaseController.addGoalEntry(goal, "FirstRec");
+        List<Goal> testGoal = DatabaseController.getAllGoalsForUser("FirstRec");
         DatabaseController.closeConnection();
-        System.out.println("MOOD LIST:\n" + mood.toString());
+//        System.out.println("MOOD LIST:\n" + mood.toString());
+//        System.out.println("ASSESSMENT LIST: " + assmt.toString());
+//        System.out.println("ACT LIST:\n " + act.toString());
+        System.out.println("GOAL LIST: \n" + testGoal.toString());
     }
 }

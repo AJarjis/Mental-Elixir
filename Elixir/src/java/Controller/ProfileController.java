@@ -88,9 +88,9 @@ public class ProfileController {
      * Description: creates a new goal from the list of activities entered as a
      *              param, before adding this goal to the profile
      */
-    public void addGoal(List<Activity> activities) {
+    public void addGoal(List<Activity> activities, String description) {
         
-        Goal goal = new Goal(activities);
+        Goal goal = new Goal(activities, description);
         
         this.profile.addGoal(goal);
     }
