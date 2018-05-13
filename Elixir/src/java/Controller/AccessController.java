@@ -36,24 +36,33 @@ public class AccessController {
     public static UserController login(String username, String password) {
         DatabaseController.connectToDatabase();
         String hashedPass = DatabaseController.getPasswordForLogin(username);
+        
+        // Check for correct password
         if (checkPassword(password, hashedPass)) {
+            // Get user details
             User temp = DatabaseController.getUserByUsername(username);
-            UserController user = 
-                    new UserController(temp);
-            List<Goal> goalsTemp = DatabaseController.getAllGoalsForUser(username);
-            List<Mood> moodsTemp = DatabaseController.getUserMoodsAsList(username);
-            List<Assessment> asmtTemp = DatabaseController.getAllAssessmentsForUser(username);
-            List<Group> ownedGroupsTemp = DatabaseController.getAllGroupsThatBelongToUser(username);
-            List<Group> partOfGroupsTemp = DatabaseController.getAllGroupsThatTheUserIsPartOf(username);
+            UserController user = new UserController(temp);
+            
+            // Get profile details - TODO: put in seperate function
+            List<Goal> goalsTemp = DatabaseController.
+                    getAllGoalsForUser(username);
+            List<Mood> moodsTemp = DatabaseController.
+                    getUserMoodsAsList(username);
+            List<Assessment> asmtTemp = DatabaseController.
+                    getAllAssessmentsForUser(username);
+            List<Group> ownedGroupsTemp = DatabaseController.
+                    getAllGroupsThatBelongToUser(username);
+            List<Group> partOfGroupsTemp = DatabaseController.
+                    getAllGroupsThatTheUserIsPartOf(username);
+            
             DatabaseController.closeConnection();
+            
             Profile existingProfile 
-                    = new Profile(goalsTemp, 
-                            moodsTemp, asmtTemp, ownedGroupsTemp, 
-                            partOfGroupsTemp);
+                    = new Profile(goalsTemp, moodsTemp, asmtTemp, 
+                            ownedGroupsTemp, partOfGroupsTemp);
             user.setProfile(existingProfile);
             return user;
-        }
-        else{
+        } else {
             DatabaseController.closeConnection();
             System.err.println("Invalid Username or password!");
             return null;
