@@ -28,14 +28,14 @@
     </head>
 
     <!-- Checks if a user is logged in, redirecting them to register/login page if not-->
-    <% 
+    <%
         UserController user = (UserController) session.getAttribute("user");
-        if (user != null) { 
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  
+        if (user != null) {
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
     %>
-    
+
 
     <body>
         <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #FDFFFC">
@@ -105,6 +105,7 @@
 
             <div class="container">
                 <div class="card-body">
+                    <h5>Register User</h5>
                     <form action="RegisterUser" method="POST">
                         <div class="form-group">
                             <label for="userName">UserName:</label>
@@ -126,8 +127,26 @@
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
-                    <input class="btn btn-primary" type="submit" value="Register User">
-                </form>
+                        <input class="btn btn-primary" type="submit" value="Register User">
+                    </form>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="card-body">
+                    <h5>Log In</h5>
+                    <form action="Login" method="POST">
+                        <div class="form-group">
+                            <label for="userName">UserName:</label>
+                            <input type="text" class="form-control" id="userName" name="userName">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Login">
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -140,8 +159,6 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-
     </body>
 
 </html>
