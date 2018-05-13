@@ -12,15 +12,8 @@
  ******************************************************************************/
 package Controller;
 
-import Model.Assessment;
-import Model.Goal;
-import Model.Group;
-import Model.Mood;
-import Model.MoodTypes;
-import Model.Profile;
-import Model.User;
+
 import java.sql.SQLException;
-import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
 
@@ -30,42 +23,18 @@ public class AccessController {
      * 
      * @param username      account's username
      * @param password      account's password (hashed)
+     * @param hashedPass    hashed password
      * @return              an instance of the userController with the currently
      *                      logged in user
      */
-    public static UserController login(String username, String password) {
-        DatabaseController.connectToDatabase();
-        String hashedPass = DatabaseController.getPasswordForLogin(username);
-        
+    public static boolean login(String username, String password, 
+            String hashedPass) {
         // Check for correct password
         if (checkPassword(password, hashedPass)) {
-            // Get user details
-            User temp = DatabaseController.getUserByUsername(username);
-            UserController user = new UserController(temp);
-            
-            // Get profile details - TODO: put in seperate function
-            List<Goal> goalsTemp = DatabaseController.
-                    getAllGoalsForUser(username);
-            List<Mood> moodsTemp = DatabaseController.
-                    getUserMoodsAsList(username);
-            List<Assessment> asmtTemp = DatabaseController.
-                    getAllAssessmentsForUser(username);
-            List<Group> ownedGroupsTemp = DatabaseController.
-                    getAllGroupsThatBelongToUser(username);
-            List<Group> partOfGroupsTemp = DatabaseController.
-                    getAllGroupsThatTheUserIsPartOf(username);
-            
-            DatabaseController.closeConnection();
-            
-            Profile existingProfile 
-                    = new Profile(goalsTemp, moodsTemp, asmtTemp, 
-                            ownedGroupsTemp, partOfGroupsTemp);
-            user.setProfile(existingProfile);
-            return user;
+            return true;
         } else {
-            DatabaseController.closeConnection();
             System.err.println("Invalid Username or password!");
-            return null;
+            return false;
         }
         
     }
@@ -121,7 +90,7 @@ public class AccessController {
 //        System.out.println("hashed plain: " + hashed);
 //        System.out.println("check Password of " + plain + ": " + checkPassword(plain, hashed));
         
-          UserController newUser = login("SecondTest", "qweewq");
+//          UserController newUser = login("SecondTest", "qweewq");
 //        System.out.println("User deet: " + newUser.getFullName());
 //        testMood.setNotes("Hello, from Ali");
 //        DatabaseController.connectToDatabase();

@@ -12,8 +12,10 @@
 package Servlets;
 
 import Controller.AccessController;
+import Controller.DatabaseController;
 import Controller.UserController;
 import java.io.IOException;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,10 +44,30 @@ public class LoginServlet extends HttpServlet {
         // Retreives the data of a new user to register from form
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
-
-        // Creates new user and logs them in
-        UserController userController = AccessController.login(userName, password);
-
+        // Open connection to Database 
+        DatabaseController.connectToDatabase();
+        // Get password stored in the database assosiated with username
+        String hashedPass = DatabaseController.getPasswordForLogin(userName);
+        // Create empty user
+        UserController userController = null;
+        // Check if user exists
+        if (hashedPass != null) {
+                    // Check if password is correct
+            boolean passChk = AccessController.login(userName, 
+                    password, hashedPass);
+            if (passChk) {
+                // Creates new user and logs them in
+                userController = 
+                        new UserController(DatabaseController.getUserByUsername(userName));
+                userController.setProfile(DatabaseController.getUserProfile(userName));
+            } else{
+                System.err.println("Invalid Username or password!");
+            } 
+        } else {
+            System.err.println("Invalid Username or password!");
+        }       
+        // Close database connection
+        DatabaseController.closeConnection();
         // Creates a session for logged in user
         HttpSession session = request.getSession();
         session.setAttribute("user", userController);

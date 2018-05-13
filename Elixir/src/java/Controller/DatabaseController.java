@@ -19,6 +19,7 @@ import Model.Goal;
 import Model.Group;
 import Model.Mood;
 import Model.MoodTypes;
+import Model.Profile;
 import Model.User;
 import java.sql.*;
 import java.util.LinkedList;
@@ -150,20 +151,19 @@ public class DatabaseController {
             stmt = conn.createStatement();
             String command = String.format
         ("SELECT * FROM account WHERE username ='%s'", username);
-            rs = stmt.executeQuery(command);
-            while (rs.next()) {
-                String usrName = rs.getString("Username");
-                String firstName = rs.getString("FirstName");
-                String surname = rs.getString("Surname");
-                String email = rs.getString("email");
-                String password = rs.getString("password");
+            ResultSet rsTemp = stmt.executeQuery(command);
+            while (rsTemp.next()) {
+                String usrName = rsTemp.getString("Username");
+                String firstName = rsTemp.getString("FirstName");
+                String surname = rsTemp.getString("Surname");
+                String email = rsTemp.getString("email");
+                String password = rsTemp.getString("password");
             user = new User(usrName, firstName, surname, email, password);
             }
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
         }finally {
-            try { if (rs != null) rs.close(); } catch (SQLException e) {}
             try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return user;
@@ -642,29 +642,56 @@ public class DatabaseController {
         return groupList;
     }
     
+    /***********************PROFILE CREATION**********************************/
+    
+    /**
+     * Method used to create a profile from data gathered 
+     * from Database
+     * @param username
+     * @return 
+     */
+    public static Profile getUserProfile(String username){
+        List<Goal> goalsTemp = DatabaseController.
+                    getAllGoalsForUser(username);
+            List<Mood> moodsTemp = DatabaseController.
+                    getUserMoodsAsList(username);
+            List<Assessment> asmtTemp = DatabaseController.
+                    getAllAssessmentsForUser(username);
+            List<Group> ownedGroupsTemp = DatabaseController.
+                    getAllGroupsThatBelongToUser(username);
+            List<Group> partOfGroupsTemp = DatabaseController.
+                    getAllGroupsThatTheUserIsPartOf(username);
+            
+            DatabaseController.closeConnection();
+            
+            Profile existingProfile 
+                    = new Profile(goalsTemp, moodsTemp, asmtTemp, 
+                            ownedGroupsTemp, partOfGroupsTemp);
+            return existingProfile;
+    }
             
             
     public static void main(String[] args) {
         DatabaseController.connectToDatabase();
 //        Assessment test = new Assessment(5);
 //        DatabaseController.addAssessmentEntry(test, "SecondTest");
-//        List<Mood> mood = DatabaseController.getUserMoodsAsList("FirstRec");
-//        List<Assessment> assmt = DatabaseController.getAllAssessmentsForUser("SecondTest");
+        List<Mood> mood = DatabaseController.getUserMoodsAsList("FirstRec");
+        List<Assessment> assmt = DatabaseController.getAllAssessmentsForUser("SecondTest");
 //        Activity test = new Activity(Love, "do good for others");
 //        DatabaseController.addActivityEntry(test, 1);
-//        List<Activity> act = DatabaseController.getAllActivitiesForGoal(1);
+        List<Activity> act = DatabaseController.getAllActivitiesForGoal(1);
 //        Goal goal = new Goal("Do well");
 //        DatabaseController.addGoalEntry(goal, "FirstRec");
-//        List<Goal> testGoal = DatabaseController.getAllGoalsForUser("FirstRec");
+        List<Goal> testGoal = DatabaseController.getAllGoalsForUser("FirstRec");
 //        User bestUsr = new User();
 //        bestUsr.setUserName("SecondTest");
 //        Group groupTest = new Group("other Cool GHuys", "This group is better than the cool guys", bestUsr);
 //        DatabaseController.addGroup(groupTest);
-//        List<Group> testGroup = DatabaseController.getAllGroups();
-//        List<Group> testUserGroups = DatabaseController.getAllGroupsThatBelongToUser("FirstRec");
+        List<Group> testGroup = DatabaseController.getAllGroups();
+        List<Group> testUserGroups = DatabaseController.getAllGroupsThatBelongToUser("FirstRec");
 //        DatabaseController.addUserToGroup("FirstRec", "other Cool GHuys");
-//        List<Group> testPartOfGroups = DatabaseController.getAllGroupsThatTheUserIsPartOf("FirstRec");
-//        System.out.println("GoalID: " + DatabaseController.getGoalID("Improve general wellbeing", "FirstRec"));
+        List<Group> testPartOfGroups = DatabaseController.getAllGroupsThatTheUserIsPartOf("FirstRec");
+        System.out.println("GoalID: " + DatabaseController.getGoalID("Improve general wellbeing", "FirstRec"));
         DatabaseController.closeConnection();
 //        System.out.println("GROUP LIST:\n" + testGroup);
 //        System.out.println("GROUP LIST:\n" + testUserGroups);

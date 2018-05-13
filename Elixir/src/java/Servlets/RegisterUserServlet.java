@@ -55,6 +55,7 @@ public class RegisterUserServlet extends HttpServlet {
             // Creates new user and logs them in
             UserController userController = AccessController.registerUser
                             (userName,firstName, surname, email, password);
+            //Create the user on on the Database
             DatabaseController.connectToDatabase();
             DatabaseController.AddUser(userController.getUser());
             DatabaseController.closeConnection();
