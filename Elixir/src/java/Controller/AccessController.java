@@ -113,9 +113,8 @@ public class AccessController {
 //        System.out.println("hashed plain: " + hashed);
 //        System.out.println("check Password of " + plain + ": " + checkPassword(plain, hashed));
         
-//        UserController newUser = login("FirstRec", "qweewq");
+          UserController newUser = login("SecondTest", "qweewq");
 //        System.out.println("User deet: " + newUser.getFullName());
-//        
 //        testMood.setNotes("Hello, from Ali");
 //        DatabaseController.connectToDatabase();
 //        DatabaseController.addMoodEntry(newUser.getUserName(), testMood.getMood());

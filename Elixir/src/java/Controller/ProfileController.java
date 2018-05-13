@@ -20,7 +20,6 @@ import Model.Profile;
 import Model.Assessment;
 import Model.Group;
 import Model.Activity;
-import Model.User;
 import java.util.Date;
 import java.util.List;
 

@@ -101,6 +101,24 @@ public class DatabaseController {
         execute(command);
     }
     
+    public static boolean checkUsername(String username){
+        boolean chk = true;
+        stmt = null;
+        try {
+            stmt = conn.createStatement();
+            String command = String.format("SELECT username FROM account WHERE username ="
+                    + "'%s';", username);
+            ResultSet rs = stmt.executeQuery(command);
+            while(rs.next()){
+                chk = false;
+            }
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        return chk;
+    }
+    
     /**
      * Method used to update records concerning the account table in 
      * SQL. Will be used as utility method
@@ -420,7 +438,12 @@ public class DatabaseController {
         }
         execute(command);
     }
-            
+    
+    /**
+     * Used to retrieve goals that the user has
+     * @param username
+     * @return 
+     */
     public static List<Goal> getAllGoalsForUser(String username){
         stmt = null;
         List<Goal> goalList = new LinkedList<>();
@@ -446,6 +469,32 @@ public class DatabaseController {
             System.exit(0);
         }
         return goalList;
+    }
+    
+    /**
+     * Method used to retrieve goal ID useful for setting activities for
+     * goals
+     * @param descritpion
+     * @param username
+     * @return 
+     */
+    public static int getGoalID(String descritpion, String username){
+        stmt = null;
+        int goalID = -1;
+        try {
+            stmt = conn.createStatement();
+            String command = String.format("SELECT goal_id FROM goal "
+                    + "WHERE description = '%s' "
+                    + "AND username = '%s';", descritpion, username);
+            ResultSet rs = stmt.executeQuery(command);
+            while (rs.next()) {
+                goalID = rs.getInt("goal_id");
+            }
+        } catch (SQLException e) {
+            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+            System.exit(0);
+        }
+        return goalID;
     }
     
     /***********************GROUP DATABASE COMMANDS*************************/
@@ -578,7 +627,8 @@ public class DatabaseController {
 //        List<Group> testGroup = DatabaseController.getAllGroups();
 //        List<Group> testUserGroups = DatabaseController.getAllGroupsThatBelongToUser("FirstRec");
 //        DatabaseController.addUserToGroup("FirstRec", "other Cool GHuys");
-        List<Group> testPartOfGroups = DatabaseController.getAllGroupsThatTheUserIsPartOf("FirstRec");
+//        List<Group> testPartOfGroups = DatabaseController.getAllGroupsThatTheUserIsPartOf("FirstRec");
+        System.out.println("GoalID: " + DatabaseController.getGoalID("Improve general wellbeing", "FirstRec"));
         DatabaseController.closeConnection();
 //        System.out.println("GROUP LIST:\n" + testGroup);
 //        System.out.println("GROUP LIST:\n" + testUserGroups);
@@ -586,6 +636,6 @@ public class DatabaseController {
 //        System.out.println("ASSESSMENT LIST: " + assmt.toString());
 //        System.out.println("ACT LIST:\n " + act.toString());
 //        System.out.println("GOAL LIST: \n" + testGoal.toString());
-        System.out.println("PART OF GROUPS: \n" + testPartOfGroups);
+//        System.out.println("PART OF GROUPS: \n" + testPartOfGroups);
     }
 }

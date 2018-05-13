@@ -179,10 +179,10 @@ public class UserController {
      * @return true if valid, else false
      */
     public static boolean validateUserName(String userName) {
-        //Search through database for match with given username
-        //if found return false
-        //if else, return true
-        return false;
+        DatabaseController.connectToDatabase();
+        boolean chk = DatabaseController.checkUsername(userName);
+        DatabaseController.closeConnection();
+        return chk;
     }
     
     /**
@@ -221,6 +221,11 @@ public class UserController {
             System.out.println("ERROR: password has not been set, " + password 
                     + " is INVALID.");
         }
+    }
+    
+    public static void main(String[] args) {
+        
+        System.out.println("UserNameVerf: " + UserController.validateUserName("FirstRec"));
     }
 
 }
