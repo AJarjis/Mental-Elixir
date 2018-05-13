@@ -6,7 +6,7 @@
 package Servlets;
 
 import Controller.AccessController;
-import Controller.ProfileController;
+import Controller.DatabaseController;
 import Controller.UserController;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -48,7 +48,9 @@ public class RegisterUserServlet extends HttpServlet {
             // Creates new user
             UserController userController = AccessController.registerUser
                             (userName,firstName, surname, email, password);
-            
+            DatabaseController.connectToDatabase();
+            DatabaseController.AddUser(userController.getUser());
+            DatabaseController.closeConnection();
             // Gives JSP access to user details
             //request.setAttribute("user", userController);
             

@@ -31,7 +31,10 @@ public class DatabaseController {
     private static final String PASS = "Softeng1221";
     private static Connection conn = null;
     private static Statement  stmt = null;
+    private static ResultSet rs = null;
     
+    //www.tutorialspoint.com/postgresql/postgresql_java.htm
+
     /**********************BASIC DATABASE COMMANDS****************************/
     /**
      * Method used to close the connection to the database and commit 
@@ -81,12 +84,8 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
-        }
-        try {
-            stmt.close();
-        } catch (SQLException e) {
-            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-            System.exit(0);
+        } finally{
+            try { if (stmt != null) stmt.close(); } catch (SQLException e) {}
         }
     }
     /**********************ACCOUNT DATABASE COMMANDS***************************/
@@ -104,17 +103,21 @@ public class DatabaseController {
     public static boolean checkUsername(String username){
         boolean chk = true;
         stmt = null;
+        rs = null;
         try {
             stmt = conn.createStatement();
             String command = String.format("SELECT username FROM account WHERE username ="
                     + "'%s';", username);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while(rs.next()){
                 chk = false;
             }
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return chk;
     }
@@ -147,7 +150,7 @@ public class DatabaseController {
             stmt = conn.createStatement();
             String command = String.format
         ("SELECT * FROM account WHERE username ='%s'", username);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while (rs.next()) {
                 String usrName = rs.getString("Username");
                 String firstName = rs.getString("FirstName");
@@ -155,16 +158,13 @@ public class DatabaseController {
                 String email = rs.getString("email");
                 String password = rs.getString("password");
             user = new User(usrName, firstName, surname, email, password);
-            } 
+            }
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
-        }
-        try {
-            stmt.close();
-        } catch (SQLException e) {
-            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-            System.exit(0);
+        }finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return user;
     }
@@ -254,23 +254,21 @@ public class DatabaseController {
     public static String getUserDetails(String field ,String username){
         String userDetails = null;
         stmt = null;
+        rs = null;
         try {
             stmt = conn.createStatement();
             String command = String.format
                 ("SELECT %s FROM account WHERE username ='%s'",field,username);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while (rs.next()) {
                 userDetails = rs.getString(field);
             }
         } catch (SQLException e) {
            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
            System.exit(0);
-        }
-        try {
-            stmt.close();
-        } catch (SQLException e) {
-            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-            System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return userDetails;
     }
@@ -295,12 +293,13 @@ public class DatabaseController {
      */
     public static List<Mood> getUserMoodsAsList(String username){
         stmt = null;
+        rs = null;
         List<Mood> moodList = new LinkedList<>();
         try {
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM mood WHERE username ="
                     + "'%s';", username);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while(rs.next()){
                 MoodTypes mood = MoodTypes.convertToMoodType(rs.getString("moodtype"));
                 String notes = rs.getString("notes");
@@ -311,6 +310,9 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return moodList;
     }
@@ -352,12 +354,13 @@ public class DatabaseController {
     }
     public static List<Assessment> getAllAssessmentsForUser(String username){
         stmt = null;
+        rs = null;
         List<Assessment> assessmentList = new LinkedList<>();
         try {
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM assessment "
                     + "WHERE username = '%s';", username);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while (rs.next()) {
                 int score = rs.getInt("score");
                 Date stamp = new Date(rs.getTimestamp("date").getTime());
@@ -367,6 +370,9 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return assessmentList;
     }
@@ -396,12 +402,13 @@ public class DatabaseController {
      */
     public static List<Activity> getAllActivitiesForGoal(Integer goal_id){
         stmt = null;
+        rs = null;
         List<Activity> activityList = new LinkedList<>();
         try {
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM activity "
                     + "WHERE goal_id = '%d';", goal_id);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while (rs.next()) {
                 ActivityTypes actType = ActivityTypes.convertToMoodType(rs.getString("activityType"));
                 String description = rs.getString("description");
@@ -412,6 +419,9 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return activityList;
     }
@@ -424,16 +434,16 @@ public class DatabaseController {
      * @param username 
      */
     public static void addGoalEntry(Goal entry, String username){
-        String command = "";
+        String command;
         if (entry.getTargetDate() == null) {
             command = String.format
         ("INSERT INTO goal (completion_status, target_date, description, username)" +
-"    VALUES  (DEFAULT , %s, '%s', '%s');", 
+        "VALUES  (DEFAULT , %s, '%s', '%s');", 
                 "DEFAULT", entry.getDescription(), username);
         } else{
             command = String.format
         ("INSERT INTO goal (completion_status, target_date, description, username)" +
-"    VALUES  (DEFAULT , %d, '%s', '%s');", 
+        "VALUES  (DEFAULT , %d, '%s', '%s');", 
                 entry.getTargetDate().getTime(), entry.getDescription(), username);
         }
         execute(command);
@@ -446,12 +456,13 @@ public class DatabaseController {
      */
     public static List<Goal> getAllGoalsForUser(String username){
         stmt = null;
+        rs = null;
         List<Goal> goalList = new LinkedList<>();
         try {
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM goal "
                     + "WHERE username = '%s';", username);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             Date date;
             while (rs.next()) {
                 boolean stat = rs.getBoolean("completion_status");
@@ -467,6 +478,9 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return goalList;
     }
@@ -480,21 +494,31 @@ public class DatabaseController {
      */
     public static int getGoalID(String descritpion, String username){
         stmt = null;
+        rs = null;
         int goalID = -1;
         try {
             stmt = conn.createStatement();
             String command = String.format("SELECT goal_id FROM goal "
                     + "WHERE description = '%s' "
                     + "AND username = '%s';", descritpion, username);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while (rs.next()) {
                 goalID = rs.getInt("goal_id");
             }
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
-        return goalID;
+        if (goalID < 0) {
+            System.err.println("ERROR NO GOAL ID FOUND");
+            return goalID;
+        }
+        else{
+            return goalID;
+        }
     }
     
     /***********************GROUP DATABASE COMMANDS*************************/
@@ -518,11 +542,12 @@ public class DatabaseController {
      */
     public static List<Group> getAllGroups(){
         stmt = null;
+        rs = null;
         List<Group> groupList = new LinkedList<>();
         try {
             stmt = conn.createStatement();
             String command = "SELECT * FROM trackergroup;";
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while (rs.next()) {
                 String groupName = rs.getString("groupname");
                 String description = rs.getString("description");
@@ -534,6 +559,9 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return groupList;
     }
@@ -545,12 +573,13 @@ public class DatabaseController {
      */
     public static List<Group> getAllGroupsThatBelongToUser(String username){
         stmt = null;
+        rs = null;
         List<Group> groupList = new LinkedList<>();
         try {
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM trackergroup "
                     + "WHERE ownerusername = '%s';", username);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while (rs.next()) {
                 String groupName = rs.getString("groupname");
                 String description = rs.getString("description");
@@ -561,6 +590,9 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return groupList;
     }
@@ -584,6 +616,7 @@ public class DatabaseController {
      */
     public static List<Group> getAllGroupsThatTheUserIsPartOf(String username){
         stmt = null;
+        rs = null;
         List<Group> groupList = new LinkedList<>();
         try {
             stmt = conn.createStatement();
@@ -591,7 +624,7 @@ public class DatabaseController {
                     + "tg.ownerusername FROM trackergroup AS tg\n" 
                     +"INNER JOIN usergroup u on tg.groupname = u.groupname\n" 
                     + "WHERE u.username = '%s';", username);
-            ResultSet rs = stmt.executeQuery(command);
+            rs = stmt.executeQuery(command);
             while (rs.next()) {
                 String groupName = rs.getString("groupname");
                 String description = rs.getString("description");
@@ -602,6 +635,9 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println( e.getClass().getName()+": "+ e.getMessage() );
             System.exit(0);
+        } finally {
+            try { if (rs != null) rs.close(); } catch (SQLException e) {}
+            try { if (stmt != null) stmt.close(); } catch (SQLException e){}
         }
         return groupList;
     }
@@ -628,7 +664,7 @@ public class DatabaseController {
 //        List<Group> testUserGroups = DatabaseController.getAllGroupsThatBelongToUser("FirstRec");
 //        DatabaseController.addUserToGroup("FirstRec", "other Cool GHuys");
 //        List<Group> testPartOfGroups = DatabaseController.getAllGroupsThatTheUserIsPartOf("FirstRec");
-        System.out.println("GoalID: " + DatabaseController.getGoalID("Improve general wellbeing", "FirstRec"));
+//        System.out.println("GoalID: " + DatabaseController.getGoalID("Improve general wellbeing", "FirstRec"));
         DatabaseController.closeConnection();
 //        System.out.println("GROUP LIST:\n" + testGroup);
 //        System.out.println("GROUP LIST:\n" + testUserGroups);

@@ -60,15 +60,6 @@ public class UserController {
     }
     
     /**
-     * Method used to create a user object on the database
-     */
-    public void sendUserToDb(){
-        DatabaseController.connectToDatabase();
-        DatabaseController.AddUser(this.user);
-        DatabaseController.closeConnection();
-    }
-    
-    /**
      * Method to get the user object that is currently being stored
      * @return 
      */
@@ -144,7 +135,6 @@ public class UserController {
      */
     public void setUserName(String userName) {
         this.user.setUserName(userName);
-        DatabaseController.updateUsername(this.user.getUserName(), userName);
     }
 
     /**
@@ -152,7 +142,6 @@ public class UserController {
      */
     public void setFirstName(String firstName) {
         this.user.setFirstName(firstName);
-        DatabaseController.updateFirstName(this.user.getUserName(), firstName);
     }
 
     /**
@@ -160,7 +149,6 @@ public class UserController {
      */
     public void setSurname(String surname) {
         this.user.setSurname(surname);
-        DatabaseController.updateSurname(this.user.getUserName(), surname);
     }
     
         /**

@@ -78,7 +78,6 @@ public class AccessController {
         // TODO: validate user details
         UserController userController = new UserController(username, firstName, 
                 surname, email, genHashed(password));
-        userController.sendUserToDb();
         return userController;
     }
     
