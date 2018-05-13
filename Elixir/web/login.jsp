@@ -48,8 +48,6 @@
             </button>
 
 
-
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <span class="navbar-text">A health potion for the mind.</span>
                 <ul class="navbar-nav ml-auto">
@@ -105,28 +103,16 @@
 
             <div class="container">
                 <div class="card-body">
-                    <form action="RegisterUser" method="POST">
+                    <form action="Login" method="POST">
                         <div class="form-group">
                             <label for="userName">UserName:</label>
                             <input type="text" class="form-control" id="userName" name="userName">
                         </div>
                         <div class="form-group">
-                            <label for="firstName">First Name:</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName">
-                        </div>
-                        <div class="form-group">
-                            <label for="surname">Surname:</label>
-                            <input type="text" class="form-control" id="surname" name="surname">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email">
-                        </div>
-                        <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
-                    <input class="btn btn-primary" type="submit" value="Register User">
+                    <input class="btn btn-primary" type="submit" value="Login">
                 </form>
             </div>
         </div>

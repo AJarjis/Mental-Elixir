@@ -1,21 +1,18 @@
 /******************************************************************************
  *
- * File        : RegisterUserServlet.java
+ * File        : LogoutServlet.java
  *
  * Date        : 11-Mar-2018
  *
- * Description : A servlet for registering a user.
+ * Description : A servlet for logging a user out of their account.
  *
  * Author      : Ali Jarjis
  *
  ******************************************************************************/
+
 package Servlets;
 
-import Controller.AccessController;
-import Controller.UserController;
 import java.io.IOException;
-import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,13 +22,13 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author AJarj
+ * @author Ali Jarjis
  */
-@WebServlet(name = "RegisterUser", urlPatterns = {"/RegisterUser"})
-public class RegisterUserServlet extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = {"/Logout"})
+public class LogoutServlet extends HttpServlet {
 
     /**
-     * Processes requests to register a user.
+     * Process for logging a user out of their account.
      *
      * @param request               servlet request
      * @param response              servlet response
@@ -41,34 +38,15 @@ public class RegisterUserServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, 
             HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            // TODO: Require sanitisation before accepting
-            
-            // Retreives the data of a new user to register from form
-            String userName = request.getParameter("userName");
-            String firstName = request.getParameter("firstName");
-            String surname = request.getParameter("surname");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            
-            // Creates new user and logs them in
-            UserController userController = AccessController.registerUser
-                            (userName,firstName, surname, email, password);
-            
-            // Creates a session for logged in user
-            HttpSession session = request.getSession();
-            session.setAttribute("user", userController);
-            
-            // Redirects user to profile page and prevents resubmitting
-            response.sendRedirect("index.jsp");
-        } catch (SQLException e) {
-            // TODO: catch error in an elegant manner
-            System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-            System.exit(0);
-        }
-   }
+        // Ends session
+        HttpSession session = request.getSession();
+        session.invalidate();
+        
+        // Redirects user to registration page
+        response.sendRedirect("registration.jsp");
+    }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -80,8 +58,7 @@ public class RegisterUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");  
-        rd.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -105,7 +82,6 @@ public class RegisterUserServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Servlet for registering a user.";
+        return "Short description";
     }// </editor-fold>
-
 }
