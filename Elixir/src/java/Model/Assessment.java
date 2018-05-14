@@ -28,6 +28,14 @@ public class Assessment {
      * date: the date that a user takes the WEMWBS assessment.
      */
     private Date date;
+    
+    /**
+     * Assessment constructor only with the score as the paramiter
+     * @param score 
+     */
+    public Assessment(int score){
+        this.score = score;
+    }
 
     /**
      * @description constructor for the Assessment class.
@@ -73,6 +81,11 @@ public class Assessment {
     public void setDate(Date date) {
 
         this.date = date;
+    }
+    
+    @Override
+    public String toString(){
+        return "Score: " + this.score + " Date: " + this.date.toString();
     }
 
 }

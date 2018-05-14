@@ -52,6 +52,14 @@ public class GoalController {
     }
     
     /**
+     * Get the goal description
+     * @return 
+     */
+    public String getDescription(){
+        return this.goal.getDescription();
+    }
+    
+    /**
      * @param activity
      * 
      * Description: adds an activity to the goal in question
@@ -99,6 +107,14 @@ public class GoalController {
     public void setCompletionStatus(Boolean status) {
         
         this.goal.setCompletionStatus(status);
+    }
+    
+    /**
+     * Sets the description for the goal
+     * @param desc 
+     */
+    public void setDescription(String desc){
+        this.goal.setDescription(desc);
     }
     
     /**

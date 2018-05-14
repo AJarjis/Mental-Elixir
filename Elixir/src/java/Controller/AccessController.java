@@ -12,7 +12,7 @@
  ******************************************************************************/
 package Controller;
 
-import Model.User;
+
 import java.sql.SQLException;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -23,23 +23,18 @@ public class AccessController {
      * 
      * @param username      account's username
      * @param password      account's password (hashed)
+     * @param hashedPass    hashed password
      * @return              an instance of the userController with the currently
      *                      logged in user
      */
-    public static UserController login(String username, String password) {
-        DatabaseController.connectToDatabase();
-        String hashedPass = DatabaseController.getPasswordForLogin(username);
+    public static boolean login(String username, String password, 
+            String hashedPass) {
+        // Check for correct password
         if (checkPassword(password, hashedPass)) {
-            User temp = DatabaseController.getUserByUsername(username);
-            UserController user = 
-                    new UserController(temp);
-            DatabaseController.closeConnection();
-            return user;
-        }
-        else{
-            DatabaseController.closeConnection();
+            return true;
+        } else {
             System.err.println("Invalid Username or password!");
-            return null;
+            return false;
         }
         
     }
@@ -61,7 +56,6 @@ public class AccessController {
         // TODO: validate user details
         UserController userController = new UserController(username, firstName, 
                 surname, email, genHashed(password));
-        userController.sendUserToDb();
         return userController;
     }
     
@@ -90,14 +84,17 @@ public class AccessController {
     
     // Main for testing class, TODO: Delete at some point
     public static void main(String[] args) {
-        String plain = "cool";
-        String hashed = genHashed(plain);
-        System.out.println("plain: " + plain);
-        System.out.println("hashed plain: " + hashed);
-        System.out.println("check Password of " + plain + ": " + checkPassword(plain, hashed));
+//        String plain = "cool";
+//        String hashed = genHashed(plain);
+//        System.out.println("plain: " + plain);
+//        System.out.println("hashed plain: " + hashed);
+//        System.out.println("check Password of " + plain + ": " + checkPassword(plain, hashed));
         
-        UserController newUser = login("LoginTest", "qweewq");
-        System.out.println("User deet: " + newUser.getFullName());
-
+//          UserController newUser = login("SecondTest", "qweewq");
+//        System.out.println("User deet: " + newUser.getFullName());
+//        testMood.setNotes("Hello, from Ali");
+//        DatabaseController.connectToDatabase();
+//        DatabaseController.addMoodEntry(newUser.getUserName(), testMood.getMood());
+//        DatabaseController.closeConnection();
     }
 }

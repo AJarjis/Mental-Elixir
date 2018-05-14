@@ -48,6 +48,19 @@ public class Activity {
         this.description      = description;
         this.completionStatus = false;
     }
+    
+    /**
+     * Method used to create new activities, mostly used for database retrieval
+     * @param activityType
+     * @param description
+     * @param stat 
+     */
+    public Activity(ActivityTypes activityType, String description, boolean stat) {
+             
+        this.activityType     = activityType;  
+        this.description      = description;
+        this.completionStatus = stat;
+    }
 
     /**
      * @return the activityType
@@ -97,6 +110,11 @@ public class Activity {
         this.completionStatus = completionStatus;
     }
     
-    
+    @Override
+    public String toString(){
+        return "ActivityType: " + this.activityType.convertToString() 
+                + " Description: " + this.description 
+                + " Status: " + this.completionStatus;
+    }
 
 }

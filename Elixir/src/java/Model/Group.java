@@ -35,9 +35,17 @@ public class Group {
         this.members = members;
     }
 
-
-
-    
+    /**
+     * Method to create a group without members
+     * @param groupName
+     * @param description
+     * @param creator 
+     */
+    public Group(String groupName, String description, User creator){
+        this.groupName = groupName;
+        this.description = description;
+        this.creator = creator;
+    }
     
     /**
      * @return the groupName
@@ -80,6 +88,14 @@ public class Group {
     public void setCreator(User creator) {
         this.creator = creator;
     }
+    
+    /**
+     * Method to set all the members
+     * @param members 
+     */
+    public void setMembers(List<User> members){
+        this.members = members;
+    }
 
     /**
      * @return the members
@@ -105,6 +121,13 @@ public class Group {
      */
     public boolean removeMember(User user){
         return this.members.remove(user);
+    }
+    
+    @Override
+    public String toString(){
+        return "\nGroup Name: " + this.groupName
+                + "\nGroup Description: " + this.description
+                + "\nGroup Leader: " + this.creator.getUserName() + "\n";
     }
     
     /**

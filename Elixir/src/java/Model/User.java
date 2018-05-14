@@ -32,19 +32,35 @@ public class User {
      * @param email
      * @param password 
      */
-    public User(String userName, String firstName, String surname, String email, String password){
+    public User(String userName, String firstName, String surname, String email, 
+            String password){
         this.userName = userName;
         this.firstName = firstName;
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.profile = new Profile();
     }
     
     /**
      * default user constructor
      */
     public User(){ 
+    }
+    
+    /**
+     * Method to get the profile of the user
+     * @return user profile
+     */
+    public Profile getProfile(){
+        return this.profile;
+    }
+    
+    /**
+     * Method to set the profile of the user
+     * @param profile profile object
+     */
+    public void setProfile(Profile profile){
+        this.profile = profile;
     }
   
     /**

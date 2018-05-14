@@ -17,13 +17,29 @@ import java.util.Date;
 
 public class MoodController {
 
-    private final Mood mood;
+    private Mood mood;
     /**
      * 
      * @param mood Object for users mood; Type of mood, notes and date.
      */
     public MoodController(Mood mood) {
         this.mood = mood;
+    }
+    
+    /**
+     * Controller with creation of a mood object using a mood type
+     * @param mood 
+     */
+    public MoodController(MoodTypes mood){
+        this.mood = new Mood(mood);
+    }
+    
+    /**
+     * Retrieve the mood stored
+     * @return 
+     */
+    public Mood getMood(){
+        return this.mood;
     }
     
     /**
@@ -50,6 +66,10 @@ public class MoodController {
         return mood.getDate();
     }
     
+    public void setMood(Mood mood){
+        this.mood = mood;
+    }
+    
     /**
      *
      * @param MoodType Enum specified in the MoodTypes Model Class
@@ -72,5 +92,10 @@ public class MoodController {
      */
     public void setDate(Date date) {
         mood.setDate(date);
+    }
+    
+    public static void main(String[] args) {
+        Mood testMood = new Mood(MoodTypes.Joy);
+            MoodController moodContr = new MoodController(testMood);
     }
 }
