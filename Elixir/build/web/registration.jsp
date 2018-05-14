@@ -12,6 +12,7 @@
         <link rel="icon" href="../../../../favicon.ico">
 
         <title>elixir</title>
+    
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -105,27 +106,34 @@
 
             <div class="container">
                 <div class="card-body">
+                    <span>${errorMessages.errorMain}</span>
                     <h5>Register User</h5>
                     <form action="RegisterUser" method="POST">
                         <div class="form-group">
                             <label for="userName">UserName:</label>
                             <input type="text" class="form-control" id="userName" name="userName">
+                            <span class="inputError">${errorMessages.userName}</span>
+                            
                         </div>
                         <div class="form-group">
                             <label for="firstName">First Name:</label>
                             <input type="text" class="form-control" id="firstName" name="firstName">
+                            <span class="inputError">${errorMessages.firstName}</span>
                         </div>
                         <div class="form-group">
                             <label for="surname">Surname:</label>
                             <input type="text" class="form-control" id="surname" name="surname">
+                            <span class="inputError">${errorMessages.surname}</span>
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" class="form-control" id="email" name="email">
+                            <span class="inputError">${errorMessages.email}</span>
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="password" name="password">
+                            <span class="inputError">${errorMessages.password}</span>
                         </div>
                         <input class="btn btn-primary" type="submit" value="Register User">
                     </form>
@@ -139,10 +147,12 @@
                         <div class="form-group">
                             <label for="userName">UserName:</label>
                             <input type="text" class="form-control" id="userName" name="userName">
+                            <span class="inputError">${errorMessages.userNameLog}</span>
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="password" name="password">
+                            <span class="inputError">${errorMessages.passwordLog}</span>
                         </div>
                         <input class="btn btn-primary" type="submit" value="Login">
                     </form>
