@@ -1,0 +1,9 @@
+/* Gives box shadow to main navbar*/
+.navbar-expand-md {
+    box-shadow: 2px 2px 10px #000000;
+}
+
+/* Gives space to main container so it doesn't touch the navbar */
+.container {
+    margin-top: 3%;
+}

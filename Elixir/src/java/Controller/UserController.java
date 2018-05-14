@@ -13,6 +13,7 @@ Author      : Daniel Carey
 
 package Controller;
 
+import Model.Profile;
 import Model.User;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -51,19 +52,11 @@ public class UserController {
      * @param surname
      * @param email
      * @param password 
+     * @param profile 
      */
     public UserController(String userName, String firstName, String surname, 
             String email, String password){
         this.user = new User(userName,firstName,surname,email,password);
-    }
-    
-    /**
-     * Method used to create a user object on the database
-     */
-    public void sendUserToDb(){
-        DatabaseController.connectToDatabase();
-        DatabaseController.AddUser(this.user);
-        DatabaseController.closeConnection();
     }
     
     /**
@@ -72,6 +65,14 @@ public class UserController {
      */
     public User getUser(){
         return this.user;
+    }
+    
+    /**
+     * Method to get the profile of the user
+     * @return Profile object
+     */
+    public Profile getProfile(){
+        return this.user.getProfile();
     }
     
      /**
@@ -112,13 +113,28 @@ public class UserController {
     public String getPassword() {
         return this.user.getPassword();
     }
+    
+    /**
+     * Set the user of the controller
+     * @param user 
+     */
+    public void setUser(User user){
+        this.user = user;
+    }
+    
+    /**
+     * Method to set the profile of the user
+     * @param profile 
+     */
+    public void setProfile(Profile profile){
+        this.user.setProfile(profile);
+    }
 
     /**
      * @param userName the userName to set SHOULD NOT BE USED BY USER!
      */
     public void setUserName(String userName) {
         this.user.setUserName(userName);
-        DatabaseController.updateUsername(this.user.getUserName(), userName);
     }
 
     /**
@@ -126,7 +142,6 @@ public class UserController {
      */
     public void setFirstName(String firstName) {
         this.user.setFirstName(firstName);
-        DatabaseController.updateFirstName(this.user.getUserName(), firstName);
     }
 
     /**
@@ -134,7 +149,6 @@ public class UserController {
      */
     public void setSurname(String surname) {
         this.user.setSurname(surname);
-        DatabaseController.updateSurname(this.user.getUserName(), surname);
     }
     
         /**
@@ -153,10 +167,10 @@ public class UserController {
      * @return true if valid, else false
      */
     public static boolean validateUserName(String userName) {
-        //Search through database for match with given username
-        //if found return false
-        //if else, return true
-        return false;
+        DatabaseController.connectToDatabase();
+        boolean chk = DatabaseController.checkUsername(userName);
+        DatabaseController.closeConnection();
+        return chk;
     }
     
     /**
@@ -195,6 +209,11 @@ public class UserController {
             System.out.println("ERROR: password has not been set, " + password 
                     + " is INVALID.");
         }
+    }
+    
+    public static void main(String[] args) {
+        
+        System.out.println("UserNameVerf: " + UserController.validateUserName("FirstRec"));
     }
 
 }

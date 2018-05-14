@@ -22,26 +22,49 @@ public class Goal {
     private List<Activity> activities; //activities that user will commit to
     private Date targetDate; //date by which user wants to complete their activities
     private boolean completionStatus = false; //tracks the status of the goal false by default. 
+    private String description; // gives basic description of the goal
     
     /**
      * Constructor that will allow the user to create a goal with one or 
      * multiple goals and set a target date by which they should be able 
      * to complete self assigned activities
      * @param activities list containing activities user selected
-     * @param targerDate date object which will represent user deadline
+     * @param targetDate date object which will represent user deadline
      */
-    public Goal(List<Activity> activities, Date targerDate) {
+    public Goal(List<Activity> activities, Date targetDate) {
         this.activities = activities;
-        this.targetDate = targerDate;
+        this.targetDate = targetDate;
     }
     
     /**
      * Similar constructor to the one above. However, this one does 
      * not require a date object.
      * @param activities 
+     * @param description 
      */
-    public Goal(List<Activity> activities){
+    public Goal(List<Activity> activities, String description){
         this.activities = activities;
+        this.description = description;
+    }
+    
+    /**
+     * Goal constructor only requiering a description
+     * @param description 
+     */
+    public Goal(String description){
+        this.description = description;
+    }
+    
+    /**
+     * Constructor for Goal used for Database retrieval
+     * @param stat
+     * @param date
+     * @param desc 
+     */
+    public Goal(boolean stat, Date date, String desc){
+        this.completionStatus = stat;
+        this.targetDate = date;
+        this.description = desc;
     }
 
     /**
@@ -64,16 +87,32 @@ public class Goal {
     public void setTargetDate(Date targetDate) {
         this.targetDate = targetDate;
     }
+    
+    /**
+     * 
+     * @param desc new description to set
+     */
+    public void setDescription(String desc){
+        this.description = desc;
+    }
 
     /**
      * @return the completionStatus
      */
     public boolean getCompletionStatus() {
-        return completionStatus;
+        return this.completionStatus;
     }
     
     /**
-     * Method that will set completeion status to true when called
+     * Gets the description of the goal
+     * @return 
+     */
+    public String getDescription(){
+        return this.description;
+    }
+    
+    /**
+     * Method that will set completion status to true when called
      */
     public void completeGoal(){
         this.completionStatus = true;
@@ -98,7 +137,7 @@ public class Goal {
     /**
      * method that allows the user to remove a target date
      */
-    public void removeTargerDate(){
+    public void removeTargetDate(){
         this.targetDate = null;
     }
     
@@ -118,6 +157,20 @@ public class Goal {
    public void recommendGoal(User user){
        //Not entiery sure what needs to be here0
    }  
+   
+    @Override
+   public String toString(){
+       String date = "";
+       if(this.targetDate == null)
+       {
+           date = "null";
+       }else{
+           date = this.targetDate.toString();
+        } 
+       return "\nGoal Description: " + this.description
+               + "\n Target Date: " +  date
+               + "\n Completion Stat: " + this.completionStatus;
+   }
     
     
 }

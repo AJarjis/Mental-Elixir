@@ -15,6 +15,7 @@
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <!-- Custom styles -->
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <style>
             body {
 
@@ -26,6 +27,15 @@
 
 
     </head>
+    
+    <!-- Checks if a user is logged in, redirecting them to register/login page if not-->
+    <% 
+        UserController user = (UserController) session.getAttribute("user");
+        if (user == null) { 
+            RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");  
+            rd.forward(request, response);
+        }
+    %>
 
 
     <body>
@@ -44,10 +54,17 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <span class="navbar-text">A health potion for the mind.</span>
                 <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link justify-content-end" href="#">
+                            <form action="Logout" method="POST">
+                                <input class="btn btn-primary" type="submit" value="Log Out">
+                            </form>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link justify-content-end" href="#">
                             <img class="img-fluid" src="images/home.svg" style="height: 30px" alt="home icon" >
-
                         </a>
                     </li>
                     <li class="nav-item">
@@ -106,27 +123,16 @@
                             <img class="card-img-top" src="images/goals.svg" alt="Card image cap" style="height: 20vh; padding-bottom: 20px">
                             <h4 class="card-header">About You</h4>
                             <div class="card-body">
-                                <!-- 
-                                    Initialises user here.
-                                -->
-                                <% 
-                                    UserController user = (UserController) request.getAttribute("user");
-                                    if (user != null) { 
-                                %>
-                                    <!-- Displays user details, if they exist -->
-                                    <p><b>UserName: </b><%
-                                        out.print(user.getUserName());
-                                        %>
+                                    <!-- Displays user details -->
+                                    <p><b>UserName: </b>
+                                        <% out.print(user.getUserName()); %>
                                     </p>
-                                    <p><b>Full Name: </b><%
-                                        out.print(user.getFullName());
-                                        %>
+                                    <p><b>Full Name: </b>
+                                        <% out.print(user.getFullName()); %>
                                     </p>
-                                    <p><b>Email: </b><%
-                                        out.print(user.getEmail());
-                                        %>
+                                    <p><b>Email: </b>
+                                        <% out.print(user.getEmail()); %>
                                     </p>
-                                <% } %>
                             </div>
                             <div class="card-footer">
                             </div>
