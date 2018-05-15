@@ -16,6 +16,8 @@ import Controller.DatabaseController;
 import Controller.UserController;
 import java.io.IOException;
 import static java.lang.System.out;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,38 +44,51 @@ public class LoginServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         // Retreives the data of a new user to register from form
+        Map<String, String> errorMessages = new HashMap();
+        request.setAttribute("errorMessages", errorMessages);
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
-        // Open connection to Database 
-        DatabaseController.connectToDatabase();
-        // Get password stored in the database assosiated with username
-        String hashedPass = DatabaseController.getPasswordForLogin(userName);
-        // Create empty user
-        UserController userController = null;
-        // Check if user exists
-        if (hashedPass != null) {
-                    // Check if password is correct
-            boolean passChk = AccessController.login(userName, 
-                    password, hashedPass);
-            if (passChk) {
-                // Creates new user and logs them in
-                userController = 
-                        new UserController(DatabaseController.getUserByUsername(userName));
-                userController.setProfile(DatabaseController.getUserProfile(userName));
-            } else{
+        if (userName == null || userName.trim().isEmpty()) {
+            errorMessages.put("userNameLog", "Please enter username");
+        } else if (password == null || password.trim().isEmpty()) {
+            errorMessages.put("passwordLog", "Please enter password");
+        }
+        if (errorMessages.isEmpty()) {
+            // Open connection to Database 
+            DatabaseController.connectToDatabase();
+            // Get password stored in the database assosiated with username
+            String hashedPass = DatabaseController.getPasswordForLogin(userName);
+            // Create empty user
+            UserController userController = null;
+            // Check if user exists
+            if (hashedPass != null) {
+                // Check if password is correct
+                boolean passChk = AccessController.login(userName,
+                        password, hashedPass);
+                if (passChk) {
+                    // Creates new user and logs them in
+                    userController
+                            = new UserController(DatabaseController.getUserByUsername(userName));
+                    userController.setProfile(DatabaseController.getUserProfile(userName));
+                } else {
+                    System.err.println("Invalid Username or password!");
+                }
+            } else {
                 System.err.println("Invalid Username or password!");
-            } 
-        } else {
-            System.err.println("Invalid Username or password!");
-        }       
-        // Close database connection
-        DatabaseController.closeConnection();
-        // Creates a session for logged in user
-        HttpSession session = request.getSession();
-        session.setAttribute("user", userController);
+            }
 
-        // Redirects user to profile page and prevents resubmitting
-        response.sendRedirect("index.jsp");
+            // Close database connection
+            DatabaseController.closeConnection();
+            // Creates a session for logged in user
+            HttpSession session = request.getSession();
+            session.setAttribute("user", userController);
+
+            // Redirects user to profile page and prevents resubmitting
+            response.sendRedirect("index.jsp");
+        } else {
+            request.getRequestDispatcher("registration.jsp")
+                    .forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

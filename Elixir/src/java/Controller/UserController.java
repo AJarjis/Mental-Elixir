@@ -24,16 +24,16 @@ import java.util.regex.Pattern;
 public class UserController {
     
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
-    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", 
+            Pattern.CASE_INSENSITIVE);
     
     //Minimum eight characters, at least one letter and one number.
     public static final Pattern VALID_PASSWORD_REGEX = 
     Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
     
-    //Minimum three characters, simple profanity filter in place.
+    //Minimum three characters.
     public static final Pattern VALID_USERNAME_REGEX = 
-    Pattern.compile("^[a-zA-Z0-9._-]*(fuck|shit|wank|cunt|nigger|twat|fag)"
-            + "{3,}$");
+    Pattern.compile("{3,}$");
     
     private User user;
     
@@ -203,7 +203,8 @@ public class UserController {
     public void setPassword(String password) {
          if (validatePassword(password)) {
             this.user.setPassword(password);
-            DatabaseController.updatePassword(this.user.getUserName(), password);
+            DatabaseController.updatePassword(this.user.getUserName(),
+                    password);
         }
         else{
             System.out.println("ERROR: password has not been set, " + password 
@@ -213,7 +214,8 @@ public class UserController {
     
     public static void main(String[] args) {
         
-        System.out.println("UserNameVerf: " + UserController.validateUserName("FirstRec"));
+        System.out.println("UserNameVerf: " + UserController
+                .validateUserName("FirstRec"));
     }
 
 }
