@@ -121,14 +121,14 @@
     </div>
 
     <div class="flex-container p-5" style="background-color: #F3A341">
-        <div class="container card" style="width: 80%; background-color: #F3A341">
+        <div class="container" style="width: 80%; background-color: #F3A341">
             <div class="row justify-content-center">
                 <div class="col-sm-8 mb-5 ">
                     <div class="card-body">
                         <h5>Existing User:</h5>
                         <form action="Login" method="POST">
                             <div class="form-group">
-                                <label for="userName">UserName:</label>
+                                <label for="userName">Username:</label>
                                 <input type="text" class="form-control" id="userName" name="userName">
                                 <span class="inputError">${errorMessages.userNameLog}</span>
                             </div>
@@ -146,7 +146,7 @@
     </div>
 
     <div class="flex-container p-5" style="background-color: #FDFFFC">
-        <div class="container card" style="width: 80%; background-color: #FDFFFC">
+        <div class="container" style="width: 80%; background-color: #FDFFFC">
             <div class="row justify-content-center">
                 <div class="col-sm-8 mb-5 ">
                     <div class="card-body">
