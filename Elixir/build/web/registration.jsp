@@ -37,6 +37,9 @@
         label {
             color: white;
         }
+        .inputError {
+            color: red;
+        }
 
     </style>
     </head>
