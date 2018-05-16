@@ -327,7 +327,18 @@ public class DatabaseController {
         return userDetails;
     }
     
-    //TODO: DELETE ACCOUNT METHOD
+    /**
+     * Method that deletes an account that is associated with the username 
+     * passed. The delete will delete all the records that are associated with 
+     * the account deleted.
+     * @param username 
+     */
+    public static void deleteUser(String username){
+        String command = String
+                .format("DELETE FROM account WHERE username = '%s';",
+                 username);
+        execute(command);
+    }
 
     /**
      * ********************MOOD DATABASE COMMANDS***************************
@@ -405,14 +416,32 @@ public class DatabaseController {
         execute(command);
     }
 
+    /**
+     * Method that lets a mood type to be modified
+     * @param username
+     * @param moodType 
+     */
     public static void updateMoodType(String username, MoodTypes moodType) {
         updateMoodTable(username, "moodtype", moodType.convertToString());
     }
 
+    /**
+     * Method that allows notes of a mood entry to be modified
+     * @param username
+     * @param notes 
+     */
     public static void updateNotes(String username, String notes) {
         updateMoodTable(username, "notes", notes);
     }
-//TODO: ADD DELETE ALL USERMOODS
+    /**
+     * Method that allows all moods logged for a user to be deleted
+     * @param username 
+     */
+     public static void deleteAllMoods(String username){
+        String command = String.format("DELET FROM  mood WHERE username = '%s';",
+                username);
+        execute(command);
+     }
     
     /**
      * *******************ASSESSMENT DATABASE COMMANDS************************
@@ -642,7 +671,17 @@ public class DatabaseController {
         }
     }
     
-    //TODO: DELETE GOAL
+    /**
+     * Method that allows a goal entry to be deleted from the database
+     * @param entry
+     * @param username 
+     */
+    public static void deleteGoal(Goal entry, String username){
+        int goal_id = DatabaseController.getGoalID(entry.getDescription(), username);
+        String command = String.format("DELETE FROM goal WHERE goal_id = %d ;"
+                ,goal_id);
+        execute(command);
+    }
 
     /**
      * *********************GROUP DATABASE COMMANDS************************
@@ -800,8 +839,27 @@ public class DatabaseController {
         return groupList;
     }
     
-    //TODO: DELETE OWNED GROUP
-    //TODO: DELETE PART OF GROUP
+    /**
+     * Method that allows the deletion of any user owned group/s
+     * @param entry 
+     */
+    public static void deleteOwnGroup(Group entry){
+        String command = String.format("DELETE FROM trackergroup WHERE groupname = '%s';"
+                ,entry.getGroupName());
+        execute(command);
+    }
+    
+    /**
+     * Method that allows deletion of a group that the user is part of
+     * @param entry
+     * @param username 
+     */
+    public static void deletePartOfGroup(Group entry, String username){
+        String command = String.format("DELETE FROM usergroup WHERE groupname = '%s'"
+                + "AND username = '%s';"
+                ,entry.getGroupName(), username);
+        execute(command);
+    }
 
     /**
      * *********************PROFILE CREATION*********************************
