@@ -35,7 +35,7 @@ public enum ActivityTypes {
      * @param activity string that represents one of the enums
      * @return enum var
      */
-    public static ActivityTypes convertToMoodType(String activity){
+    public static ActivityTypes convertToActivityType(String activity){
         switch (activity) {
             case "Body":
                 return Body;

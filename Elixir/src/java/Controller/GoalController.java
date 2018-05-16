@@ -14,7 +14,6 @@ package Controller;
 
 import Model.Goal;
 import Model.Activity;
-import Model.User;
 import java.util.Date;
 import java.util.List;
 

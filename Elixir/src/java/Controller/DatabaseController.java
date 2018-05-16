@@ -326,6 +326,8 @@ public class DatabaseController {
         }
         return userDetails;
     }
+    
+    //TODO: DELETE ACCOUNT METHOD
 
     /**
      * ********************MOOD DATABASE COMMANDS***************************
@@ -403,14 +405,15 @@ public class DatabaseController {
         execute(command);
     }
 
-    public static void updateMoodType(String username, String moodType) {
-        updateMoodTable(username, "moodtype", moodType);
+    public static void updateMoodType(String username, MoodTypes moodType) {
+        updateMoodTable(username, "moodtype", moodType.convertToString());
     }
 
     public static void updateNotes(String username, String notes) {
         updateMoodTable(username, "notes", notes);
     }
-
+//TODO: ADD DELETE ALL USERMOODS
+    
     /**
      * *******************ASSESSMENT DATABASE COMMANDS************************
      */
@@ -498,7 +501,7 @@ public class DatabaseController {
                     + "WHERE goal_id = '%d';", goal_id);
             rs = stmt.executeQuery(command);
             while (rs.next()) {
-                ActivityTypes actType = ActivityTypes.convertToMoodType(rs.getString("activityType"));
+                ActivityTypes actType = ActivityTypes.convertToActivityType(rs.getString("activityType"));
                 String description = rs.getString("description");
                 boolean stat = rs.getBoolean("completionstatus");
                 Activity temp = new Activity(actType, description, stat);
@@ -638,6 +641,8 @@ public class DatabaseController {
             return goalID;
         }
     }
+    
+    //TODO: DELETE GOAL
 
     /**
      * *********************GROUP DATABASE COMMANDS************************
@@ -794,6 +799,9 @@ public class DatabaseController {
         }
         return groupList;
     }
+    
+    //TODO: DELETE OWNED GROUP
+    //TODO: DELETE PART OF GROUP
 
     /**
      * *********************PROFILE CREATION*********************************
