@@ -3,24 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/User.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/ProfileController.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/GroupController.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/ActivityTypes.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/Group.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/AssessmentController.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/Assessment.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/MoodTypes.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/DatabaseController.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/Activity.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/Goal.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/UserController.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/AccessController.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/ActivityController.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/GoalController.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/MoodController.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/Profile.java</file>
-            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/Mood.java</file>
+            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Servlets/Test.java</file>
+            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/web/index.jsp</file>
+            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Controller/ProfileController.java</file>
+            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Model/Profile.java</file>
+            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Model/Mood.java</file>
+            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/web/test.jsp</file>
+            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Servlets/RegisterUserServlet.java</file>
+            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Servlets/LogoutServlet.java</file>
+            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Model/MoodTypes.java</file>
         </group>
     </open-files>
 </project-private>

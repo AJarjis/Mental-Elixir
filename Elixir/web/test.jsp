@@ -10,7 +10,14 @@
                 <meta name="description" content="">
                 <meta name="author" content="">
                 <link rel="icon" href="../../../../favicon.ico">
-
+                <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+                <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+                <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+                <script>
+                $(function() {
+                    $( "#datepicker" ).datepicker();
+                });
+                </script>
                 <title>elixir</title>
 
 
@@ -46,13 +53,6 @@
             </head>
 
             <!-- Checks if a user is logged in, redirecting them to register/login page if not-->
-            <%
-        UserController user = (UserController) session.getAttribute("user");
-        if (user != null) {
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-            rd.forward(request, response);
-        }
-    %>
 
 
                 <body>
@@ -145,6 +145,7 @@
                             </div>
                         </div>
                     </div>
+                    
 
                     <div class="flex-container p-5" style="background-color: #FDFFFC">
                         <div class="container" style="width: 80%; background-color: #FDFFFC">
@@ -152,16 +153,16 @@
                                 <div class="col-sm-8 mb-5 ">
                                     <div class="card-body">
                                         <span>${errorMessages.errorMain}</span>
-                                        <h5 style="color: gray">Test forms</h5>
-                                        <form action="RegisterUser" method="POST">
+                                        <h5 style="color: gray">Goal Test</h5>
+                                        <form action="Test" method="POST">
                                             <div class="form-group">
-                                                <label style="color: gray" for="userName">Test Field 1</label>
-                                                <input type="text" class="form-control" id="userName" name="userName">
+                                                <label style="color: gray" for="description">Test Field 1</label>
+                                                <input type="text" class="form-control" id="userName" name="description">
 
                                             </div>
                                             <div class="form-group">
-                                                <label style="color: gray" for="firstName">Test Field 1</label>
-                                                <input type="text" class="form-control" id="firstName" name="firstName">
+                                                <label style="color: gray" for="targetDate">Test Field 1</label>
+                                                <input type="text" class="form-control" id="datepicker" name="targetDate">
 
                                             </div>
                                             <div class="form-group">
@@ -195,7 +196,7 @@
 
                                             </div>
                                             <div class="card p-5">
-                                                <input style="color: white" class="btn btn-primary" type="submit" value="Test Button 01">
+                                                <input style="color: white" class="btn btn-primary" type="submit" value="Add Goal">
                                                 <input style="color: white" class="btn btn-secondary" type="submit" value="Test Button 02">
                                                 <input style="color: white" class="btn btn-primary" type="submit" value="Test Button 03">
                                                 <input style="color: white" class="btn btn-secondary" type="submit" value="Test Button 04">
@@ -248,7 +249,7 @@
 
                             <!--Copyright-->
                             <div class="footer-copyright py-3 text-center" style="color : white;">
-                                © 2018 Copyright:
+                                Â© 2018 Copyright:
                                 <a href="https://mentalelixir.co.uk"> MentalElixir.co.uk </a>
                             </div>
                             <!--/.Copyright-->
