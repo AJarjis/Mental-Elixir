@@ -23,7 +23,7 @@ public class Goal {
     private Date targetDate; //date by which user wants to complete their activities
     private boolean completionStatus = false; //tracks the status of the goal false by default. 
     private String description; // gives basic description of the goal
-    
+    //TODO: complete activity method neeeds to be implemented
     /**
      * Constructor that will allow the user to create a goal with one or 
      * multiple goals and set a target date by which they should be able 

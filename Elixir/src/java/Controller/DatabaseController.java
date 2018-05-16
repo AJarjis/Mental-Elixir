@@ -326,6 +326,19 @@ public class DatabaseController {
         }
         return userDetails;
     }
+    
+    /**
+     * Method that deletes an account that is associated with the username 
+     * passed. The delete will delete all the records that are associated with 
+     * the account deleted.
+     * @param username 
+     */
+    public static void deleteUser(String username){
+        String command = String
+                .format("DELETE FROM account WHERE username = '%s';",
+                 username);
+        execute(command);
+    }
 
     /**
      * ********************MOOD DATABASE COMMANDS***************************
@@ -403,14 +416,33 @@ public class DatabaseController {
         execute(command);
     }
 
-    public static void updateMoodType(String username, String moodType) {
-        updateMoodTable(username, "moodtype", moodType);
+    /**
+     * Method that lets a mood type to be modified
+     * @param username
+     * @param moodType 
+     */
+    public static void updateMoodType(String username, MoodTypes moodType) {
+        updateMoodTable(username, "moodtype", moodType.convertToString());
     }
 
+    /**
+     * Method that allows notes of a mood entry to be modified
+     * @param username
+     * @param notes 
+     */
     public static void updateNotes(String username, String notes) {
         updateMoodTable(username, "notes", notes);
     }
-
+    /**
+     * Method that allows all moods logged for a user to be deleted
+     * @param username 
+     */
+     public static void deleteAllMoods(String username){
+        String command = String.format("DELET FROM  mood WHERE username = '%s';",
+                username);
+        execute(command);
+     }
+    
     /**
      * *******************ASSESSMENT DATABASE COMMANDS************************
      */
@@ -498,7 +530,7 @@ public class DatabaseController {
                     + "WHERE goal_id = '%d';", goal_id);
             rs = stmt.executeQuery(command);
             while (rs.next()) {
-                ActivityTypes actType = ActivityTypes.convertToMoodType(rs.getString("activityType"));
+                ActivityTypes actType = ActivityTypes.convertToActivityType(rs.getString("activityType"));
                 String description = rs.getString("description");
                 boolean stat = rs.getBoolean("completionstatus");
                 Activity temp = new Activity(actType, description, stat);
@@ -637,6 +669,18 @@ public class DatabaseController {
         } else {
             return goalID;
         }
+    }
+    
+    /**
+     * Method that allows a goal entry to be deleted from the database
+     * @param entry
+     * @param username 
+     */
+    public static void deleteGoal(Goal entry, String username){
+        int goal_id = DatabaseController.getGoalID(entry.getDescription(), username);
+        String command = String.format("DELETE FROM goal WHERE goal_id = %d ;"
+                ,goal_id);
+        execute(command);
     }
 
     /**
@@ -793,6 +837,28 @@ public class DatabaseController {
             }
         }
         return groupList;
+    }
+    
+    /**
+     * Method that allows the deletion of any user owned group/s
+     * @param entry 
+     */
+    public static void deleteOwnGroup(Group entry){
+        String command = String.format("DELETE FROM trackergroup WHERE groupname = '%s';"
+                ,entry.getGroupName());
+        execute(command);
+    }
+    
+    /**
+     * Method that allows deletion of a group that the user is part of
+     * @param entry
+     * @param username 
+     */
+    public static void deletePartOfGroup(Group entry, String username){
+        String command = String.format("DELETE FROM usergroup WHERE groupname = '%s'"
+                + "AND username = '%s';"
+                ,entry.getGroupName(), username);
+        execute(command);
     }
 
     /**
