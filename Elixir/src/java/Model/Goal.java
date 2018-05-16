@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ Author      : Daniel Carey
 public class Goal {
 
     private List<Activity> activities; //activities that user will commit to
-    private Date targetDate; //date by which user wants to complete their activities
+    private Calendar targetDate; //date by which user wants to complete their activities
     private boolean completionStatus = false; //tracks the status of the goal false by default. 
     private String description; // gives basic description of the goal
     //TODO: complete activity method neeeds to be implemented
@@ -31,7 +32,7 @@ public class Goal {
      * @param activities list containing activities user selected
      * @param targetDate date object which will represent user deadline
      */
-    public Goal(List<Activity> activities, Date targetDate) {
+    public Goal(List<Activity> activities, Calendar targetDate) {
         this.activities = activities;
         this.targetDate = targetDate;
     }
@@ -61,7 +62,7 @@ public class Goal {
      * @param date
      * @param desc 
      */
-    public Goal(boolean stat, Date date, String desc){
+    public Goal(boolean stat, Calendar date, String desc){
         this.completionStatus = stat;
         this.targetDate = date;
         this.description = desc;
@@ -77,14 +78,14 @@ public class Goal {
     /**
      * @return the targetDate
      */
-    public Date getTargetDate() {
+    public Calendar getTargetDate() {
         return targetDate;
     }
 
     /**
      * @param targetDate the targetDate to set
      */
-    public void setTargetDate(Date targetDate) {
+    public void setTargetDate(Calendar targetDate) {
         this.targetDate = targetDate;
     }
     

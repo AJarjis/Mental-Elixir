@@ -14,6 +14,7 @@ package Controller;
 
 import Model.Goal;
 import Model.Activity;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class GoalController {
     /**
      * @return the date for the specified goal
      */
-    public Date getTargetDate() {
+    public Calendar getTargetDate() {
         
         return goal.getTargetDate();
     }
@@ -93,7 +94,7 @@ public class GoalController {
      * 
      * Description: sets the target date for the goal in question
      */
-    public void setTargetDate(Date date) {
+    public void setTargetDate(Calendar date) {
         
         this.goal.setTargetDate(date);
     }

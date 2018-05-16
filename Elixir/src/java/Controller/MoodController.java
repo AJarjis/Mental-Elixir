@@ -13,6 +13,7 @@ package Controller;
 
 import Model.Mood;
 import Model.MoodTypes;
+import java.util.Calendar;
 import java.util.Date;
 
 public class MoodController {
@@ -62,7 +63,7 @@ public class MoodController {
      *
      * @return the date for the current object
      */
-    public Date getDate() {
+    public Calendar getDate() {
         return mood.getDate();
     }
     
@@ -90,7 +91,7 @@ public class MoodController {
      *
      * @param date Date that the mood was created.
      */
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         mood.setDate(date);
     }
     

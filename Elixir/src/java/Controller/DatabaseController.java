@@ -21,6 +21,7 @@ import Model.MoodTypes;
 import Model.Profile;
 import Model.User;
 import java.sql.*;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Date;
@@ -377,7 +378,8 @@ public class DatabaseController {
                 MoodTypes mood = MoodTypes
                         .convertToMoodType(rs.getString("moodtype"));
                 String notes = rs.getString("notes");
-                Date stamp = new Date(rs.getTimestamp("date").getTime());
+                Calendar stamp = Calendar.getInstance();
+                stamp.setTimeInMillis(rs.getTimestamp("date").getTime());
                 Mood temp = new Mood(mood, stamp, notes);
                 moodList.add(temp);
             }
@@ -471,7 +473,8 @@ public class DatabaseController {
             rs = stmt.executeQuery(command);
             while (rs.next()) {
                 int score = rs.getInt("score");
-                Date stamp = new Date(rs.getTimestamp("date").getTime());
+                Calendar stamp = Calendar.getInstance();
+                stamp.setTimeInMillis(rs.getTimestamp("date").getTime());
                 Assessment temp = new Assessment(score, stamp);
                 assessmentList.add(temp);
             }
@@ -594,13 +597,13 @@ public class DatabaseController {
             String command = String.format("SELECT * FROM goal "
                     + "WHERE username = '%s';", username);
             rs = stmt.executeQuery(command);
-            Date date;
+            Calendar date = Calendar.getInstance();
             while (rs.next()) {
                 boolean stat = rs.getBoolean("completion_status");
                 if (rs.getTimestamp("target_date") == null) {
                     date = null;
                 } else {
-                    date = new Date(rs.getTimestamp("target_date").getTime());
+                    date.setTime(rs.getTimestamp("target_date"));
                 }
                 String description = rs.getString("description");
                 Goal temp = new Goal(stat, date, description);

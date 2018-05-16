@@ -20,6 +20,7 @@ import Model.Profile;
 import Model.Assessment;
 import Model.Group;
 import Model.Activity;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -212,7 +213,7 @@ public class ProfileController {
      *              adding this to the profile
      * @param date
      */
-    public void addAssessment(int score, Date date) {
+    public void addAssessment(int score, Calendar date) {
         
         Assessment assessment = new Assessment(score, date);
         

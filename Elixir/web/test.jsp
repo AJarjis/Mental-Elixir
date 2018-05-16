@@ -165,7 +165,7 @@
                                                 <input type="text" class="form-control" id="datepicker" name="targetDate">
 
                                             </div>
-                                            <div class="form-group">
+<!--                                            <div class="form-group">
                                                 <label style="color: gray" for="surname">Test Field 1</label>
                                                 <input type="text" class="form-control" id="surname" name="surname">
 
@@ -194,15 +194,15 @@
                                                 <label style="color: gray" for="password">Test Field 1</label>
                                                 <input type="password" class="form-control" id="password" name="password">
 
-                                            </div>
+                                            </div>-->
                                             <div class="card p-5">
                                                 <input style="color: white" class="btn btn-primary" type="submit" value="Add Goal">
-                                                <input style="color: white" class="btn btn-secondary" type="submit" value="Test Button 02">
+<!--                                                <input style="color: white" class="btn btn-secondary" type="submit" value="Test Button 02">
                                                 <input style="color: white" class="btn btn-primary" type="submit" value="Test Button 03">
                                                 <input style="color: white" class="btn btn-secondary" type="submit" value="Test Button 04">
                                                 <input style="color: white" class="btn btn-primary" type="submit" value="Test Button 05">
                                                 <input style="color: white" class="btn btn-secondary" type="submit" value="Test Button 06">
-                                                <input style="color: white" class="btn btn-primary" type="submit" value="Test Button 07">
+                                                <input style="color: white" class="btn btn-primary" type="submit" value="Test Button 07">-->
                                             </div>
                                         </form>
                                     </div>

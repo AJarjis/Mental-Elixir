@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -27,7 +28,7 @@ public class Assessment {
     /**
      * date: the date that a user takes the WEMWBS assessment.
      */
-    private Date date;
+    private Calendar date;
     
     /**
      * Assessment constructor only with the score as the paramiter
@@ -44,7 +45,7 @@ public class Assessment {
      * @param date
      *
      */
-    public Assessment(int score, Date date) {
+    public Assessment(int score, Calendar date) {
 
         this.score = score;
         this.date = date;
@@ -70,7 +71,7 @@ public class Assessment {
     /**
      * @return the date
      */
-    public Date getDate() {
+    public Calendar getDate() {
 
         return date;
     }
@@ -78,7 +79,7 @@ public class Assessment {
     /**
      * @param date the date to set
      */
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
 
         this.date = date;
     }

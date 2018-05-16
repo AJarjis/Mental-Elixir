@@ -14,6 +14,7 @@ Author      : Ashley Black
 package Controller;
 
 import Model.Assessment;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AssessmentController {
@@ -36,7 +37,7 @@ public class AssessmentController {
     /**
      * @return the assessment date
      */
-    public Date getDate() {
+    public Calendar getDate() {
         
         return assessment.getDate();
     }
@@ -52,11 +53,9 @@ public class AssessmentController {
     } 
     
     /**
-     * @param score
-     * 
-     * Description: Sets the date for the given assessment in question
+     * @param date
      */
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         
         this.assessment.setDate(date);
     }
