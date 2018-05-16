@@ -156,12 +156,12 @@
                                         <h5 style="color: gray">Goal Test</h5>
                                         <form action="Test" method="POST">
                                             <div class="form-group">
-                                                <label style="color: gray" for="description">Test Field 1</label>
+                                                <label style="color: gray" for="description">Goal Description</label>
                                                 <input type="text" class="form-control" id="userName" name="description">
 
                                             </div>
                                             <div class="form-group">
-                                                <label style="color: gray" for="targetDate">Test Field 1</label>
+                                                <label style="color: gray" for="targetDate">Date</label>
                                                 <input type="text" class="form-control" id="datepicker" name="targetDate">
 
                                             </div>

@@ -22,9 +22,29 @@ public class GoalController {
     
     private Goal goal;
     
+    /**
+     * GoalController constructor
+     * @param goal 
+     */
     public GoalController(Goal goal) {
         
         this.goal = goal;
+    }
+    
+    /**
+     * GoalController constructor that constructs a goal object within it
+     * @param description 
+     */
+    public GoalController(String description){
+        this.goal = new Goal(description);
+    }
+    
+    /**
+     * Method to return the goal object stored in the controller
+     * @return 
+     */
+    public Goal getGoal(){
+        return this.goal;
     }
     
     /**
@@ -34,6 +54,7 @@ public class GoalController {
         
         return goal.getActivities();
     }
+    
     
     /**
      * @return the date for the specified goal
@@ -87,6 +108,14 @@ public class GoalController {
     public void completeGoal(Activity activity) {
         
         this.goal.completeGoal();
+    }
+    
+    /**
+     * Method to set the goal object of the controller
+     * @param goal 
+     */
+    public void setGoal(Goal goal){
+        this.goal = goal;
     }
     
     /**

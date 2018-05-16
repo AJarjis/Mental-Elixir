@@ -5,8 +5,18 @@
  */
 package Servlets;
 
+import Controller.DatabaseController;
+import Controller.GoalController;
 import Controller.UserController;
 import java.io.IOException;
+import static java.lang.String.format;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,12 +44,29 @@ public class GoalServlet extends HttpServlet {
             throws ServletException, IOException {
        HttpSession session = request.getSession();
        UserController testUser = (UserController) session.getAttribute("user");
+       DateFormat fDate = new SimpleDateFormat("dd/MM/yyyy");
        
        String goalDescription = request.getParameter("description");
        String targetDate = request.getParameter("targetDate");
        
-       
-       
+       GoalController goal = new GoalController(goalDescription);
+        if (targetDate != null) {
+            
+            Calendar date = Calendar.getInstance();
+           try {
+               date.setTime(fDate.parse(targetDate));
+           } catch (ParseException e) {
+               System.err.println(e.getClass().getName() + ": " + e.getMessage());
+                System.exit(0);
+           }
+           goal.setTargetDate(date);
+        }
+        testUser.getProfile().addGoal(goal.getGoal());
+        session.setAttribute("user", testUser);
+        DatabaseController.connectToDatabase();
+        DatabaseController.addGoalEntry(goal.getGoal(), testUser.getUserName());
+        DatabaseController.closeConnection();
+        response.sendRedirect("goalTest.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
