@@ -64,13 +64,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link justify-content-end" href="#">
-                            <form action="Test" method="POST">
-                                <input class="btn btn-primary" type="submit" value="Test Assessment">
-                            </form>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link justify-content-end" href="#">
                             <img class="img-fluid" src="images/home.svg" style="height: 30px" alt="home icon" >
                         </a>
                     </li>

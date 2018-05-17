@@ -608,6 +608,7 @@ public class DatabaseController {
                 String description = rs.getString("description");
                 Goal temp = new Goal(stat, date, description);
                 goalList.add(temp);
+                date = Calendar.getInstance();
             }
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
@@ -897,27 +898,27 @@ public class DatabaseController {
         DatabaseController.connectToDatabase();
 //        Assessment test = new Assessment(5);
 //        DatabaseController.addAssessmentEntry(test, "SecondTest");
-        List<Mood> mood = DatabaseController.getUserMoodsAsList("FirstRec");
-        List<Assessment> assmt = DatabaseController
-                .getAllAssessmentsForUser("SecondTest");
+//        List<Mood> mood = DatabaseController.getUserMoodsAsList("FirstRec");
+//        List<Assessment> assmt = DatabaseController
+//                .getAllAssessmentsForUser("SecondTest");
 //        Activity test = new Activity(Love, "do good for others");
 //        DatabaseController.addActivityEntry(test, 1);
-        List<Activity> act = DatabaseController.getAllActivitiesForGoal(1);
+//        List<Activity> act = DatabaseController.getAllActivitiesForGoal(1);
 //        Goal goal = new Goal("Do well");
 //        DatabaseController.addGoalEntry(goal, "FirstRec");
-        List<Goal> testGoal = DatabaseController.getAllGoalsForUser("FirstRec");
+        List<Goal> testGoal = DatabaseController.getAllGoalsForUser("IronMan");
 //        User bestUsr = new User();
 //        bestUsr.setUserName("SecondTest");
 //        Group groupTest = new Group("other Cool GHuys", "This group is better than the cool guys", bestUsr);
 //        DatabaseController.addGroup(groupTest);
-        List<Group> testGroup = DatabaseController.getAllGroups();
-        List<Group> testUserGroups = DatabaseController
-                .getAllGroupsThatBelongToUser("FirstRec");
+//        List<Group> testGroup = DatabaseController.getAllGroups();
+//        List<Group> testUserGroups = DatabaseController
+//                .getAllGroupsThatBelongToUser("FirstRec");
 //        DatabaseController.addUserToGroup("FirstRec", "other Cool GHuys");
-        List<Group> testPartOfGroups = DatabaseController
-                .getAllGroupsThatTheUserIsPartOf("FirstRec");
-        System.out.println("GoalID: " + DatabaseController
-                .getGoalID("Improve general wellbeing", "FirstRec"));
+//        List<Group> testPartOfGroups = DatabaseController
+//                .getAllGroupsThatTheUserIsPartOf("FirstRec");
+//        System.out.println("GoalID: " + DatabaseController
+//                .getGoalID("Improve general wellbeing", "FirstRec"));
         DatabaseController.closeConnection();
 //        System.out.println("GROUP LIST:\n" + testGroup);
 //        System.out.println("GROUP LIST:\n" + testUserGroups);
@@ -926,5 +927,8 @@ public class DatabaseController {
 //        System.out.println("ACT LIST:\n " + act.toString());
 //        System.out.println("GOAL LIST: \n" + testGoal.toString());
 //        System.out.println("PART OF GROUPS: \n" + testPartOfGroups);
+          for (Goal g : testGoal) {
+              System.out.println("Desc: " + g.getDescription() + " Date: " + g.getTargetDate().getTime().toString());
+        }
     }
 }
