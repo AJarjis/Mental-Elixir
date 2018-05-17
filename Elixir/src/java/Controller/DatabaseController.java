@@ -572,8 +572,8 @@ public class DatabaseController {
         String command;
         if (entry.getTargetDate() == null) {
             command = String.format("INSERT INTO goal (completion_status, target_date, description, username)"
-                    + "VALUES  (DEFAULT , %s, '%s', '%s');",
-                    "DEFAULT", entry.getDescription(), username);
+                    + "VALUES  (DEFAULT , DEFAULT, '%s', '%s');"
+                    , entry.getDescription(), username);
         } else {
             command = String.format("INSERT INTO goal (completion_status, target_date, description, username)"
                     + "VALUES  (DEFAULT , '%s', '%s', '%s');",

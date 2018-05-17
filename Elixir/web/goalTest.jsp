@@ -141,33 +141,33 @@
 
                                             </div>
                                             <div class="form-group">
-                                                <label style="color: gray" for="activity1">Test Field 1</label>
-                                                <input type="text" class="form-control" id="surname" name="surname">
+                                                <label style="color: gray" for="activity1">Activity 1 type</label>
+                                                <select name="activity">
+                                                    <option value="Body">Body</option>
+                                                    <option value="Mind">Mind</option>
+                                                    <option value="Communication">Communication</option>
+                                                    <option value="StressReduction">Stress reduction</option>
+                                                    <option value="Love">Love</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label style="color: gray" for="activity1">Activity 1 description</label>
+                                                <input type="descrption" class="form-control" id="desc" name="activitydesc">
 
                                             </div>
                                             <div class="form-group">
-                                                <label style="color: gray" for="activity1">Test Field 1</label>
-                                                <input type="email" class="form-control" id="email" name="email">
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label style="color: gray" for="password">Test Field 1</label>
-                                                <input type="password" class="form-control" id="password" name="password">
-
-                                            </div>
-                                            <div>
-                                                <label style="color: gray" for="password">Test Field 1</label>
-                                                <input type="password" class="form-control" id="password" name="password">
-
+                                                <label style="color: gray" for="activity1">Activity 2 type</label>
+                                                <select name="activity2">
+                                                    <option value="Body">Body</option>
+                                                    <option value="Mind">Mind</option>
+                                                    <option value="Communication">Communication</option>
+                                                    <option value="StressReduction">Stress reduction</option>
+                                                    <option value="Love">Love</option>
+                                                </select>
                                             </div>
                                             <div>
-                                                <label style="color: gray" for="password">Test Field 1</label>
-                                                <input type="password" class="form-control" id="password" name="password">
-
-                                            </div>
-                                            <div>
-                                                <label style="color: gray" for="password">Test Field 1</label>
-                                                <input type="password" class="form-control" id="password" name="password">
+                                                <label style="color: gray" for="password">Activity 2 description</label>
+                                                <input type="descrption" class="form-control" id="desc" name="activity2desc">
 
                                             </div>
                                             <div class="card p-5">

@@ -5,18 +5,16 @@
  */
 package Servlets;
 
+import Controller.ActivityController;
 import Controller.DatabaseController;
 import Controller.GoalController;
 import Controller.UserController;
+import Model.ActivityTypes;
 import java.io.IOException;
-import static java.lang.String.format;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,8 +47,13 @@ public class GoalServlet extends HttpServlet {
        String goalDescription = request.getParameter("description");
        String targetDate = request.getParameter("targetDate");
        
+       ActivityTypes act1Type = ActivityTypes.convertToActivityType(request.getParameter("activity"));
+       String act1Desc = request.getParameter("activitydesc");
+               
+               
        GoalController goal = new GoalController(goalDescription);
-        if (targetDate != null) {
+       ActivityController activity1 = new ActivityController(act1Type, act1Desc);
+        if (!targetDate.equals("")) {
             
             Calendar date = Calendar.getInstance();
            try {
@@ -65,6 +68,8 @@ public class GoalServlet extends HttpServlet {
         session.setAttribute("user", testUser);
         DatabaseController.connectToDatabase();
         DatabaseController.addGoalEntry(goal.getGoal(), testUser.getUserName());
+        int goalID = DatabaseController.getGoalID(goal.getGoal().getDescription(), testUser.getUserName());
+        DatabaseController.addActivityEntry(activity1.getActivity(), goalID);
         DatabaseController.closeConnection();
         response.sendRedirect("goalTest.jsp");
     }

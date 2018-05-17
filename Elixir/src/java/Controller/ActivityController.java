@@ -25,6 +25,15 @@ public class ActivityController {
     }
     
     /**
+     * Activity controller constructor with a constructor for activity object
+     * @param activity
+     * @param description 
+     */
+    public ActivityController(ActivityTypes activity, String description){
+        this.activity = new Activity(activity, description);
+    }
+    
+    /**
      * @return the activityType
      */
     public ActivityTypes getActivityType() {
@@ -49,6 +58,14 @@ public class ActivityController {
     }
     
     /**
+     * Method to return the current activity stored in the controller
+     * @return 
+     */
+    public Activity getActivity(){
+        return this.activity;
+    }
+    
+    /**
      * @param activityType
      * 
      * Description: Sets the activityType for the activity in question to the
@@ -68,6 +85,14 @@ public class ActivityController {
     public void setDescription(String description) {
         
         this.activity.setDescription(description);
+    }
+    
+    /**
+     * Method to set activity object that is currently stored in the controller
+     * @param activity 
+     */
+    public void setActivity(Activity activity){
+        this.activity = activity;
     }
     
     /**
