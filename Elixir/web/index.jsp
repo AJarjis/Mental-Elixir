@@ -63,7 +63,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link justify-content-end" href="goalTest.jsp">
+                        <a class="nav-link justify-content-end" href="goal.jsp">
                                 <input class="btn btn-primary" type="submit" value="Goals">
                         </a>
                     </li>

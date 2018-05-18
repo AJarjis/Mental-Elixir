@@ -103,7 +103,7 @@ public class GoalServlet extends HttpServlet {
         // Modify the session so it reflects the changes
         session.setAttribute("user", testUser);
         // Redirect user to the same page to see the results
-        response.sendRedirect("goalTest.jsp");
+        response.sendRedirect("goal.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
