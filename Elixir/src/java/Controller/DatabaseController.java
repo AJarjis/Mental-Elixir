@@ -24,11 +24,8 @@ import java.sql.*;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Date;
 import com.mchange.v2.c3p0.*;
 import java.beans.PropertyVetoException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class DatabaseController {
 

@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
         // Retreives the data of a new user to register from form
         Map<String, String> errorMessages = new HashMap();
         request.setAttribute("errorMessages", errorMessages);
-        String userName = request.getParameter("userName");
+        String userName = request.getParameter("userName").toLowerCase();
         String password = request.getParameter("password");
         if (userName == null || userName.trim().isEmpty()) {
             errorMessages.put("userNameLog", "Please enter username");

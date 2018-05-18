@@ -50,7 +50,8 @@ public class RegisterUserServlet extends HttpServlet {
             // TODO: Require sanitisation before accepting
 
             // Retreives the data of a new user to register from form
-            String userName = request.getParameter("userName");
+            String userName = request.getParameter("userName").toLowerCase();
+            System.out.println(userName);
             String firstName = request.getParameter("firstName");
             String surname = request.getParameter("surname");
             String email = request.getParameter("email");
