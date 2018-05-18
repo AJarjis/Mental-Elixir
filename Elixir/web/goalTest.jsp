@@ -1,3 +1,4 @@
+<%@page import="Model.Activity"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.LinkedList"%>
@@ -199,6 +200,9 @@
                             <th>
                                 Completion Status
                             </th>
+                            <th>
+                                Goal Activities
+                            </th>
                         </tr>
                         <!--Way of inserting Goal details that already exist for current user-->
                         <%
@@ -234,7 +238,50 @@
                                                     out.print("Incomplete");
                                                 }
                                             %>
-                                         </td>  
+                                         </td>
+                                         <td>
+                                            <table>
+                                               <tr>
+                                                   <th>
+                                                       Activity Type
+                                                   </th>
+                                                   <th>
+                                                       Description
+                                                   </th>
+                                                   <th>
+                                                       Completion Status
+                                                   </th>
+                                               </tr>
+                                            <%
+                                            for (Activity a : g.getActivities()) 
+                                            {
+                                            %>
+                                            <tr>
+                                                <td>
+                                                    <% 
+                                                        out.print(a.getActivityType().convertToString());
+                                                    %>
+                                                </td>
+                                                <td>
+                                                    <% 
+                                                        out.print(a.getDescription());
+                                                    %>
+                                                </td>
+                                                <td>
+                                                    <% 
+                                                        if (a.isCompletionStatus()) {
+                                                                out.print("Complete!");
+                                                            } else {
+                                                                out.print("Incomplete");
+                                                            }
+                                                    %>
+                                                </td>
+                                            </tr>
+                                            </tr>
+                                            </tr>
+                                            <%}%>
+                                         </table>
+                                         </td>
                                     </tr>
                                 <% 
                             }

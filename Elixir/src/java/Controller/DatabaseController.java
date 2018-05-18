@@ -518,24 +518,24 @@ public class DatabaseController {
     }
 
     /**
-     * Method used to retrieve all the activities for a goal
+     * Method used to retrieve all the activities for a goal. Utility method
+     * used within retrieval of the goals
      *
      * @param goal_id
      * @return
      */
-    public static List<Activity> getAllActivitiesForGoal(Integer goal_id) {
+    public static List<Activity> getAllActivitiesForGoal(int goal_id) {
         stmt = null;
-        rs = null;
         List<Activity> activityList = new LinkedList<>();
         try {
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM activity "
-                    + "WHERE goal_id = '%d';", goal_id);
-            rs = stmt.executeQuery(command);
-            while (rs.next()) {
-                ActivityTypes actType = ActivityTypes.convertToActivityType(rs.getString("activityType"));
-                String description = rs.getString("description");
-                boolean stat = rs.getBoolean("completionstatus");
+                    + "WHERE goal_id = %d;", goal_id);
+            ResultSet rsTemp = stmt.executeQuery(command);
+            while (rsTemp.next()) {
+                ActivityTypes actType = ActivityTypes.convertToActivityType(rsTemp.getString("activitytype"));
+                String description = rsTemp.getString("description");
+                boolean stat = rsTemp.getBoolean("completionstatus");
                 Activity temp = new Activity(actType, description, stat);
                 activityList.add(temp);
             }
@@ -543,12 +543,6 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
             try {
                 if (stmt != null) {
                     stmt.close();
@@ -599,6 +593,7 @@ public class DatabaseController {
             rs = stmt.executeQuery(command);
             Calendar date = Calendar.getInstance();
             while (rs.next()) {
+                int goal_id = rs.getInt("goal_id");
                 boolean stat = rs.getBoolean("completion_status");
                 if (rs.getTimestamp("target_date") == null) {
                     date = null;
@@ -606,7 +601,9 @@ public class DatabaseController {
                     date.setTime(rs.getTimestamp("target_date"));
                 }
                 String description = rs.getString("description");
-                Goal temp = new Goal(stat, date, description);
+                List<Activity> aList = 
+                        DatabaseController.getAllActivitiesForGoal(goal_id);
+                Goal temp = new Goal(stat, date, description, aList);
                 goalList.add(temp);
                 date = Calendar.getInstance();
             }

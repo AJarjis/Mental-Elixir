@@ -2,6 +2,7 @@ package Model;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /*****************************************************************************
@@ -35,6 +36,7 @@ public class Goal {
     public Goal(List<Activity> activities, Calendar targetDate) {
         this.activities = activities;
         this.targetDate = targetDate;
+        this.activities = new LinkedList<>();
     }
     
     /**
@@ -54,6 +56,7 @@ public class Goal {
      */
     public Goal(String description){
         this.description = description;
+        this.activities = new LinkedList<>();
     }
     
     /**
@@ -61,11 +64,13 @@ public class Goal {
      * @param stat
      * @param date
      * @param desc 
+     * @param activity 
      */
-    public Goal(boolean stat, Calendar date, String desc){
+    public Goal(boolean stat, Calendar date, String desc, List<Activity> activity){
         this.completionStatus = stat;
         this.targetDate = date;
         this.description = desc;
+        this.activities = activity;
     }
 
     /**
