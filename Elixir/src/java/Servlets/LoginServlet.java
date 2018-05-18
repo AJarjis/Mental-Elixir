@@ -54,8 +54,6 @@ public class LoginServlet extends HttpServlet {
             errorMessages.put("passwordLog", "Please enter password");
         }
         if (errorMessages.isEmpty()) {
-            // Open connection to Database 
-            DatabaseController.connectToDatabase();
             // Get password stored in the database assosiated with username
             String hashedPass = DatabaseController.getPasswordForLogin(userName);
             // Create empty user
@@ -77,8 +75,6 @@ public class LoginServlet extends HttpServlet {
                 System.err.println("Invalid Username or password!");
             }
 
-            // Close database connection
-            DatabaseController.closeConnection();
             // Creates a session for logged in user
             HttpSession session = request.getSession();
             session.setAttribute("user", userController);

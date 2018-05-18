@@ -138,7 +138,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label style="color: gray" for="targetDate">Date</label>
-                                                <input type="text" class="form-control" id="datepicker" name="targetDate">
+                                                <input type="date" class="form-control" id="datepicker" name="targetDate">
 
                                             </div>
                                             <div class="form-group">
