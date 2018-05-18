@@ -71,8 +71,6 @@ public class GoalServlet extends HttpServlet {
            //set the target date variable of the goal object
            goal.setTargetDate(date);
         }
-        // Connect to the database
-        DatabaseController.connectToDatabase();
         // Add goal entry to the database
         DatabaseController.addGoalEntry(goal.getGoal(), testUser.getUserName());
         // get the id of the goal
@@ -96,7 +94,6 @@ public class GoalServlet extends HttpServlet {
             DatabaseController.addActivityEntry(activity2.getActivity(), goalID);
         }
        
-        DatabaseController.closeConnection();
        
         
         

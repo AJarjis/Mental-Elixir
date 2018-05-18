@@ -25,6 +25,10 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Date;
+import com.mchange.v2.c3p0.*;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DatabaseController {
 
@@ -36,40 +40,50 @@ public class DatabaseController {
     private static Connection conn = null;
     private static Statement stmt = null;
     private static ResultSet rs = null;
-
-    //www.tutorialspoint.com/postgresql/postgresql_java.htm
-    /**
-     * ********************BASIC DATABASE COMMANDS***************************
-     */
-    /**
-     * Method used to close the connection to the database and commit changes
-     */
-    public static void closeConnection() {
+    private static ComboPooledDataSource pool;
+    static{
         try {
-            conn.close();
-            System.out.println("CONNECTION CLOSED.");
-        } catch (SQLException e) {
+            pool = new ComboPooledDataSource();
+            pool.setDriverClass("org.postgresql.Driver"); //loads the jdbc driver
+            pool.setJdbcUrl(URL);
+            pool.setUser(USER);   
+            pool.setPassword(PASS);
+            System.out.println("STUFF IN STATIC");
+        } catch (PropertyVetoException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
     }
 
+    //www.tutorialspoint.com/postgresql/postgresql_java.htm
     /**
-     * Method to connect to the database
+     * ********************BASIC DATABASE COMMANDS***************************
      */
-    public static void connectToDatabase() {
-        try {
-            System.out.println("CONNECTING TO DATABASE..........");
-            try {
-                Class.forName("org.postgresql.Driver");
-            } catch (ClassNotFoundException e) {
-                System.err.println(e.getClass().getName() + ": " 
-                        + e.getMessage());
-                System.exit(0);
-            }
-            conn = DriverManager.getConnection(URL, USER, PASS);
-            System.out.println("CONNECTION OPENED");
-        } catch (SQLException e) {
+    static void attemptClose(ResultSet o)
+    {
+	try
+	    { if (o != null) o.close();}
+	catch (SQLException e){ 
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+    }
+
+    static void attemptClose(Statement o)
+    {
+	try
+	    { if (o != null) o.close();}
+	catch (SQLException e){ 
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+    }
+
+    static void attemptClose(Connection o)
+    {
+	try
+	    { if (o != null) o.close();}
+	catch (SQLException e){ 
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
@@ -82,7 +96,9 @@ public class DatabaseController {
      */
     public static void execute(String command) {
         stmt = null;
+        conn = null;
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             stmt.executeUpdate(command);
             System.out.println("COMMAND HAS BEEN EXECUTED.");
@@ -90,12 +106,8 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(stmt);
+            attemptClose(conn);
         }
     }
 
@@ -119,7 +131,9 @@ public class DatabaseController {
         boolean chk = true;
         stmt = null;
         rs = null;
+        conn = null;
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String
                     .format("SELECT username FROM account WHERE username ="
@@ -132,18 +146,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(rs);
+            attemptClose(stmt);
         }
         return chk;
     }
@@ -178,12 +183,15 @@ public class DatabaseController {
     public static User selectUser(String username) {
         User user = null;
         stmt = null;
+        conn = null;
+        ResultSet rsTemp = null;
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String
                     .format("SELECT * FROM account WHERE username ='%s'",
                             username);
-            ResultSet rsTemp = stmt.executeQuery(command);
+            rsTemp = stmt.executeQuery(command);
             while (rsTemp.next()) {
                 String usrName = rsTemp.getString("Username");
                 String firstName = rsTemp.getString("FirstName");
@@ -196,12 +204,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rsTemp);
         }
         return user;
     }
@@ -299,7 +304,9 @@ public class DatabaseController {
         String userDetails = null;
         stmt = null;
         rs = null;
+        conn = null;
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String
                     .format("SELECT %s FROM account WHERE username ='%s'",
@@ -312,18 +319,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rs);
         }
         return userDetails;
     }
@@ -368,8 +366,10 @@ public class DatabaseController {
     public static List<Mood> getUserMoodsAsList(String username) {
         stmt = null;
         rs = null;
+        conn = null;
         List<Mood> moodList = new LinkedList<>();
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM mood WHERE username ="
                     + "'%s';", username);
@@ -387,18 +387,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rs);
         }
         return moodList;
     }
@@ -465,8 +456,10 @@ public class DatabaseController {
     public static List<Assessment> getAllAssessmentsForUser(String username) {
         stmt = null;
         rs = null;
+        conn = null;
         List<Assessment> assessmentList = new LinkedList<>();
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM assessment "
                     + "WHERE username = '%s';", username);
@@ -482,18 +475,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(rs);
+            attemptClose(stmt);
         }
         return assessmentList;
     }
@@ -526,12 +510,15 @@ public class DatabaseController {
      */
     public static List<Activity> getAllActivitiesForGoal(int goal_id) {
         stmt = null;
+        ResultSet rsTemp = null;
+        conn = null;
         List<Activity> activityList = new LinkedList<>();
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM activity "
                     + "WHERE goal_id = %d;", goal_id);
-            ResultSet rsTemp = stmt.executeQuery(command);
+            rsTemp = stmt.executeQuery(command);
             while (rsTemp.next()) {
                 ActivityTypes actType = ActivityTypes.convertToActivityType(rsTemp.getString("activitytype"));
                 String description = rsTemp.getString("description");
@@ -543,12 +530,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rsTemp);
         }
         return activityList;
     }
@@ -585,8 +569,10 @@ public class DatabaseController {
     public static List<Goal> getAllGoalsForUser(String username) {
         stmt = null;
         rs = null;
+        conn = null;
         List<Goal> goalList = new LinkedList<>();
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM goal "
                     + "WHERE username = '%s';", username);
@@ -611,18 +597,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rs);
         }
         return goalList;
     }
@@ -637,8 +614,10 @@ public class DatabaseController {
     public static int getGoalID(String descritpion, String username) {
         stmt = null;
         rs = null;
+        conn = null;
         int goalID = -1;
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String.format("SELECT goal_id FROM goal "
                     + "WHERE description = '%s' "
@@ -651,18 +630,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rs);
         }
         if (goalID < 0) {
             System.err.println("ERROR NO GOAL ID FOUND");
@@ -708,8 +678,10 @@ public class DatabaseController {
     public static List<Group> getAllGroups() {
         stmt = null;
         rs = null;
+        conn = null;
         List<Group> groupList = new LinkedList<>();
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = "SELECT * FROM trackergroup;";
             rs = stmt.executeQuery(command);
@@ -725,18 +697,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rs);
         }
         return groupList;
     }
@@ -750,8 +713,10 @@ public class DatabaseController {
     public static List<Group> getAllGroupsThatBelongToUser(String username) {
         stmt = null;
         rs = null;
+        conn = null;
         List<Group> groupList = new LinkedList<>();
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String.format("SELECT * FROM trackergroup "
                     + "WHERE ownerusername = '%s';", username);
@@ -767,18 +732,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rs);
         }
         return groupList;
     }
@@ -805,8 +761,10 @@ public class DatabaseController {
     public static List<Group> getAllGroupsThatTheUserIsPartOf(String username) {
         stmt = null;
         rs = null;
+        conn = null;
         List<Group> groupList = new LinkedList<>();
         try {
+            conn = pool.getConnection();
             stmt = conn.createStatement();
             String command = String.format("SELECT tg.groupname, tg.description, "
                     + "tg.ownerusername FROM trackergroup AS tg\n"
@@ -824,18 +782,9 @@ public class DatabaseController {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-            }
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-            }
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rs);
         }
         return groupList;
     }
@@ -883,7 +832,6 @@ public class DatabaseController {
         List<Group> partOfGroupsTemp = DatabaseController.
                 getAllGroupsThatTheUserIsPartOf(username);
 
-        DatabaseController.closeConnection();
 
         Profile existingProfile
                 = new Profile(goalsTemp, moodsTemp, asmtTemp,
@@ -892,7 +840,6 @@ public class DatabaseController {
     }
 
     public static void main(String[] args) {
-        DatabaseController.connectToDatabase();
 //        Assessment test = new Assessment(5);
 //        DatabaseController.addAssessmentEntry(test, "SecondTest");
 //        List<Mood> mood = DatabaseController.getUserMoodsAsList("FirstRec");
@@ -903,7 +850,7 @@ public class DatabaseController {
 //        List<Activity> act = DatabaseController.getAllActivitiesForGoal(1);
 //        Goal goal = new Goal("Do well");
 //        DatabaseController.addGoalEntry(goal, "FirstRec");
-        List<Goal> testGoal = DatabaseController.getAllGoalsForUser("IronMan");
+
 //        User bestUsr = new User();
 //        bestUsr.setUserName("SecondTest");
 //        Group groupTest = new Group("other Cool GHuys", "This group is better than the cool guys", bestUsr);
@@ -916,7 +863,7 @@ public class DatabaseController {
 //                .getAllGroupsThatTheUserIsPartOf("FirstRec");
 //        System.out.println("GoalID: " + DatabaseController
 //                .getGoalID("Improve general wellbeing", "FirstRec"));
-        DatabaseController.closeConnection();
+          List<Goal> testGoal = DatabaseController.getAllGoalsForUser("IronMan");
 //        System.out.println("GROUP LIST:\n" + testGroup);
 //        System.out.println("GROUP LIST:\n" + testUserGroups);
 //        System.out.println("MOOD LIST:\n" + mood.toString());
