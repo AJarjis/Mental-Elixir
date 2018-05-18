@@ -253,6 +253,9 @@
                                                    </th>
                                                </tr>
                                             <%
+                                                if (g.getActivities() != null) {
+                                                        
+                                                    
                                             for (Activity a : g.getActivities()) 
                                             {
                                             %>
@@ -285,7 +288,7 @@
                                     </tr>
                                 <% 
                             }
-                            
+                        }
                         %>
                     </table>
                     <div class="flex-container" style="background-color: #011627">
