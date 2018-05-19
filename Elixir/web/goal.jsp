@@ -64,7 +64,7 @@
                 <body>
                     <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #FDFFFC">
                         <span id="title" class="navbar-text" style="font-size: 30px">elixir</span>
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="index.jsp">
                 <img src="images/logo.svg" alt="logo" style="height: 40px">
             </a>
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,6 +85,13 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <span class="navbar-text">A health potion for the mind.</span>
                             <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                        <a class="nav-link justify-content-end" href="#">
+                            <form action="Logout" method="POST">
+                                <input class="btn btn-primary" type="submit" value="Log Out">
+                            </form>
+                        </a>
+                        </li>
                                 <li class="nav-item">
                                     <a class="nav-link justify-content-end" href="#">
                             <img class="img-fluid" src="images/home.svg" style="height: 30px" alt="home icon" >
@@ -253,6 +260,9 @@
                                                    </th>
                                                </tr>
                                             <%
+                                                if (g.getActivities() != null) {
+                                                        
+                                                    
                                             for (Activity a : g.getActivities()) 
                                             {
                                             %>
@@ -285,7 +295,7 @@
                                     </tr>
                                 <% 
                             }
-                            
+                        }
                         %>
                     </table>
                     <div class="flex-container" style="background-color: #011627">
