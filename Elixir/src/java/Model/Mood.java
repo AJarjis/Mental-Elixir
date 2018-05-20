@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Date;
  *
  *****************************************************************************
  */
-
+//TODO: CHANGE ALL DATES TO CALENDAR!!!!
 public class Mood {
 
     /**
@@ -33,7 +34,7 @@ public class Mood {
     /**
      * date: the date the user selects when they post their mood.
      */
-    private Date date;
+    private Calendar date;
 
     /**
      * @description constructor for the Mood without any notes being entered.
@@ -41,7 +42,7 @@ public class Mood {
      * @param date
      *
      */
-    public Mood(MoodTypes moodType, Date date) {
+    public Mood(MoodTypes moodType, Calendar date) {
 
         this.moodType = moodType;
         this.date = date;
@@ -65,7 +66,7 @@ public class Mood {
      * @param notes
      *
      */
-    public Mood(MoodTypes moodType, Date date, String notes) {
+    public Mood(MoodTypes moodType, Calendar date, String notes) {
 
         this.moodType = moodType;
         this.date = date;
@@ -108,7 +109,7 @@ public class Mood {
     /**
      * @return the date
      */
-    public Date getDate() {
+    public Calendar getDate() {
         
         return date;
     }
@@ -116,7 +117,7 @@ public class Mood {
     /**
      * @param date the date to set
      */
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         
         this.date = date;
     }

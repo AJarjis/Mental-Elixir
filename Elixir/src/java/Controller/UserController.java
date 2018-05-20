@@ -167,9 +167,7 @@ public class UserController {
      * @return true if valid, else false
      */
     public static boolean validateUserName(String userName) {
-        DatabaseController.connectToDatabase();
         boolean chk = DatabaseController.checkUsername(userName);
-        DatabaseController.closeConnection();
         return chk;
     }
     

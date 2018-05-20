@@ -20,7 +20,7 @@ public class Group {
     private String description;//holds description of the group made by user
     private User creator; //holds user object that made this group
     private List<User> members; //holds list of members that belong to this group
-
+    //TODO: Add goals to the group
     /**
      * Constructor that will create a group by user
      * @param groupName

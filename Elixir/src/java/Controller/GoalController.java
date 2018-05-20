@@ -14,17 +14,36 @@ package Controller;
 
 import Model.Goal;
 import Model.Activity;
-import Model.User;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 public class GoalController {
     
     private Goal goal;
     
+    /**
+     * GoalController constructor
+     * @param goal 
+     */
     public GoalController(Goal goal) {
         
         this.goal = goal;
+    }
+    
+    /**
+     * GoalController constructor that constructs a goal object within it
+     * @param description 
+     */
+    public GoalController(String description){
+        this.goal = new Goal(description);
+    }
+    
+    /**
+     * Method to return the goal object stored in the controller
+     * @return 
+     */
+    public Goal getGoal(){
+        return this.goal;
     }
     
     /**
@@ -35,10 +54,11 @@ public class GoalController {
         return goal.getActivities();
     }
     
+    
     /**
      * @return the date for the specified goal
      */
-    public Date getTargetDate() {
+    public Calendar getTargetDate() {
         
         return goal.getTargetDate();
     }
@@ -90,11 +110,19 @@ public class GoalController {
     }
     
     /**
+     * Method to set the goal object of the controller
+     * @param goal 
+     */
+    public void setGoal(Goal goal){
+        this.goal = goal;
+    }
+    
+    /**
      * @param date
      * 
      * Description: sets the target date for the goal in question
      */
-    public void setTargetDate(Date date) {
+    public void setTargetDate(Calendar date) {
         
         this.goal.setTargetDate(date);
     }

@@ -1,6 +1,8 @@
 package Model;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /*****************************************************************************
@@ -20,10 +22,10 @@ Author      : Daniel Carey
 public class Goal {
 
     private List<Activity> activities; //activities that user will commit to
-    private Date targetDate; //date by which user wants to complete their activities
+    private Calendar targetDate; //date by which user wants to complete their activities
     private boolean completionStatus = false; //tracks the status of the goal false by default. 
     private String description; // gives basic description of the goal
-    
+    //TODO: complete activity method neeeds to be implemented
     /**
      * Constructor that will allow the user to create a goal with one or 
      * multiple goals and set a target date by which they should be able 
@@ -31,9 +33,10 @@ public class Goal {
      * @param activities list containing activities user selected
      * @param targetDate date object which will represent user deadline
      */
-    public Goal(List<Activity> activities, Date targetDate) {
+    public Goal(List<Activity> activities, Calendar targetDate) {
         this.activities = activities;
         this.targetDate = targetDate;
+        this.activities = new LinkedList<>();
     }
     
     /**
@@ -53,6 +56,7 @@ public class Goal {
      */
     public Goal(String description){
         this.description = description;
+        this.activities = new LinkedList<>();
     }
     
     /**
@@ -60,11 +64,13 @@ public class Goal {
      * @param stat
      * @param date
      * @param desc 
+     * @param activity 
      */
-    public Goal(boolean stat, Date date, String desc){
+    public Goal(boolean stat, Calendar date, String desc, List<Activity> activity){
         this.completionStatus = stat;
         this.targetDate = date;
         this.description = desc;
+        this.activities = activity;
     }
 
     /**
@@ -77,14 +83,14 @@ public class Goal {
     /**
      * @return the targetDate
      */
-    public Date getTargetDate() {
+    public Calendar getTargetDate() {
         return targetDate;
     }
 
     /**
      * @param targetDate the targetDate to set
      */
-    public void setTargetDate(Date targetDate) {
+    public void setTargetDate(Calendar targetDate) {
         this.targetDate = targetDate;
     }
     

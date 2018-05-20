@@ -65,6 +65,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link justify-content-end" href="goal.jsp">
+                                <input class="btn btn-primary" type="submit" value="Goals">
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link justify-content-end" href="#">
                             <img class="img-fluid" src="images/home.svg" style="height: 30px" alt="home icon" >
                         </a>

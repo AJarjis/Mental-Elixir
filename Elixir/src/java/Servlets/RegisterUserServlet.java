@@ -50,8 +50,8 @@ public class RegisterUserServlet extends HttpServlet {
             // TODO: Require sanitisation before accepting
 
             // Retreives the data of a new user to register from form
-            DatabaseController.connectToDatabase();
-            String userName = request.getParameter("userName");
+            String userName = request.getParameter("userName").toLowerCase();
+            System.out.println(userName);
             String firstName = request.getParameter("firstName");
             String surname = request.getParameter("surname");
             String email = request.getParameter("email");
@@ -94,7 +94,7 @@ public class RegisterUserServlet extends HttpServlet {
                                 , surname, email, password);
                 //Create the user on on the Database
                 DatabaseController.AddUser(userController.getUser());
-                DatabaseController.closeConnection();
+
                 // Gives JSP access to user details
                 //request.setAttribute("user", userController);
 

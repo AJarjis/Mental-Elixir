@@ -6,7 +6,7 @@ package Model;
  */
 public enum ActivityTypes {
     
-    Body, Mind, Communication, Stress, Love;
+    Body, Mind, Communication, StressReduction, Love;
     
     /**
      * Used to convert activity type enum to string
@@ -20,8 +20,8 @@ public enum ActivityTypes {
                 return "Mind";
             case Communication:
                 return "Communication";
-            case Stress:
-                return "Stress";
+            case StressReduction:
+                return "StressReduction";
             case Love:
                 return "Love";
             default:
@@ -35,7 +35,7 @@ public enum ActivityTypes {
      * @param activity string that represents one of the enums
      * @return enum var
      */
-    public static ActivityTypes convertToMoodType(String activity){
+    public static ActivityTypes convertToActivityType(String activity){
         switch (activity) {
             case "Body":
                 return Body;
@@ -43,8 +43,8 @@ public enum ActivityTypes {
                 return Mind;
             case "Communication":
                 return Communication;
-            case "Stress":
-                return Stress;
+            case "StressReduction":
+                return StressReduction;
             case "Love":
                 return Love;
             default:
