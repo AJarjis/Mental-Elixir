@@ -127,7 +127,10 @@ public class Mood {
      */
     @Override
     public String toString(){
-        return "Mood: " + this.moodType.convertToString() + " Date: " + this.date.toString() + " Notes: " + this.notes + "\n";
+        return "Mood: " + this.moodType.convertToString() 
+                + "\nDate: " + (this.date != null ? this.date.toString() : "N/A") 
+                + "\nNotes: " + (this.notes != null ? this.notes : "N/A")
+                + "\n";
     }
 
 }

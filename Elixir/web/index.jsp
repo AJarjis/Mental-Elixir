@@ -1,3 +1,5 @@
+<%@page import="Model.Mood"%>
+<%@page import="java.util.List"%>
 <%@page import="Controller.UserController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -133,6 +135,11 @@
                                     <p><b>Email: </b>
                                         <% out.print(user.getEmail()); %>
                                     </p>
+                                    <% List<Mood> userMoods = user.getProfile().getMood(); 
+                                        for (Mood mood : userMoods){
+                                           out.print(mood);
+                                        }
+                                    %>
                             </div>
                             <div class="card-footer">
                             </div>
