@@ -3,6 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,6 +12,7 @@
         <link rel="icon" href="../../../../favicon.ico">
 
         <title>elixir</title>
+
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -45,8 +47,8 @@
     <!-- Checks if a user is logged in, redirecting them to register/login page if not-->
     <%
         UserController user = (UserController) session.getAttribute("user");
-        if (user != null) {
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+        if (user == null) {
+            RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
             rd.forward(request, response);
         }
     %>
@@ -105,78 +107,22 @@
             </div>
         </nav>
 
-        <div class="flex-container p-5 text-center" style="background-color: #2EC4B6">
-            <img src="images/logo_white.svg" style="height : 18em; background-color: #2EC4B6">
-            <div class="flex-container">
-                <span class="flex" style="font-size: 8em; color: white">elixir</span>
-                <div class="flex-container">
-                    <span class="flex" style="font-size: 3em; color: white">Welcome to elixir, the health potion for the mind.</span>
-                </div>
-                <div class="flex-container p-5">
-                    <span class="flex" style="font-size: 1.5em; color: white">You can sign back in below if you have already started using elixir, otherwise register underneath to join the rather small number of people who are now using elixir to track their mental wellbeing </span>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex-container p-5" style="background-color: #F3A341">
-            <div class="container" style="width: 80%; background-color: #F3A341">
-                <div class="row justify-content-center">
-                    <div class="col-sm-8 mb-5 ">
-                        <div class="card-body">
-                            <h5>Existing User:</h5>
-                            <form action="Login" method="POST">
-                                <div class="form-group">
-                                    <label for="userName">Username:</label>
-                                    <input type="text" class="form-control" id="userName" name="userName">
-                                    <span class="inputError">${errorMessages.userNameLog}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password:</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                    <span class="inputError">${errorMessages.passwordLog}</span>
-                                </div>
-                                <input class="btn btn-primary" type="submit" value="Login">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="flex-container p-5" style="background-color: #FDFFFC">
             <div class="container" style="width: 80%; background-color: #FDFFFC">
                 <div class="row justify-content-center">
                     <div class="col-sm-8 mb-5 ">
                         <div class="card-body">
-                            <span>${errorMessages.errorMain}</span>
-                            <h5 style="color: gray">Register New User:</h5>
-                            <form action="RegisterUser" method="POST">
+                            <h5 style="color: gray">Create Group</h5>
+                            <form action="CreateGroup" method="POST">
                                 <div class="form-group">
-                                    <label style="color: gray" for="userName">Username:</label>
-                                    <input type="text" class="form-control" id="userName" name="userName">
-                                    <span class="inputError">${errorMessages.userName}</span>
+                                    <label style="color: gray" for="groupName">Group Name:</label>
+                                    <input class="form-control" type="text" name="groupName" id="groupName">
                                 </div>
                                 <div class="form-group">
-                                    <label style="color: gray" for="firstName">First Name:</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName">
-                                    <span class="inputError">${errorMessages.firstName}</span>
+                                    <label style="color: gray" for="groupDescription">Description:</label>
+                                    <textarea class="form-control" id="groupDescription" name="groupDescription"></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label style="color: gray" for="surname">Surname:</label>
-                                    <input type="text" class="form-control" id="surname" name="surname">
-                                    <span class="inputError">${errorMessages.surname}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label style="color: gray" for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email" name="email">
-                                    <span class="inputError">${errorMessages.email}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label style="color: gray" for="password">Password:</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                    <span class="inputError">${errorMessages.password}</span>
-                                </div>
-                                <input style="color: white" class="btn btn-primary" type="submit" value="Register User">
+                                <input style="color: white" class="btn btn-primary" type="submit" value="Create Group">
                             </form>
                         </div>
                     </div>
