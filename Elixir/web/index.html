@@ -112,7 +112,7 @@
                 <div id="moodModalOne " class="moodModal col-lg-1 col-md-2 col-sm-2">
                     <!-- Button trigger modal -->
                     <a data-toggle="modal" data-target="#exampleModalCenter1">
-  <img class="img-fluid" src="images/mood/conOne.png" >
+  <img class="img-fluid" id="conOne" src="images/mood/conOne.png" >
 </a>
 
                     <!-- Modal -->
@@ -137,7 +137,7 @@
                     </div>
                 </div>
                 <div id="moodModalTwo" class="moodModal col-lg-1 col-md-2 col-sm-2"><a data-toggle="modal" data-target="#exampleModalCenter2">
-  <img class="img-fluid" src="images/mood/conTwo.png">
+  <img class="img-fluid" id="conTwo" src="images/mood/conTwo.png">
 </a>
 
                     <!-- Modal -->
@@ -164,7 +164,7 @@
                 <div id="moodModalThree" class="moodModal col-lg-1 col-md-2 col-sm-2">
                     <!-- Button trigger modal -->
                     <a data-toggle="modal" data-target="#exampleModalCenter3">
-                <img class="img-fluid" src="images/mood/conThree.png">
+                <img class="img-fluid" id="conThree" src="images/mood/conThree.png">
   
 </a>
 
@@ -192,7 +192,7 @@
                 <div id="moodModalFour" class="moodModal col-lg-1 col-md-2 col-sm-2">
                     <!-- Button trigger modal -->
                     <a data-toggle="modal" data-target="#exampleModalCenter4">
-                <img class="img-fluid" src="images/mood/conFour.png">
+                <img class="img-fluid" id="conFour" src="images/mood/conFour.png">
   
 </a>
 
@@ -220,7 +220,7 @@
                 <div id="moodModalFive" class="moodModal col-lg-1 col-md-2 col-sm-2">
                     <!-- Button trigger modal -->
                     <a data-toggle="modal" data-target="#exampleModalCenter5">
-  <img class="img-fluid" src="images/mood/conFive.png">
+  <img class="img-fluid" id="conFive" src="images/mood/conFive.png">
 </a>
 
                     <!-- Modal -->
@@ -258,8 +258,19 @@
                         Choose your own Adventure.
                     </h1>
                     <h3>Here you can find a selection of Adventures that you can accept. Each one has a set of quests that needs to be completed to achieve success.</h3>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
+      <span class="fa fa-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+                    <a class="right carousel-control" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
+      <span class="fa fa-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
                 </div>
+
                 <div class="row justify-content-center pt-5 text-secondary border-top border-bottom border-light">
+
                     <div id="carouselExampleSlidesOnly" class="carousel slide border border-dark p-4 mb-5" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -278,6 +289,7 @@
                                         <a href="#" class="card-link">Accept Adventure</a>
                                     </div>
                                 </div>
+                                <!--
                                 <div class="card" style="width: 25rem;">
                                     <img class="smallpic card-img-top" src="images/love.jpg" alt="Card image cap">
                                     <div class="card-body">
@@ -293,6 +305,7 @@
                                         <a href="#" class="card-link">Accept Adventure</a>
                                     </div>
                                 </div>
+-->
                             </div>
                             <div class="carousel-item">
                                 <div class="card" style="width: 25rem;">
@@ -310,6 +323,24 @@
                                         <a href="#" class="card-link">Finish Adventure</a>
                                     </div>
                                 </div>
+
+                                <!--
+                                <div class="card" style="width: 25rem;">
+                                    <img class="smallpic card-img-top" src="images/breakfastOfChampions.png" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Healthy Morning Habits</h5>
+                                        <p class="card-text">Set yourself up for a successful day with a positive morning. </p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Compose a healthy breakfast</li>
+                                        <li class="list-group-item">Find a stretch routine</li>
+                                        <li class="list-group-item">Drink Water when you wake up</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Finish Adventure</a>
+                                    </div>
+                                </div>
+-->
                             </div>
                             <div class="carousel-item">
                                 <div class="card" style="width: 25rem;">
@@ -327,6 +358,24 @@
                                         <a href="#" class="card-link">Accept Adventure</a>
                                     </div>
                                 </div>
+
+                                <!--
+                                  <div class="card" style="width: 25rem;">
+                                    <img class="smallpic card-img-top" src="images/Vain.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Learn to love yourself</h5>
+                                        <p class="card-text">Reflect on your successes to help build your self-esteem.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Write down three things I did well today.</li>
+                                        <li class="list-group-item">Write down three things I appreciate about myself</li>
+                                        <li class="list-group-item">Write down three things I appreciate about others</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Accept Adventure</a>
+                                    </div>
+                                </div>
+-->
                             </div>
                             <div class="carousel-item">
                                 <div class="card" style="width: 25rem;">
@@ -344,6 +393,25 @@
                                         <a href="#" class="card-link">Accept Adventure</a>
                                     </div>
                                 </div>
+
+                                <!--
+                                 <div class="card" style="width: 25rem;">
+                                    <img class="smallpic card-img-top" src="images/angry.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Understand my Mood</h5>
+                                        <p class="card-text">Make sure to reflect on your mood three times a day for a least a week.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Rate in the morning</li>
+                                        <li class="list-group-item">Rate in the afternoon</li>
+                                        <li class="list-group-item">Rate in the evening</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Accept Adventure</a>
+                                    </div>
+                                </div>
+-->
+
                             </div>
                             <div class="carousel-item">
                                 <div class="card" style="width: 25rem;">
@@ -362,6 +430,25 @@
                                         <a href="#" class="card-link">Accept Adventure</a>
                                     </div>
                                 </div>
+
+                                <!--
+                                <div class="card" style="width: 25rem;">
+                                    <img class="smallpic card-img-top" src="images/worried.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Step out of your comfort zone</h5>
+                                        <p class="card-text">Take some risks and see what the world could have in store.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Start a dialogue with an unknown person</li>
+                                        <li class="list-group-item">Say yes to something you would normally say No to</li>
+                                        <li class="list-group-item">Smile and say hi to three strangers</li>
+                                    </ul>
+
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Accept Adventure</a>
+                                    </div>
+                                </div>
+-->
                             </div>
                             <div class="carousel-item">
                                 <div class="card" style="width: 25rem;">
@@ -380,6 +467,25 @@
                                         <a href="#" class="card-link">Accept Adventure</a>
                                     </div>
                                 </div>
+
+                                <!--
+                                <div class="card" style="width: 25rem;">
+                                    <img class="smallpic card-img-top" src="images/runninglate.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Be on time</h5>
+                                        <p class="card-text">Being punctual can help you take control of your situation. Give it a go.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Estimate and track your time</li>
+                                        <li class="list-group-item">Plan to and then arrive 15 mins early</li>
+                                        <li class="list-group-item">Do something useful while you wait
+                                        </li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Accept Adventure</a>
+                                    </div>
+                                </div>
+-->
                             </div>
                             <div class="carousel-item">
                                 <div class="card" style="width: 25rem;">
@@ -397,18 +503,30 @@
                                         <a href="#" class="card-link">Accept Adventure</a>
                                     </div>
                                 </div>
+
+                                <!--
+                                <div class="card" style="width: 25rem;">
+                                    <img class="smallpic card-img-top" src="images/charity.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Do more good and feel better </h5>
+                                        <p class="card-text">Taking care of others can be the thing that helps us be happier with ourselves.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Do a good deed for a friend</li>
+                                        <li class="list-group-item">Do a good deed for a stranger</li>
+                                        <li class="list-group-item">Do a good deed for a stranger, without telling anyone</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Accept Adventure</a>
+                                    </div>
+                                </div>
+-->
                             </div>
-                            <!-- Left and right controls -->
-                            <a class="left carousel-control" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-                            <a class="right carousel-control" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+
 
                         </div>
+
+
 
                     </div>
 

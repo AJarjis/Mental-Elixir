@@ -104,6 +104,7 @@ body {
 
 .moodModal img:hover {
     cursor: pointer;
+    background: url("../images/mood/redOne.png");
 
 }
 
@@ -130,3 +131,4 @@ body {
 #goals h3 {
     font-size: 1.5em;
 }
+
