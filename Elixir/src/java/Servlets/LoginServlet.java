@@ -47,8 +47,8 @@ public class LoginServlet extends HttpServlet {
         request.setAttribute("errorMessages", errorMessages);
 
         // Retreives the data of a new user to register from form
-        String userName = request.getParameter("userName").toLowerCase();
-        String password = request.getParameter("password");
+        String userName = request.getParameter("userNameLog").toLowerCase();
+        String password = request.getParameter("passwordLog");
 
         // Checks if username is valid
         if (userName == null || userName.trim().isEmpty()) {
@@ -105,7 +105,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setAttribute("errorMessages", null);
+        request.getRequestDispatcher("registration.jsp").forward(request, response);
     }
 
     /**
