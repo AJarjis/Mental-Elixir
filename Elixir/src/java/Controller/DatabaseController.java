@@ -358,7 +358,7 @@ public class DatabaseController {
             stmt = conn.prepareStatement("INSERT INTO mood (mood_id," +
 "                + moodtype, notes, date, username)" +
 "                + VALUES (DEFAULT , ?, ?, DEFAULT , ?)");
-            stmt.setString(1, mood.getMoodType().convertToString());
+            stmt.setInt(1, mood.getMoodType());
             stmt.setString(2, mood.getNotes());
             stmt.setString(3, username);
             stmt.executeUpdate();
@@ -389,8 +389,47 @@ public class DatabaseController {
             stmt.setString(1, username);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                MoodTypes mood = MoodTypes
-                        .convertToMoodType(rs.getString("moodtype"));
+                int mood = rs.getInt("moodtype");
+                String notes = rs.getString("notes");
+                Calendar stamp = Calendar.getInstance();
+                stamp.setTimeInMillis(rs.getTimestamp("date").getTime());
+                Mood temp = new Mood(mood, stamp, notes);
+                moodList.add(temp);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        } finally {
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rs);
+        }
+        return moodList;
+    }
+    
+    /**
+     * Allows retrieval of moods for a user between said dates
+     * @param username
+     * @param start
+     * @param end
+     * @return 
+     */
+    public static List<Mood> getMoodsBetweenDates(String username, 
+            Calendar start, Calendar end){
+        stmt = null;
+        rs = null;
+        conn = null;
+        List<Mood> moodList = new LinkedList<>();
+        try {
+            conn = pool.getConnection();
+            stmt = conn.prepareStatement("SELECT * FROM mood WHERE username= ? "
+                    + "AND date BETWEEN ? AND ?");
+            stmt.setString(1, username);
+            stmt.setDate(2, new java.sql.Date(start.getTimeInMillis()));
+            stmt.setDate(3, new java.sql.Date(end.getTimeInMillis()));
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int mood = rs.getInt("moodtype");
                 String notes = rs.getString("notes");
                 Calendar stamp = Calendar.getInstance();
                 stamp.setTimeInMillis(rs.getTimestamp("date").getTime());
