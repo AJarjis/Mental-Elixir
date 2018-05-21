@@ -897,6 +897,22 @@ public class DatabaseController {
         }
         return groupList;
     }
+    /**
+     * Checks if a group already exists
+     * @param groupName
+     * @return false if group doesn't exist, true if it does.
+     */
+    public static boolean alreadyGroup(String groupName) {
+        List<Group> groupList = getAllGroups();
+        for(Group group : groupList)
+        {
+            if(group.getGroupName().equals(groupName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Method used to add user to the an existing group

@@ -86,6 +86,9 @@ public class GoalServlet extends HttpServlet {
             // Using the goal id add the activities
             DatabaseController.addActivityEntry(activity1.getActivity(), goalID);
         }
+        else {
+            
+        }
         if (!act2Desc.equals("")) {
             ActivityController activity2 = new ActivityController(act2Type, act2Desc);
             // Add activities to the goal
