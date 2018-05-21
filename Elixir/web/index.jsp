@@ -89,8 +89,8 @@
 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="#moodSection">Mood</a>
-                            <a class="dropdown-item" href="#goalsSection">Goals</a>
+                            <a class="smoothScroll dropdown-item" href="#moodSection">Mood</a>
+                            <a class="smoothScroll dropdown-item" href="#goalsSection">Goals</a>
                             <a class="dropdown-item" href="#">FAQ</a>
                             <a class="dropdown-item" href="#">WEBMDS Test</a>
                             <a class="dropdown-item" href="Logout">Log Out</a>

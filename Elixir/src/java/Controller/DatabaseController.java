@@ -484,7 +484,7 @@ public class DatabaseController {
      * @param date 
      */
     public static void updateMoodType(String username, MoodTypes moodType, Calendar date) {
-        updateMoodTable(username, date,"moodtype", moodType.convertToString());
+        updateMoodTable(username, date,"moodtype", moodType.toString());
     }
 
     /**

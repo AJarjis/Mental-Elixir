@@ -80,7 +80,7 @@ body {
     font-size: 6em
 }
 
-@media (max-width: @screen-xs) {
+/*@media (max-width: @screen-xs) {
     body {
         font-size: 10px;
     }
@@ -90,7 +90,7 @@ body {
     body {
         font-size: 14px;
     }
-}
+}*/
 
 #loginArea {
     background-color: white;
