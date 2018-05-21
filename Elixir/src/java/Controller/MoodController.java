@@ -31,7 +31,7 @@ public class MoodController {
      * Controller with creation of a mood object using a mood type
      * @param mood 
      */
-    public MoodController(MoodTypes mood){
+    public MoodController(int mood){
         this.mood = new Mood(mood);
     }
     
@@ -47,7 +47,7 @@ public class MoodController {
      * 
      * @return the moodType for the current object
      */
-    public MoodTypes getMoodType() {
+    public int getMoodType() {
         return mood.getMoodType();
     }
     
@@ -75,7 +75,7 @@ public class MoodController {
      *
      * @param MoodType Enum specified in the MoodTypes Model Class
      */
-    public void SetMoodType(MoodTypes MoodType) {
+    public void SetMoodType(int MoodType) {
         mood.setMoodType(MoodType);
     }
     
@@ -96,7 +96,7 @@ public class MoodController {
     }
     
     public static void main(String[] args) {
-        Mood testMood = new Mood(MoodTypes.Joy);
+        Mood testMood = new Mood(2);
             MoodController moodContr = new MoodController(testMood);
     }
 }
