@@ -38,6 +38,9 @@ public class DatabaseController {
     private static PreparedStatement stmt = null;
     private static ResultSet rs = null;
     private static ComboPooledDataSource pool;
+    /**
+     * Start of the Pooled connection initialization
+     */
     static{
         try {
             pool = new ComboPooledDataSource();
@@ -55,6 +58,10 @@ public class DatabaseController {
     /**
      * ********************BASIC DATABASE COMMANDS***************************
      */
+    /**
+     * Method to close result set
+     * @param o 
+     */
     static void attemptClose(ResultSet o)
     {
 	try
@@ -65,6 +72,10 @@ public class DatabaseController {
         }
     }
 
+    /**
+     * Method to close statement
+     * @param o 
+     */
     static void attemptClose(Statement o)
     {
 	try
@@ -75,6 +86,10 @@ public class DatabaseController {
         }
     }
 
+    /**
+     * Method to close connection
+     * @param o 
+     */
     static void attemptClose(Connection o)
     {
 	try
@@ -115,6 +130,12 @@ public class DatabaseController {
         
     }
 
+    /**
+     * Method to check if the username passed in has an account associated with
+     * it in the database
+     * @param username
+     * @return true if account does not exist false if it does
+     */
     public static boolean checkUsername(String username) {
         boolean chk = true;
         stmt = null;
@@ -875,6 +896,22 @@ public class DatabaseController {
             attemptClose(rs);
         }
         return groupList;
+    }
+    /**
+     * Checks if a group already exists
+     * @param groupName
+     * @return false if group doesn't exist, true if it does.
+     */
+    public static boolean alreadyGroup(String groupName) {
+        List<Group> groupList = getAllGroups();
+        for(Group group : groupList)
+        {
+            if(group.getGroupName().equals(groupName))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

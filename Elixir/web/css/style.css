@@ -1,7 +1,7 @@
 body {
 
     padding-top: 5rem;
-    background-color: #ebf2fa;
+    background-color: white;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -12,7 +12,7 @@ body {
 }
 
 .carousel img {
-    opacity: 0.4;
+
 }
 
 .navbar-expand-md {
@@ -114,4 +114,13 @@ body {
 
 .chart {
     background-color: #ffdfb3;
+}
+
+.smallpic {
+    opacity: 1;
+}
+
+.heroPic {
+    
+    opacity: 0.6;
 }

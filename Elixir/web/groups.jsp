@@ -145,7 +145,8 @@
                             <div class="col-md-3">
                                 <!-- TODO: must pass a parameter saying what group this is -->
                                 <form action="JoinGroup" method="POST">
-                                    <input class="btn btn-primary" type="submit" value="Join Group"></input>
+                                    
+                                    <input class="btn btn-primary" id="joinGroup" type="submit" value="Join Group"></input>
                                 </form>
                             </div>
                         </div>
