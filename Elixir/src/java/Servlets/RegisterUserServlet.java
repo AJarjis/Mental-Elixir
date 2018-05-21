@@ -44,59 +44,41 @@ public class RegisterUserServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+        // Stores any errors that occur for view to access
         Map<String, String> errorMessages = new HashMap();
         request.setAttribute("errorMessages", errorMessages);
-        try {
-            // TODO: Require sanitisation before accepting
 
+        try {
             // Retreives the data of a new user to register from form
             String userName = request.getParameter("userName").toLowerCase();
-            System.out.println(userName);
             String firstName = request.getParameter("firstName");
             String surname = request.getParameter("surname");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
+
+            // Error checking for registration
             if (userName == null || userName.trim().isEmpty()) {
-                errorMessages.put("userName", "Username can't be blank");
-            }
-            
-            else if (!DatabaseController.checkUsername(userName)) {
-                errorMessages.put("userName", "Username already exists");
-            }
-            
-            
-            else if (firstName == null || firstName.trim().isEmpty()) {
-                errorMessages.put("firstName", "First name can't be blank");
-            }
-
-            
-            else if (surname == null || surname.trim().isEmpty()) {
-                errorMessages.put("surname", "Surname can't be blank");
-            }
-            
-            else if (email == null || email.trim().isEmpty()) {
-                errorMessages.put("email", "Email can't be blank");
+                errorMessages.put("userName", "Please enter a valid username.");
+            } else if (!DatabaseController.checkUsername(userName)) {
+                errorMessages.put("userName", "Username already exists.");
+            } else if (firstName == null || firstName.trim().isEmpty()) {
+                errorMessages.put("firstName", "Please enter a valid first name.");
+            } else if (surname == null || surname.trim().isEmpty()) {
+                errorMessages.put("surname", "Please enter a valid surname.");
+            } else if (email == null || email.trim().isEmpty()) {
+                errorMessages.put("email", "Please enter a valid email.");
+            } else if (password == null || password.trim().isEmpty()) {
+                errorMessages.put("password", "Please enter a valid password.");
             }
 
-
-            else if (password == null || password.trim().isEmpty()) {
-                errorMessages.put("password", "Password can't be blank");
-            }
-            else if (password.contains("password")) {
-                errorMessages.put("password",
-                        "Password cannot contain 'password'");
-            }
+            // Checks if no errors have occured, refreshing page if they have
             if (errorMessages.isEmpty()) {
-
                 // Creates new user and logs them in
                 UserController userController = AccessController
-                        .registerUser(userName, firstName
-                                , surname, email, password);
+                        .registerUser(userName, firstName,
+                                surname, email, password);
                 //Create the user on on the Database
                 DatabaseController.AddUser(userController.getUser());
-
-                // Gives JSP access to user details
-                //request.setAttribute("user", userController);
 
                 // Creates a session for logged in user
                 HttpSession session = request.getSession();
@@ -104,18 +86,16 @@ public class RegisterUserServlet extends HttpServlet {
 
                 // Redirects user to profile page and prevents resubmitting
                 response.sendRedirect("index.jsp");
-            }
-            else{
+            } else {
                 request.getRequestDispatcher("registration.jsp")
                         .forward(request, response);
             }
         } catch (SQLException e) {
-            // TODO: catch error in an elegant manner
-            errorMessages.put("errorMain", "Sorry, an error occured");
+            errorMessages.put("errorMain",
+                    "Sorry, an error occured, please try again.");
             request.getRequestDispatcher("registration.jsp")
-                        .forward(request, response);
+                    .forward(request, response);
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            //System.exit(0);
         }
     }
 
