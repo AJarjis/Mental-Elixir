@@ -1,0 +1,117 @@
+body {
+
+    padding-top: 5rem;
+    background-color: #ebf2fa;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.carousel img {
+    opacity: 0.4;
+}
+
+.navbar-expand-md {
+    box-shadow: 2px 2px 8px #000000;
+}
+
+.login-register-form-section {
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.login-register-form-section i {
+    width: 10px;
+}
+
+.login-register-form-section .nav-tabs > li > a {
+    color: #05668d;
+}
+
+/*
+.login-register-form-section .nav-tabs > li.active > a {
+    background-color: #05668d;
+    border-color: #05668d;
+    color: white;
+}
+*/
+
+.login-register-form-section .nav-tabs > li > a,
+.login-register-form-section .nav-tabs > li.active > a {
+    width: 160px;
+    text-align: center;
+    border-radius: 0;
+}
+
+.login-register-form-section .nav-tabs {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.login-register-form-section .btn-custom {
+    width: 100%;
+    background-color: #05668d;
+    border-color: #05668d;
+    margin-bottom: 0.5em;
+    border-radius: 0;
+}
+
+.login-register-form-section .btn-custom:hover {
+    width: 100%;
+    background-color: white;
+    border-color: #05668d;
+}
+
+.login-register-form-section .form-group {
+    padding: 0 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: white;
+    color: grey;
+}
+
+.jumbotron h1 {
+    font-size: 6em
+}
+
+@media (max-width: @screen-xs) {
+    body {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: @screen-sm) {
+    body {
+        font-size: 14px;
+    }
+}
+
+#loginArea {
+    background-color: white;
+
+}
+
+.login-register-form-section {
+    border-style: solid;
+    border-color: grey;
+
+}
+
+#moods {
+    background-color: #F3A341;
+}
+
+.moodModal img:hover {
+    cursor: pointer;
+
+}
+
+.chart {
+    background-color: #ffdfb3;
+}
