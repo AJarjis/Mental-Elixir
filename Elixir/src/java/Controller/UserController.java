@@ -52,7 +52,6 @@ public class UserController {
      * @param surname
      * @param email
      * @param password 
-     * @param profile 
      */
     public UserController(String userName, String firstName, String surname, 
             String email, String password){
@@ -209,11 +208,4 @@ public class UserController {
                     + " is INVALID.");
         }
     }
-    
-    public static void main(String[] args) {
-        
-        System.out.println("UserNameVerf: " + UserController
-                .validateUserName("FirstRec"));
-    }
-
 }

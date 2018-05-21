@@ -80,3 +80,9 @@ input[type='checkbox'] {
   border-bottom-right-radius: 7px;
   padding: .5rem 1rem;
 }
+
+/* Styling for a card when searching for a group */
+.groupCard {
+    padding: 2%;
+    margin-bottom: 3%;
+}

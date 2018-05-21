@@ -28,12 +28,11 @@
 
     </head>
     
-    <!-- Checks if a user is logged in, redirecting them to register/login page if not-->
+    
     <% 
         UserController user = (UserController) session.getAttribute("user");
-        if (user == null) { 
-            RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");  
-            rd.forward(request, response);
+        if (user != null) { 
+            // TODO: Allow anyone to access this page, this code should be used to hide the logout button if they are not logged in
         }
     %>
 

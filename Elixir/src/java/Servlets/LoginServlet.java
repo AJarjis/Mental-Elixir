@@ -15,7 +15,6 @@ import Controller.AccessController;
 import Controller.DatabaseController;
 import Controller.UserController;
 import java.io.IOException;
-import static java.lang.System.out;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -43,16 +42,22 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        // Retreives the data of a new user to register from form
+        // Stores any errors that occur for view to access
         Map<String, String> errorMessages = new HashMap();
         request.setAttribute("errorMessages", errorMessages);
+        
+        // Retreives the data of a new user to register from form
         String userName = request.getParameter("userName").toLowerCase();
         String password = request.getParameter("password");
+        
+        // Checks if username is valid
         if (userName == null || userName.trim().isEmpty()) {
-            errorMessages.put("userNameLog", "Please enter username");
+            errorMessages.put("userNameLog", "Please enter a valid username.");
         } else if (password == null || password.trim().isEmpty()) {
-            errorMessages.put("passwordLog", "Please enter password");
+            errorMessages.put("passwordLog", "Please enter a valid password.");
         }
+        
+        // Registers user if no errors occur
         if (errorMessages.isEmpty()) {
             // Get password stored in the database assosiated with username
             String hashedPass = DatabaseController.getPasswordForLogin(userName);
@@ -69,9 +74,11 @@ public class LoginServlet extends HttpServlet {
                             = new UserController(DatabaseController.getUserByUsername(userName));
                     userController.setProfile(DatabaseController.getUserProfile(userName));
                 } else {
+                    // TODO: error must be catched here
                     System.err.println("Invalid Username or password!");
                 }
             } else {
+                // TODO: error must be catched here
                 System.err.println("Invalid Username or password!");
             }
 

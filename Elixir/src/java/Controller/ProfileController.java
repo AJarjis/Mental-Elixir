@@ -183,16 +183,12 @@ public class ProfileController {
     }
     
     /**
-     * @param moodType
+     * @param mood
      * 
-     * Description: Takes the moodType and date to create a new mood, before 
+     * Description: Takes the mood creates a new mood, before 
      *              adding this to the profile
      */
-    public void addMood(MoodTypes moodType) {
-        
-        Mood mood = new Mood(moodType);
-        
-        
+    public void addMood(Mood mood) {
         this.profile.addMood(mood);
     }
     
