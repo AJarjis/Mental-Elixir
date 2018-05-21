@@ -1,30 +1,13 @@
-<<<<<<< Updated upstream
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/web/META-INF/context.xml</file>
-            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Controller/ProfileController.java</file>
-            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Servlets/LoginServlet.java</file>
-            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Controller/DatabaseController.java</file>
-            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Controller/AccessController.java</file>
-            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Controller/UserController.java</file>
-            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Servlets/GoalServlet.java</file>
-            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Servlets/RegisterUserServlet.java</file>
-            <file>file:/C:/Users/Kyklos/Documents/Git/softwaredev-code/Elixir/src/java/Model/MoodTypes.java</file>
+            <file>file:/Users/shaky/Documents/Software%20Engineering/Project/Elixir/web/index.jsp</file>
+            <file>file:/Users/shaky/Documents/Software%20Engineering/Project/Elixir/web/registration.jsp</file>
+            <file>file:/Users/shaky/Documents/Software%20Engineering/Project/Elixir/web/goal.jsp</file>
+            <file>file:/Users/shaky/Documents/Software%20Engineering/Project/Elixir/web/faq.jsp</file>
+            <file>file:/Users/shaky/Documents/Software%20Engineering/Project/Elixir/web/css/styles.css</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Computer%20Science%20-%20Year%202/Software%20Engineering/softwaredev-code/Elixir/web/css/styles.css</file>
-            <file>file:/D:/Computer%20Science%20-%20Year%202/Software%20Engineering/softwaredev-code/Elixir/web/faq.jsp</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> Stashed changes
