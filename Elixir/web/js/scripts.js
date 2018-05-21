@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     // Add smooth scrolling to all links
     $("a").on('click', function (event) {
@@ -169,3 +168,7 @@ function addMessageToListDOM(text, member) {
         el.scrollTop = el.scrollHeight - el.clientHeight;
     }
 }
+$('#carouselExampleSlidesOnly').carousel({
+    pause: true,
+    interval: false
+});
