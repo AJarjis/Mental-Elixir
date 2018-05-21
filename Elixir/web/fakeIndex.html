@@ -1,19 +1,3 @@
-<%@page import="Model.Activity"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.text.DateFormat"%>
-<%@page import="Model.Goal"%>
-<%@page import="java.util.List"%>
-<%@page import="Controller.UserController"%>
-<%@page import="Model.User"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!-- Checks if a user is logged in, redirecting them to register/login page if not-->
-<%
-    UserController user = (UserController) session.getAttribute("user");
-    if (user == null) {
-        RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
-        rd.forward(request, response);
-    }
-%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,20 +44,19 @@
                         <a class="nav-link" href="#">WEBWMS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="faq.jsp">FAQ</a>
+                        <a class="nav-link" href="#">FAQ</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quick Select</a>
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Scroll To</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="smoothScroll dropdown-item" href="#moods">Track Mood</a>
-                            <a class="smoothScroll dropdown-item" href="#adventures">Choose Adventure</a>
-                            <a class="smoothScroll dropdown-item" href="#">Create Guild</a>
-                            <a class="smoothScroll dropdown-item" href="groups.jsp">Join Guild</a>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" action="Logout" method="GET">
-                    <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Log Out">
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="logout">Log out</button>
                 </form>
             </div>
         </nav>
@@ -84,21 +67,21 @@
                 <div id="heroCarousel" class="heroPic carousel slide col-xl-12" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid" src="images/hero1.jpg" alt="First slide">
+                            <img class="d-block img-fluid" src="/images/hero1.jpg" alt="First slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>"Before you can battle the Darklord you must first conquer your own demons"</h5>
                                 <p>- Shaky the Wise</p>
                             </div>
                         </div>
                         <div class="heroPic carousel-item">
-                            <img class="d-block img-fluid" src="images/hero2.jpg" alt="Second slide">
+                            <img class="d-block img-fluid" src="/images/hero2.jpg" alt="Second slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>"A true hero is someone who has looked at the Darkness inside themselves and defeated it with acceptance, calmness and positivity"</h5>
                                 <p>- Ali the Gay Cleric</p>
                             </div>
                         </div>
                         <div class="heroPic carousel-item">
-                            <img class="d-block img-fluid" src="images/hero3.jpg" alt="Third slide">
+                            <img class="d-block img-fluid" src="/images/hero3.jpg" alt="Third slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>"SMASH THE FUCKER!!"</h5>
                                 <p>- A Talking Bear</p>
@@ -269,7 +252,7 @@
 
             <!-----------------------------------Test Zone Start--------------------------------->
 
-            <div id="adventures" class="container">
+            <div class="container">
                 <div class="container p-5 text-center text-secondary">
                     <h1>
                         Choose your own Adventures.
@@ -448,20 +431,16 @@
         </main>
         <!-- /.container -->
 
+
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" 
-                integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" 
-        crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" 
-                integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" 
-        crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" 
-              integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" 
-              crossorigin="anonymous">
-        <script src="js/scripts.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <script src="js/script.js"></script>
 
 
 

@@ -208,11 +208,16 @@ body {
 
 #moods { 
     background-color: #F3A341; 
-} 
+}
+
+/*.moodModal img {  
+    opacity: 0.5;
+} */
 
 .moodModal img:hover { 
     cursor: pointer; 
-
+/*    opacity: 1;
+    transition: opacity 2s;*/
 } 
 
 .chart { 
