@@ -45,42 +45,41 @@ public class LoginServlet extends HttpServlet {
         // Stores any errors that occur for view to access
         Map<String, String> errorMessages = new HashMap();
         request.setAttribute("errorMessages", errorMessages);
-        
+
         // Retreives the data of a new user to register from form
         String userName = request.getParameter("userName").toLowerCase();
         String password = request.getParameter("password");
-        
+
         // Checks if username is valid
         if (userName == null || userName.trim().isEmpty()) {
             errorMessages.put("userNameLog", "Please enter a valid username.");
         } else if (password == null || password.trim().isEmpty()) {
             errorMessages.put("passwordLog", "Please enter a valid password.");
-        }
-        
-        // Registers user if no errors occur
-        if (errorMessages.isEmpty()) {
+        } else {
             // Get password stored in the database assosiated with username
             String hashedPass = DatabaseController.getPasswordForLogin(userName);
-            // Create empty user
-            UserController userController = null;
-            // Check if user exists
+
             if (hashedPass != null) {
                 // Check if password is correct
                 boolean passChk = AccessController.login(userName,
                         password, hashedPass);
-                if (passChk) {
-                    // Creates new user and logs them in
-                    userController
-                            = new UserController(DatabaseController.getUserByUsername(userName));
-                    userController.setProfile(DatabaseController.getUserProfile(userName));
-                } else {
-                    // TODO: error must be catched here
-                    System.err.println("Invalid Username or password!");
+                if (!passChk) {
+                    errorMessages.put("passwordLog", "Incorrect Password.");
                 }
             } else {
-                // TODO: error must be catched here
-                System.err.println("Invalid Username or password!");
+                errorMessages.put("userNameLog", "Username does not exist.");
             }
+        }
+
+        // Registers user if no errors occur
+        if (errorMessages.isEmpty()) {
+            
+            // Creates new user controller and logs them in
+            UserController userController
+                    = new UserController(DatabaseController.
+                            getUserByUsername(userName));
+            userController.setProfile(DatabaseController.
+                    getUserProfile(userName));
 
             // Creates a session for logged in user
             HttpSession session = request.getSession();

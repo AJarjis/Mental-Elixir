@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <div class="flex-container p-5" style="background-color: #F3A341">
+        <div id="loginPanel" class="flex-container p-5" style="background-color: #F3A341">
             <div class="container" style="width: 80%; background-color: #F3A341">
                 <div class="row justify-content-center">
                     <div class="col-sm-8 mb-5 ">
@@ -143,7 +143,7 @@
             </div>
         </div>
 
-        <div class="flex-container p-5" style="background-color: #FDFFFC">
+        <div id="registrationPanel" class="flex-container p-5" style="background-color: #FDFFFC">
             <div class="container" style="width: 80%; background-color: #FDFFFC">
                 <div class="row justify-content-center">
                     <div class="col-sm-8 mb-5 ">
