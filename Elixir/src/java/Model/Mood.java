@@ -23,7 +23,7 @@ public class Mood {
     /**
      * moodType: the mood that a user selects when they wish to post an update.
      */
-    private MoodTypes moodType;
+    private int moodType;
 
     /**
      * notes: any comments or thoughts the user would like to write which goes
@@ -42,7 +42,7 @@ public class Mood {
      * @param date
      *
      */
-    public Mood(MoodTypes moodType, Calendar date) {
+    public Mood(int moodType, Calendar date) {
 
         this.moodType = moodType;
         this.date = date;
@@ -54,7 +54,7 @@ public class Mood {
      * is making an entry into their profile
      * @param moodType 
      */
-    public Mood(MoodTypes moodType){
+    public Mood(int moodType){
         this.moodType = moodType;
     }
 
@@ -66,7 +66,7 @@ public class Mood {
      * @param notes
      *
      */
-    public Mood(MoodTypes moodType, Calendar date, String notes) {
+    public Mood(int moodType, Calendar date, String notes) {
 
         this.moodType = moodType;
         this.date = date;
@@ -77,7 +77,7 @@ public class Mood {
     /**
      * @return the moodType
      */
-    public MoodTypes getMoodType() {
+    public int getMoodType() {
         
         return moodType;
     }
@@ -85,7 +85,7 @@ public class Mood {
     /**
      * @param moodType the moodType to set
      */
-    public void setMoodType(MoodTypes moodType) {
+    public void setMoodType(int moodType) {
         
         this.moodType = moodType;
     }
@@ -128,7 +128,7 @@ public class Mood {
      */
     @Override
     public String toString(){
-        return "Mood: " + this.moodType.convertToString() 
+        return "Mood: " + this.moodType 
                 + "\nDate: " + (this.date != null ? this.date.toString() : "N/A") 
                 + "\nNotes: " + (this.notes != null ? this.notes : "N/A")
                 + "\n";
