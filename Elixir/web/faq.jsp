@@ -41,7 +41,7 @@
 
     <body>
 
-        <div id="navBarPlaceholder"></div>
+        <div id="navBarPlaceholder" class="naiveBar"></div>
 
         <main role="main" class="flex-container">
 
