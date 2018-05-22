@@ -105,6 +105,7 @@
               integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" 
               crossorigin="anonymous">
         <script src="js/scripts.js"></script>
+        <script src="js/chat.js"></script>
 
 
 

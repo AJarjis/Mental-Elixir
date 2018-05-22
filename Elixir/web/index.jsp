@@ -124,21 +124,21 @@
                 <div id="heroCarousel" class="heroPic carousel slide col-xl-12" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid" src="/images/hero1.jpg" alt="First slide">
+                            <img class="d-block img-fluid" src="images/hero1.jpg" alt="First slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>"Before you can battle the Darklord you must first conquer your own demons"</h5>
                                 <p>- Shaky the Wise</p>
                             </div>
                         </div>
                         <div class="heroPic carousel-item">
-                            <img class="d-block img-fluid" src="/images/hero2.jpg" alt="Second slide">
+                            <img class="d-block img-fluid" src="images/hero2.jpg" alt="Second slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>"A true hero is someone who has looked at the Darkness inside themselves and defeated it with acceptance, calmness and positivity"</h5>
                                 <p>- Ali the Gay Cleric</p>
                             </div>
                         </div>
                         <div class="heroPic carousel-item">
-                            <img class="d-block img-fluid" src="/images/hero3.jpg" alt="Third slide">
+                            <img class="d-block img-fluid" src="images/hero3.jpg" alt="Third slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>"SMASH THE FUCKER!!"</h5>
                                 <p>- A Talking Bear</p>
@@ -639,7 +639,7 @@
                                                 </button>
                                             </h5>
                                         </div>
-                                        <div id="<%=i%>" class="collapse show" aria-labelledby="<%=i%>" data-parent="#accordion">
+                                        <div id="<%=i%>" class="collapse" aria-labelledby="<%=i%>" data-parent="#accordion">
                                             <div class="card-body">
                                                 <div class="list-group">
                                                     <%  List<Activity> activities = g.getActivities();

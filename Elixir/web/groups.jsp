@@ -53,7 +53,6 @@
                 <div id="listOfGroups" class="row">
                     <% List<Group> groups = DatabaseController.getAllGroups();
                         for (Group group : groups) {%>
-<<<<<<< Updated upstream
                     <div class="col-md-6 groupCard">
                         <div class="card">
                             <div class="row">
@@ -67,25 +66,9 @@
                                     <!-- TODO: must pass a parameter saying what group this is -->
                                     <form action="JoinGroup" method="POST">
 
-                                        <input class="btn btn-outline-primary my-2 my-sm-0" id="joinGroup" type="submit" value="Join Group"></input>
+                                        <input class="btn btn-primary" id="joinGroup" name="<%=group.getGroupName()%>" type="submit" value="Join Group"></input>
                                     </form>
                                 </div>
-=======
-                    <div class="groupCard card">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <h2><% out.print(group.getGroupName()); %></h2>
-                                <p>
-                                    <% out.print(group.getDescription()); %>
-                                </p>
-                            </div>
-                            <div class="col-md-3">
-                                <form action="JoinGroup" method="POST">
-                                    
-                                    <input class="btn btn-primary" id="joinGroup" name="<%=group.getGroupName()%>" type="submit" value="Join Group"></input>
-                                    
-                                </form>
->>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>
