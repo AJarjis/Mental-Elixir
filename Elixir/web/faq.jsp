@@ -1,5 +1,19 @@
+<%@page import="Model.Activity"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="Model.Goal"%>
+<%@page import="java.util.List"%>
 <%@page import="Controller.UserController"%>
+<%@page import="Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!-- Checks if a user is logged in, redirecting them to register/login page if not-->
+<%
+    UserController user = (UserController) session.getAttribute("user");
+    if (user == null) {
+        RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
+        rd.forward(request, response);
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,50 +24,38 @@
         <meta name="author" content="">
         <link rel="icon" href="../../../../favicon.ico">
 
-        <title>elixir</title>
+        <title>FAQ's and Support</title>
 
         <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <!-- Custom styles -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
-        <style>
-            body {
 
-                padding-top: 65px;
-                background-color: #FDFFFC;
+        <!-- Custom styles for this template -->
+        <style type="text/css">
 
-            }
+
         </style>
-
-
     </head>
-    
-    
-    <% 
-        UserController user = (UserController) session.getAttribute("user");
-        if (user != null) { 
-            // TODO: Allow anyone to access this page, this code should be used to hide the logout button if they are not logged in
-        }
-    %>
 
 
     <body>
+
         <div id="navBarPlaceholder"></div>
 
-        <div class="d-flex align-items-stretch">
-            <div class="sidebar-right bg-secondary col-2 pt-5 d-none d-md-block">
-                <div class="card" style="text-align: center">
-                    <img class="card-img-top pt-4" src="images/contacts.svg" alt="Card image cap" style="height: 20vh; padding-bottom: 20px;">
-                    <h4 class="card-header"></h4>
-                    <div class="card-body">
-                        <div class="card-footer">
-                        </div>
-                    </div>
+        <main role="main" class="flex-container">
+
+            <div class="jumbotron jumbotron-fluid border-bottom" id="faqjumbo">
+                <div class="container">
+                    <img src="images/logo.svg" alt="logo" style="height: 10em">
+                    <h1>FAQ's and Support</h1>
+                    <h2>Here to answer your burning questions.</h2>
+                    <p>Please see below the most Frequently Asked Questions (FAQ) that Elixir is asked about types of mental health
+                    problems, with descriptions on each and links for more information and how to get help and support.</p>
                 </div>
             </div>
 
-
-            <div class="container">
+            <div class="row chart p-5 justify-content-center" id="faqbox">
 
                 <div class="wrap-collabsible">
                     <input id="collapsible1" class="toggle" type="checkbox">
@@ -70,7 +72,7 @@
                                         <li>Anger</li>
                                         <li>Anxiety and Panic Attacks</li>
                                         <li>Depression</li>
-                                        <li>Lonliness</li>
+                                        <li>Loneliness</li>
                                         <li>Phobias</li>
                                         <li>Post Traumatic Stress Disorder (PTSD)</li>
                                         <li>Self Harm/Suicidal Thoughts</li>
@@ -147,16 +149,16 @@
                         </div>
             
                     <input id="collapsible5" class="toggle" type="checkbox">
-                    <label for="collapsible5" class="lbl-toggle">What is Lonliness?</label>
+                    <label for="collapsible5" class="lbl-toggle">What is Loneliness?</label>
                         <div class="collapsible-content">
                             <div class="content-inner">
                                 <p>
                                     <a href="https://www.mind.org.uk/information-support/tips-for-everyday-
-                                       living/loneliness/loneliness/?o=6287#.Wv7M2PZFykQ">Lonliness</a> isn't 
+                                       living/loneliness/loneliness/?o=6287#.Wv7M2PZFykQ">Loneliness</a> isn't 
                                        something that is directly considered as a mental health issue, however 
                                        it is something that affects many people and can lead onto mental health 
                                        issues, like those mentioned in the FAQs here. Following the link will
-                                       transport you to a wide range of detailed information on lonliness, 
+                                       transport you to a wide range of detailed information on loneliness, 
                                        covering the following topics:
                                     <ul>
                                         <li>Why do I feel lonely?</li>
@@ -168,7 +170,7 @@
                                         <li>Reading other Stories</li>
                                     </ul> 
                                     If you have are feeling lonely and looking for professional advice and support 
-                                    on any of the above topics to do with lonliness, then the above link is the place to follow!
+                                    on any of the above topics to do with loneliness, then the above link is the place to follow!
                                 </p>
                             </div>
                         </div>
@@ -264,11 +266,35 @@
                                 </p>
                             </div>
                         </div>
+                    </div>
             </div>
-        </div>
 
+            <div class="flex-container pt-5 text-center">
+                <img src="images/heroes.jpeg" style="width: 100%;">
+            </div>
+
+            <div class="flex-container" style="background-color: #011627">
+                <!--Footer-->
+                <footer class="page-footer font-small blue pt-4 mt-4">
+
+                    <!--Footer Links-->
+
+                    <!--/.Footer Links-->
+
+                    <!--Copyright-->
+                    <div class="footer-copyright py-3 text-center" style="color : white;">
+                        © 2018 Copyright:
+                        <a href="https://mentalelixir.co.uk"> MentalElixir.co.uk </a>
+                    </div>
+                    <!--/.Copyright-->
+
+                </footer>
+                <!--/.Footer-->
+            </div>
+
+
+        </main>
         <!-- /.container -->
-
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
@@ -284,6 +310,8 @@
               integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" 
               crossorigin="anonymous">
         <script src="js/scripts.js"></script>
+
+
 
 
     </body>

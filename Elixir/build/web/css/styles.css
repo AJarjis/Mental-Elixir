@@ -33,21 +33,24 @@ input[type='checkbox'] {
     font-family: monospace;
     font-size: 1.2rem;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
 
     padding: 1rem;
+    margin: 0.5rem;
 
     color: #ffffff;
-    background: #000000;
+    background: #80bfff;
 
     cursor: pointer;
 
-    border-radius: 7px;
+    border-radius: 20px;
     transition: all 0.25s ease-out;
 }
 
 .lbl-toggle:hover {
-    color: #00cc00;
+    -webkit-box-shadow: 2px 5px 5px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 2px 5px 5px 0px rgba(0,0,0,1);
+    box-shadow: 2px 5px 5px 0px rgba(0,0,0,1);
 }
 
 .lbl-toggle::before {
@@ -224,6 +227,12 @@ body {
     background-color: #ffdfb3; 
 }
 
+#faqbox {
+    background-color: #ffffff;   
+    margin-left: 15rem;
+    margin-right: 15rem;
+}
+
 .fade-in {
   visibility: visible;
   opacity: 1;
@@ -305,6 +314,10 @@ body {
     text-align: center;
     background-color: white;
     color: grey;
+}
+
+#faqjumbo {
+    background-color: #ffffff;
 }
 
 .jumbotron h1 {
