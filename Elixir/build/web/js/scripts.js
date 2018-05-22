@@ -192,3 +192,7 @@ function addMessageToListDOM(text, member) {
         el.scrollTop = el.scrollHeight - el.clientHeight;
     }
 }
+$('#carouselExampleSlidesOnly').carousel({
+    pause: true,
+    interval: false
+});

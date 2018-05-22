@@ -1,34 +1,7 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/roadk/Desktop/SoftDev/softwaredev-code/Elixir/src/java/Model/Group.java</file>
-            <file>file:/C:/Users/roadk/Desktop/SoftDev/softwaredev-code/Elixir/src/java/Servlets/JoinGroup.java</file>
-            <file>file:/C:/Users/roadk/Desktop/SoftDev/softwaredev-code/Elixir/web/createGroup.jsp</file>
-            <file>file:/C:/Users/roadk/Desktop/SoftDev/softwaredev-code/Elixir/src/java/Servlets/LoginServlet.java</file>
-            <file>file:/C:/Users/roadk/Desktop/SoftDev/softwaredev-code/Elixir/src/java/Controller/GroupController.java</file>
-            <file>file:/C:/Users/roadk/Desktop/SoftDev/softwaredev-code/Elixir/web/index.jsp</file>
-            <file>file:/C:/Users/roadk/Desktop/SoftDev/softwaredev-code/Elixir/src/java/Servlets/CreateGroup.java</file>
-            <file>file:/C:/Users/roadk/Desktop/SoftDev/softwaredev-code/Elixir/src/java/Controller/DatabaseController.java</file>
-            <file>file:/C:/Users/roadk/Desktop/SoftDev/softwaredev-code/Elixir/web/groups.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/src/java/Controller/DatabaseController.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/src/java/Servlets/LogoutServlet.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/src/java/Servlets/RegisterUserServlet.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/web/registration.jsp</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/web/index.jsp</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/src/java/Servlets/LoginServlet.java</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> master
