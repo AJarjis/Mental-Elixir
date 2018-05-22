@@ -22,11 +22,11 @@
     }
 %>
 <!DOCTYPE html>
-<div>
+<head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
         <canvas id="myChart" max-width="450" max-height="225">    
         </canvas>
     </div>
@@ -140,4 +140,3 @@
     --->
 
 </body>
-</div>

@@ -61,3 +61,6 @@ $('#carouselExampleSlidesOnly').carousel({
     pause: true,
     interval: false
 });
+       $(function(){
+      $("#chartDiv").load("chart.jsp"); 
+    });

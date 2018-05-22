@@ -31,6 +31,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script> 
+  
 
         <!-- Custom styles for this template -->
         <style type="text/css">
@@ -314,7 +315,7 @@
                     </div>
                 </div>
                 <div class="row chart p-5 justify-content-center">
-                    <canvas id="line-chart"></canvas>
+                    <div id="chartDiv"></div>
                 </div>
             </div>
 
