@@ -14,12 +14,12 @@
 <%@page import="Controller.UserController"%>
 <%@page import="Controller.DatabaseController"%>
 <%
-    //UserController user = (UserController) session.getAttribute("user");
-    /*
+    UserController user = (UserController) session.getAttribute("user");
+    
     if (user == null) {
         RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
         rd.forward(request, response);
-    }*/
+    }
 %>
 <!DOCTYPE html>
 <div>
@@ -58,18 +58,18 @@
         value.getChars(5, 7, month, 0);
         value.getChars(8, 10, day, 0);
         cal.set(Integer.parseInt(String.valueOf(year)),
-                Integer.parseInt(String.valueOf(month)),
+                Integer.parseInt(String.valueOf(month))-1,
                 Integer.parseInt(String.valueOf(day)));
 
         valueTo.getChars(0, 4, year, 0);
         valueTo.getChars(5, 7, month, 0);
         valueTo.getChars(8, 10, day, 0);
         calTo.set(Integer.parseInt(String.valueOf(year)),
-                Integer.parseInt(String.valueOf(month)),
+                Integer.parseInt(String.valueOf(month))-1,
                 Integer.parseInt(String.valueOf(day)));
         List<Mood> moods = new LinkedList<Mood>();
         //This is the bit that doesn't work.
-        moods = DatabaseController.getMoodsBetweenDates("john", cal, calTo);
+        moods = DatabaseController.getMoodsBetweenDates(user.getUserName(), cal, calTo);
         ArrayList<Integer> data = new ArrayList<Integer>();
         for(Mood mood : moods)
         {
@@ -79,15 +79,16 @@
     %>
     <!-- prints the cals for debugging -->
     <p> <%=data%> </p>
+    <p> <%=cal.getTime()%> </p>
     <p> <%=calTo.getTime()%> </p>
     <script>
         new Chart(document.getElementById("myChart"), {
             type: 'line',
             data: {
-                labels: ["15/6", "16/6", "17/6", "18/6", "19/6", "20/6", "20/6", "21/6", "22/6", "23/6"],
+                //labels: ["15/6", "16/6", "17/6", "18/6", "19/6", "20/6", "20/6", "21/6", "22/6", "23/6"],
                 datasets: [{
                         data: <%=data%>,
-                        label: "Fear",
+                        //label: "Fear",
                         borderColor: "#3e95cd",
                         fill: false
                     }
@@ -96,16 +97,30 @@
             options: {
                 scales: {
                     xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Time'
+                            },
                             gridLines: {
                                 drawOnChartArea: false
                             }
                         }],
                     yAxes: [{
+                            ticks: {
+                                display: false
+                                    },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Contentment'
+                            },
                             gridLines: {
                                 drawOnChartArea: false
                             }
                         }]
-                }
+                },
+                legend: {
+                    display: false
+                    }
 
             }
         });
