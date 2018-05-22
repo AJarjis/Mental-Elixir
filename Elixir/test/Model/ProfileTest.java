@@ -270,8 +270,8 @@ public class ProfileTest {
         actList2.add(act22);
         Calendar date2 = Calendar.getInstance();
         date2.set(2018, 06, 06, 5, 15, 10);
-        Goal g2 = new Goal(actList2, date2);
-        goals.add(g1);
+        Goal g3 = new Goal(actList2, date2);
+        goals.add(g3);
         goals.add(g2);
         List<Mood> moods = new LinkedList<>();
         List<Assessment> asmts = new LinkedList<>();
