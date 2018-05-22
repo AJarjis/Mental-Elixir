@@ -48,6 +48,8 @@ public class DatabaseController {
             pool.setJdbcUrl(URL);
             pool.setUser(USER);   
             pool.setPassword(PASS);
+            pool.setMaxPoolSize(20);
+            pool.setMinPoolSize(2);
             System.out.println("STUFF IN STATIC");
         } catch (PropertyVetoException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());

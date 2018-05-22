@@ -122,20 +122,4 @@ public class Group {
     public boolean removeMember(User user){
         return this.members.remove(user);
     }
-    
-    @Override
-    public String toString(){
-        return "\nGroup Name: " + this.groupName
-                + "\nGroup Description: " + this.description
-                + "\nGroup Leader: " + this.creator.getUserName() + "\n";
-    }
-    
-    /**
-     * Method that should allow the user to share group with other users
-     * Need more clarifications on the vision on this.
-     * @param email 
-     */
-//    public void shareGroup(Email email){
-//        //Needs to be developed later
-//    }
 }
