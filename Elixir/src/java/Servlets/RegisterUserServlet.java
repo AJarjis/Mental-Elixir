@@ -55,6 +55,7 @@ public class RegisterUserServlet extends HttpServlet {
             String surname = request.getParameter("surname");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
+            String cPassword = request.getParameter("confirmPassword");
 
             // Error checking for registration
             if (userName == null || userName.trim().isEmpty()) {
@@ -69,6 +70,8 @@ public class RegisterUserServlet extends HttpServlet {
                 errorMessages.put("email", "Please enter a valid email.");
             } else if (password == null || password.trim().isEmpty()) {
                 errorMessages.put("password", "Please enter a valid password.");
+            } else if (!password.trim().equals(cPassword.trim())) {
+                errorMessages.put("confirmPassword", "Passwords must match.");
             }
 
             // Checks if no errors have occured, refreshing page if they have
@@ -112,8 +115,7 @@ public class RegisterUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("errorMessages", null);
-        RequestDispatcher rd = request.getRequestDispatcher("registration.jsp");
-        rd.forward(request, response);
+        request.getRequestDispatcher("registration.jsp").forward(request, response);
     }
 
     /**

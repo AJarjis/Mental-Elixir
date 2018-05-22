@@ -10,30 +10,11 @@ public enum MoodTypes {
     
     /**
      * Used to convert mood type enum to string
+     * 
      * @return string that represents the enum
      */
-    public String convertToString(){
-        switch (this) {
-            case Fear:
-                return "Fear";
-            case Anger:
-                return "Anger"; 
-            case Sadness:
-                return "Sadness";
-            case Joy:
-                return "Joy";
-            case Disgust:
-                return "Disgust";
-            case Surprise:
-                return "Surprise";
-            case Trust:
-                return "Trust";
-            case Anticipation:
-                return "Anticipation";    
-            default:
-                //Shouldnt reach this
-                return "ERROR: NO ENUM! in MoodTypes";
-         }
+    public String toString(){
+        return this.name();
     }
     
     /**

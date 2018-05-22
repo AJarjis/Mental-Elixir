@@ -1,8 +1,9 @@
 <%@page import="Controller.UserController"%>
 <%@page import="Model.User"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,34 +11,15 @@
         <meta name="author" content="">
         <link rel="icon" href="../../../../favicon.ico">
 
-        <title>elixir</title>
+        <title>elixir - The Health Potion for the Mind.</title>
 
         <!-- Bootstrap core CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
-        <style>
-            body {
 
-                padding-top: 65px;
-                background-color: #FDFFFC;
-
-            }
-
-            .navbar-expand-md {
-                box-shadow: 2px 2px 10px #000000;
-            }
-
-            h5 {
-                color: white;
-            }
-
-            label {
-                color: white;
-            }
-            .inputError {
-                color: red;
-            }
+        <!-- Custom styles for this template -->
+        <style type="text/css">
 
         </style>
     </head>
@@ -53,195 +35,184 @@
 
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #FDFFFC">
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+
             <span id="title" class="navbar-text" style="font-size: 30px">elixir</span>
             <a class="navbar-brand" href="#">
                 <img src="images/logo.svg" alt="logo" style="height: 40px">
             </a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-
-
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <span class="navbar-text">A health potion for the mind.</span>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link justify-content-end" href="#">
-                            <img class="img-fluid" src="images/home.svg" style="height: 30px" alt="home icon" >
-
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img class="img-fluid" src="images/account.svg" style="height: 30px" alt="Account icon">
-
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="img-fluid" src="images/goals.svg" style="height: 30px" alt="Activities icon">
-
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="#">Activities</a>
-                            <a class="dropdown-item" href="#">Goals</a>
-                            <a class="dropdown-item" href="#">Mood Assessment</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="http://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="img-fluid" src="images/contacts.svg" style="height: 30px" alt="Activities icon">
-
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown02">
-                            <a class="dropdown-item" href="#">Advice & Support</a>
-                            <a class="dropdown-item" href="#">Report a Bug.</a>
-                        </div>
-                    </li>
-                </ul>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+               
             </div>
         </nav>
 
-        <div class="flex-container p-5 text-center" style="background-color: #2EC4B6">
-            <img src="images/logo_white.svg" style="height : 18em; background-color: #2EC4B6">
-            <div class="flex-container">
-                <span class="flex" style="font-size: 8em; color: white">elixir</span>
-                <div class="flex-container">
-                    <span class="flex" style="font-size: 3em; color: white">Welcome to elixir, the health potion for the mind.</span>
-                </div>
-                <div class="flex-container p-5">
-                    <span class="flex" style="font-size: 1.5em; color: white">You can sign back in below if you have already started using elixir, otherwise register underneath to join the rather small number of people who are now using elixir to track their mental wellbeing </span>
-                </div>
-            </div>
-        </div>
+        <main role="main" class="flex-container">
 
-        <div id="loginPanel" class="flex-container p-5" style="background-color: #F3A341">
-            <div class="container" style="width: 80%; background-color: #F3A341">
-                <div class="row justify-content-center">
-                    <div class="col-sm-8 mb-5 ">
-                        <div class="card-body">
-                            <h5>Existing User:</h5>
-                            <form action="Login" method="POST">
-                                <div class="form-group">
-                                    <label for="userName">Username:</label>
-                                    <input type="text" class="form-control" id="userName" name="userName">
-                                    <span class="inputError">${errorMessages.userNameLog}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password:</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                    <span class="inputError">${errorMessages.passwordLog}</span>
-                                </div>
-                                <input class="btn btn-primary" type="submit" value="Login">
-                            </form>
+            <div class="row d-xl-none">
+                <div id="heroCarousel" class="carousel slide col-xl-12" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="images/hero1.jpg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>"Before you can battle the Darklord you must first conquer your own demons"</h5>
+                                <p>- Shaky the Wise</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="images/hero2.jpg" alt="Second slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>"A true hero is someone who has looked at the Darkness inside themselves and defeated it with acceptance, calmness and positivity"</h5>
+                                <p>- Ali the Gay Cleric</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="images/hero3.jpg" alt="Third slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>"SMASH THE FUCKER!!"</h5>
+                                <p>- A Talking Bear</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div style="background-color: white">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <img src="images/logo.svg" alt="logo" style="height: 10em">
+                        <h1>elixir</h1>
+                        <h2>Welcome to elixir, the health potion for the mind.</h2>
+                        <p>You can sign back in below if you have already started using elixir, otherwise register underneath to join the rather small number of people who are now using elixir to track their mental wellbeing</p>
+                    </div>
+                </div>
 
-        <div id="registrationPanel" class="flex-container p-5" style="background-color: #FDFFFC">
-            <div class="container" style="width: 80%; background-color: #FDFFFC">
-                <div class="row justify-content-center">
-                    <div class="col-sm-8 mb-5 ">
-                        <div class="card-body">
-                            <span>${errorMessages.errorMain}</span>
-                            <h5 style="color: gray">Register New User:</h5>
-                            <form action="RegisterUser" method="POST">
-                                <div class="form-group">
-                                    <label style="color: gray" for="userName">Username:</label>
-                                    <input type="text" class="form-control" id="userName" name="userName">
-                                    <span class="inputError">${errorMessages.userName}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label style="color: gray" for="firstName">First Name:</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName">
-                                    <span class="inputError">${errorMessages.firstName}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label style="color: gray" for="surname">Surname:</label>
-                                    <input type="text" class="form-control" id="surname" name="surname">
-                                    <span class="inputError">${errorMessages.surname}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label style="color: gray" for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email" name="email">
-                                    <span class="inputError">${errorMessages.email}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label style="color: gray" for="password">Password:</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                    <span class="inputError">${errorMessages.password}</span>
-                                </div>
-                                <input style="color: white" class="btn btn-primary" type="submit" value="Register User">
-                            </form>
+
+                <div class="flex-container b-3 pb-5" id="loginArea">
+                    <div class="login-register-form-section p-5">
+                        <ul class="nav nav-tabs justify-content-around">
+                            <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+                            <li><a href="#register" data-toggle="tab">Register</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade show active" id="login">
+                                <form class="form-horizontal" action="Login" method="POST">
+                                    <div class="form-group ">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-user"></i><span class="form-label">Username</span></div>
+                                            <input type="text" class="form-control" placeholder="Username" required="required" value="" name="userNameLog">
+                                            <span class="inputError">${errorMessages.userNameLog}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-key"></i><span class="form-label">Password</span></div>
+                                            <input type="password" class="form-control" placeholder="Password" required="required" name="passwordLog">
+                                            <span class="inputError">${errorMessages.passwordLog}</span>
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Login" class="btn btn-success btn-custom ">
+
+                                </form>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="register">
+                                <form class="form-horizontal" method="post" action="RegisterUser">
+                                    <span>${errorMessages.errorMain}</span>
+                                    <div class="form-group ">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-user"></i><span class="form-label">Username</span></div>
+                                            <input type="text" name="userName" class="form-control" placeholder="Username" required="required" value="">
+                                            <span class="inputError">${errorMessages.userName}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-male"></i><span class="form-label">First Name</span></div>
+                                            <input type="text" name="firstName" class="form-control" placeholder="First name" required="required" value="">
+                                            <span class="inputError">${errorMessages.firstName}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-male"></i><span class="form-label">Surname</span></div>
+                                            <input type="text" name="surname" class="form-control" placeholder="Surname" required="required" value="">
+                                            <span class="inputError">${errorMessages.surname}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-envelope"></i><span class="form-label">Email</span></div>
+                                            <input type="email" name="email" class="form-control" placeholder="Email" required="required" value="">
+                                            <span class="inputError">${errorMessages.email}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-lock"></i><span class="form-label">Password</span></div>
+                                            <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+                                            <span class="inputError">${errorMessages.password}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-lock"></i><span class="form-label">Confirm Password</span></div>
+                                            <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" required="required">
+                                            <span class="inputError">${errorMessages.confirmPassword}</span>
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Register" class="btn btn-success btn-custom">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="flex-container" style="background-color: #011627">
-            <!--Footer-->
-            <footer class="page-footer font-small blue pt-4 mt-4">
+            <div class="flex-container text-center">
+                <img src="images/heroes.jpeg" style="width: 100%;">
+            </div>
 
-                <!--Footer Links-->
-                <div class="container-fluid text-center text-md-left">
-                    <div class="row">
+            <div class="flex-container" style="background-color: #011627">
+                <!--Footer-->
+                <footer class="page-footer font-small blue pt-4 mt-4">
 
-                        <!--First column-->
-                        <div class="col-md-6">
+                    <!--Footer Links-->
 
-                        </div>
-                        <!--/.First column-->
+                    <!--/.Footer Links-->
 
-                        <!--Second column-->
-                        <!-- <div class="col-md-6">
-                    <h5 class="text-uppercase">Links</h5>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!">Link 4</a>
-                        </li>
-                    </ul>
-                </div> -->
-                        <!--/.Second column-->
+                    <!--Copyright-->
+                    <div class="footer-copyright py-3 text-center" style="color : white;">
+                        © 2018 Copyright:
+                        <a href="https://mentalelixir.co.uk"> MentalElixir.co.uk </a>
                     </div>
-                </div>
-                <!--/.Footer Links-->
+                    <!--/.Copyright-->
 
-                <!--Copyright-->
-                <div class="footer-copyright py-3 text-center" style="color : white;">
-                    Â© 2018 Copyright:
-                    <a href="https://mentalelixir.co.uk"> MentalElixir.co.uk </a>
-                </div>
-                <!--/.Copyright-->
-
-            </footer>
-            <!--/.Footer-->
-        </div>
+                </footer>
+                <!--/.Footer-->
+            </div>
 
 
-
+        </main>
         <!-- /.container -->
 
 
         <!-- Bootstrap core JavaScript
-            ================================================== -->
+        ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" 
+                integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" 
+        crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" 
+                integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" 
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" 
+              integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" 
+              crossorigin="anonymous">
+        <script src="js/scripts.js"></script>
+
     </body>
 
 </html>
