@@ -20,27 +20,27 @@ import static org.junit.Assert.*;
  * @author kyklos
  */
 public class ProfileTest {
-    
+
     public ProfileTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-    public Profile setUpProfile(){
+    public Profile setUpProfile() {
         List<Goal> goals = new LinkedList<>();
         Activity act1 = new Activity(ActivityTypes.Body, "cool stuff");
         Activity act2 = new Activity(ActivityTypes.Love, "cool with love");
@@ -60,8 +60,7 @@ public class ProfileTest {
         Goal g2 = new Goal(actList2, date2);
         goals.add(g1);
         goals.add(g2);
-        
-        
+
         List<Mood> moods = new LinkedList<>();
         Calendar date11 = Calendar.getInstance();
         date11.set(2018, 6, 12, 12, 12, 12);
@@ -69,8 +68,7 @@ public class ProfileTest {
         Mood m2 = new Mood(2, date11, "was ok");
         moods.add(m1);
         moods.add(m2);
-        
-        
+
         List<Assessment> asmts = new LinkedList<>();
         Calendar date22 = Calendar.getInstance();
         date22.set(2018, 06, 06);
@@ -80,8 +78,7 @@ public class ProfileTest {
         Assessment a2 = new Assessment(14, date33);
         asmts.add(a1);
         asmts.add(a2);
-        
-        
+
         List<Group> ownedGroups = new LinkedList<>();
         User u1 = new User("moo", "foo", "doo", "noo@noo.com", "www");
         User u2 = new User("okok", "fitch", "mitch", "noo@go.com", "ewq");
@@ -91,7 +88,7 @@ public class ProfileTest {
         uList.add(u2);
         Group group = new Group("cool group", "cool users only", u3, uList);
         ownedGroups.add(group);
-        
+
         List<Group> partGroups = new LinkedList<>();
         User u11 = new User("OkGS", "foo", "doo", "noo@noo.com", "www");
         User u22 = new User("JoHs", "fitch", "mitch", "noo@go.com", "ewq");
@@ -101,10 +98,11 @@ public class ProfileTest {
         uList2.add(u22);
         Group group2 = new Group(" other cool group", " other cool users only", u33, uList2);
         partGroups.add(group2);
-        
+
         Profile p = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         return p;
     }
+
     @Test
     public void testGetGoal() {
         List<Goal> goals = new LinkedList<>();
@@ -126,12 +124,12 @@ public class ProfileTest {
         Goal g2 = new Goal(actList2, date2);
         goals.add(g1);
         goals.add(g2);
-        
+
         List<Mood> moods = new LinkedList<>();
         List<Assessment> asmts = new LinkedList<>();
         List<Group> ownedGroups = new LinkedList<>();
         List<Group> partGroups = new LinkedList<>();
-        
+
         System.out.println("getGoal");
         Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         List<Goal> expResult = goals;
@@ -156,8 +154,7 @@ public class ProfileTest {
         List<Assessment> asmts = new LinkedList<>();
         List<Group> ownedGroups = new LinkedList<>();
         List<Group> partGroups = new LinkedList<>();
-        
-        
+
         Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         List<Mood> expResult = moods;
         List<Mood> result = instance.getMood();
@@ -183,7 +180,7 @@ public class ProfileTest {
         asmts.add(a2);
         List<Group> ownedGroups = new LinkedList<>();
         List<Group> partGroups = new LinkedList<>();
-        
+
         Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         List<Assessment> expResult = asmts;
         List<Assessment> result = instance.getAssessment();
@@ -239,7 +236,7 @@ public class ProfileTest {
         List<Group> expResult = partGroups;
         List<Group> result = instance.getPartOfGroups();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -255,9 +252,8 @@ public class ProfileTest {
         actListTest.add(testAct2);
         Calendar datetest = Calendar.getInstance();
         datetest.set(2018, 06, 06, 5, 15, 10);
-        Goal g1 = new Goal(actListTest, datetest);
-        Goal goal = null;
-        
+        Goal goal = new Goal(actListTest, datetest);
+
         List<Goal> goals = new LinkedList<>();
         Activity act1 = new Activity(ActivityTypes.Body, "cool stuff");
         Activity act2 = new Activity(ActivityTypes.Love, "cool with love");
@@ -281,11 +277,11 @@ public class ProfileTest {
         List<Assessment> asmts = new LinkedList<>();
         List<Group> ownedGroups = new LinkedList<>();
         List<Group> partGroups = new LinkedList<>();
-        
+
         Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         instance.addGoal(goal);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        assertTrue(instance.getGoal().contains(goal));
     }
 
     /**
@@ -294,11 +290,35 @@ public class ProfileTest {
     @Test
     public void testSetGoal() {
         System.out.println("setGoal");
-        List<Goal> goal = null;
-        Profile instance = new Profile();
-        instance.setGoal(goal);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Goal> goals2 = new LinkedList<>();
+        Activity act1 = new Activity(ActivityTypes.Body, "cool stuff");
+        Activity act2 = new Activity(ActivityTypes.Love, "cool with love");
+        List<Activity> actList1 = new LinkedList<>();
+        actList1.add(act1);
+        actList1.add(act2);
+        Calendar date1 = Calendar.getInstance();
+        date1.set(2018, 06, 06, 5, 15, 10);
+        Goal g1 = new Goal(actList1, date1);
+        Activity act11 = new Activity(ActivityTypes.Body, "other cool stuff");
+        Activity act22 = new Activity(ActivityTypes.Love, "other cool with love");
+        List<Activity> actList2 = new LinkedList<>();
+        actList2.add(act11);
+        actList2.add(act22);
+        Calendar date2 = Calendar.getInstance();
+        date2.set(2018, 06, 06, 5, 15, 10);
+        Goal g2 = new Goal(actList2, date2);
+        goals2.add(g1);
+        goals2.add(g2);
+
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
+        instance.setGoal(goals2);
+
+        assertTrue(instance.getGoal().containsAll(goals2));
     }
 
     /**
@@ -307,13 +327,36 @@ public class ProfileTest {
     @Test
     public void testRemoveGoal() {
         System.out.println("removeGoal");
-        Goal goal = null;
-        Profile instance = new Profile();
-        boolean expResult = false;
-        boolean result = instance.removeGoal(goal);
+        List<Goal> goals = new LinkedList<>();
+        Activity act1 = new Activity(ActivityTypes.Body, "cool stuff");
+        Activity act2 = new Activity(ActivityTypes.Love, "cool with love");
+        List<Activity> actList1 = new LinkedList<>();
+        actList1.add(act1);
+        actList1.add(act2);
+        Calendar date1 = Calendar.getInstance();
+        date1.set(2018, 06, 06, 5, 15, 10);
+        Goal g1 = new Goal(actList1, date1);
+        Activity act11 = new Activity(ActivityTypes.Body, "other cool stuff");
+        Activity act22 = new Activity(ActivityTypes.Love, "other cool with love");
+        List<Activity> actList2 = new LinkedList<>();
+        actList2.add(act11);
+        actList2.add(act22);
+        Calendar date2 = Calendar.getInstance();
+        date2.set(2018, 06, 06, 5, 15, 10);
+        Goal g2 = new Goal(actList2, date2);
+        goals.add(g1);
+        goals.add(g2);
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
+
+        boolean expResult = true;
+        boolean result = instance.removeGoal(g1);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -322,11 +365,19 @@ public class ProfileTest {
     @Test
     public void testAddMood() {
         System.out.println("addMood");
-        Mood mood = null;
-        Profile instance = new Profile();
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        Calendar date11 = Calendar.getInstance();
+        date11.set(2018, 6, 12, 12, 12, 12);
+        Mood mood = new Mood(5, date11, "was good");
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         instance.addMood(mood);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        assertTrue(instance.getMood().contains(mood));
     }
 
     /**
@@ -335,11 +386,24 @@ public class ProfileTest {
     @Test
     public void testSetMood() {
         System.out.println("setMood");
-        List<Mood> mood = null;
-        Profile instance = new Profile();
-        instance.setMood(mood);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Mood> moodTest = new LinkedList<>();
+        Calendar date11 = Calendar.getInstance();
+        date11.set(2018, 6, 12, 12, 12, 12);
+        Mood m1 = new Mood(5, date11, "was good");
+        Mood m2 = new Mood(2, date11, "was ok");
+        moodTest.add(m1);
+        moodTest.add(m2);
+
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
+        instance.setMood(moodTest);
+
+        assertEquals(instance.getMood(), moodTest);
     }
 
     /**
@@ -348,13 +412,23 @@ public class ProfileTest {
     @Test
     public void testRemoveMood() {
         System.out.println("removeMood");
-        Mood mood = null;
-        Profile instance = new Profile();
-        boolean expResult = false;
-        boolean result = instance.removeMood(mood);
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        Calendar date11 = Calendar.getInstance();
+        date11.set(2018, 6, 12, 12, 12, 12);
+        Mood m1 = new Mood(5, date11, "was good");
+        Mood m2 = new Mood(2, date11, "was ok");
+        moods.add(m1);
+        moods.add(m2);
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
+        boolean expResult = true;
+        boolean result = instance.removeMood(m1);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -363,11 +437,19 @@ public class ProfileTest {
     @Test
     public void testAddAssessment() {
         System.out.println("addAssessment");
-        Assessment assessment = null;
-        Profile instance = new Profile();
-        instance.addAssessment(assessment);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Calendar date22 = Calendar.getInstance();
+        date22.set(2018, 06, 06);
+        Assessment a1 = new Assessment(14, date22);
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
+        instance.addAssessment(a1);
+        assertTrue(instance.getAssessment().contains(a1));
     }
 
     /**
@@ -376,11 +458,22 @@ public class ProfileTest {
     @Test
     public void testSetAssessment() {
         System.out.println("setAssessment");
-        List<Assessment> assessment = null;
-        Profile instance = new Profile();
+        List<Assessment> assessment = new LinkedList<>();
+        Calendar date22 = Calendar.getInstance();
+        date22.set(2018, 06, 06);
+        Assessment a1 = new Assessment(14, date22);
+        assessment.add(a1);
+
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         instance.setAssessment(assessment);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        assertEquals(instance.getAssessment(), assessment);
     }
 
     /**
@@ -389,13 +482,23 @@ public class ProfileTest {
     @Test
     public void testRemoveAssessment() {
         System.out.println("removeAssessment");
-        Assessment assessment = null;
-        Profile instance = new Profile();
-        boolean expResult = false;
-        boolean result = instance.removeAssessment(assessment);
+
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Calendar date22 = Calendar.getInstance();
+        date22.set(2018, 06, 06);
+        Assessment a1 = new Assessment(14, date22);
+        asmts.add(a1);
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
+        boolean expResult = true;
+        boolean result = instance.removeAssessment(a1);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -404,11 +507,25 @@ public class ProfileTest {
     @Test
     public void testAddOwnedGroup() {
         System.out.println("addOwnedGroup");
-        Group group = null;
-        Profile instance = new Profile();
+        User u1 = new User("moo", "foo", "doo", "noo@noo.com", "www");
+        User u2 = new User("okok", "fitch", "mitch", "noo@go.com", "ewq");
+        User u3 = new User("moo", "foo", "doo", "goo@mo.com", "qwe");
+        List<User> uList = new LinkedList<>();
+        uList.add(u1);
+        uList.add(u2);
+        Group group = new Group("cool group", "cool users only", u3, uList);
+
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         instance.addOwnedGroup(group);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        assertTrue(instance.getOwnedGroups().contains(group));
+
     }
 
     /**
@@ -417,11 +534,26 @@ public class ProfileTest {
     @Test
     public void testSetOwnedGroups() {
         System.out.println("setOwnedGroups");
-        List<Group> group = null;
-        Profile instance = new Profile();
+        List<Group> group = new LinkedList<>();
+        User u1 = new User("moo", "foo", "doo", "noo@noo.com", "www");
+        User u2 = new User("okok", "fitch", "mitch", "noo@go.com", "ewq");
+        User u3 = new User("moo", "foo", "doo", "goo@mo.com", "qwe");
+        List<User> uList = new LinkedList<>();
+        uList.add(u1);
+        uList.add(u2);
+        Group g = new Group("cool group", "cool users only", u3, uList);
+        group.add(g);
+
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         instance.setOwnedGroups(group);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        assertEquals(instance.getOwnedGroups(), group);
     }
 
     /**
@@ -430,13 +562,26 @@ public class ProfileTest {
     @Test
     public void testRemoveOwnedGroup() {
         System.out.println("removeOwnedGroup");
-        Group group = null;
-        Profile instance = new Profile();
-        boolean expResult = false;
-        boolean result = instance.removeOwnedGroup(group);
+
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        User u1 = new User("moo", "foo", "doo", "noo@noo.com", "www");
+        User u2 = new User("okok", "fitch", "mitch", "noo@go.com", "ewq");
+        User u3 = new User("moo", "foo", "doo", "goo@mo.com", "qwe");
+        List<User> uList = new LinkedList<>();
+        uList.add(u1);
+        uList.add(u2);
+        Group g = new Group("cool group", "cool users only", u3, uList);
+        ownedGroups.add(g);
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
+        boolean expResult = true;
+        boolean result = instance.removeOwnedGroup(g);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -445,11 +590,24 @@ public class ProfileTest {
     @Test
     public void testAddPartOfGroup() {
         System.out.println("addPartOfGroup");
-        Group group = null;
-        Profile instance = new Profile();
+        User u1 = new User("moo", "foo", "doo", "noo@noo.com", "www");
+        User u2 = new User("okok", "fitch", "mitch", "noo@go.com", "ewq");
+        User u3 = new User("moo", "foo", "doo", "goo@mo.com", "qwe");
+        List<User> uList = new LinkedList<>();
+        uList.add(u1);
+        uList.add(u2);
+        Group group = new Group("cool group", "cool users only", u3, uList);
+
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         instance.addPartOfGroup(group);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        assertTrue(instance.getPartOfGroups().contains(group));
     }
 
     /**
@@ -458,11 +616,25 @@ public class ProfileTest {
     @Test
     public void testSetPartOfGroup() {
         System.out.println("setPartOfGroup");
-        List<Group> group = null;
-        Profile instance = new Profile();
+        List<Group> group = new LinkedList<>();
+        User u1 = new User("moo", "foo", "doo", "noo@noo.com", "www");
+        User u2 = new User("okok", "fitch", "mitch", "noo@go.com", "ewq");
+        User u3 = new User("moo", "foo", "doo", "goo@mo.com", "qwe");
+        List<User> uList = new LinkedList<>();
+        uList.add(u1);
+        uList.add(u2);
+        Group g = new Group("cool group", "cool users only", u3, uList);
+        group.add(g);
+
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         instance.setPartOfGroup(group);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getPartOfGroups(), group);
     }
 
     /**
@@ -471,13 +643,25 @@ public class ProfileTest {
     @Test
     public void testRemovePartOfGroup() {
         System.out.println("removePartOfGroup");
-        Group group = null;
-        Profile instance = new Profile();
+        List<Goal> goals = new LinkedList<>();
+        List<Mood> moods = new LinkedList<>();
+        List<Assessment> asmts = new LinkedList<>();
+        List<Group> ownedGroups = new LinkedList<>();
+        User u1 = new User("moo", "foo", "doo", "noo@noo.com", "www");
+        User u2 = new User("okok", "fitch", "mitch", "noo@go.com", "ewq");
+        User u3 = new User("moo", "foo", "doo", "goo@mo.com", "qwe");
+        List<User> uList = new LinkedList<>();
+        uList.add(u1);
+        uList.add(u2);
+        Group g = new Group("cool group", "cool users only", u3, uList);
+        ownedGroups.add(g);
+        List<Group> partGroups = new LinkedList<>();
+
+        Profile instance = new Profile(goals, moods, asmts, ownedGroups, partGroups);
         boolean expResult = false;
-        boolean result = instance.removePartOfGroup(group);
+        boolean result = instance.removePartOfGroup(g);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
-    
+
 }
