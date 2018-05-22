@@ -46,12 +46,11 @@ public class MoodTest {
         System.out.println("getMoodType");
         Calendar date = Calendar.getInstance();
         date.set(2018, 6, 12, 12, 12, 12);
-        Mood instance = Mood(5, date, "was good");
-        int expResult = 0;
+        Mood instance = new Mood(5, date, "was good");
+        int expResult = 5;
         int result = instance.getMoodType();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -60,11 +59,12 @@ public class MoodTest {
     @Test
     public void testSetMoodType() {
         System.out.println("setMoodType");
-        int moodType = 0;
-        Mood instance = null;
+        int moodType = 2;
+        Calendar date = Calendar.getInstance();
+        date.set(2018, 6, 12, 12, 12, 12);
+        Mood instance = new Mood(5, date, "was good");
         instance.setMoodType(moodType);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getMoodType(), moodType);
     }
 
     /**
@@ -73,12 +73,13 @@ public class MoodTest {
     @Test
     public void testGetNotes() {
         System.out.println("getNotes");
-        Mood instance = null;
-        String expResult = "";
+        Calendar date = Calendar.getInstance();
+        date.set(2018, 6, 12, 12, 12, 12);
+        Mood instance = new Mood(5, date, "was good");
+        String expResult = "was good";
         String result = instance.getNotes();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -87,11 +88,12 @@ public class MoodTest {
     @Test
     public void testSetNotes() {
         System.out.println("setNotes");
-        String notes = "";
-        Mood instance = null;
+        String notes = "okok";
+        Calendar date = Calendar.getInstance();
+        date.set(2018, 6, 12, 12, 12, 12);
+        Mood instance = new Mood(5, date, "was good");
         instance.setNotes(notes);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getNotes(), notes);
     }
 
     /**
@@ -100,25 +102,11 @@ public class MoodTest {
     @Test
     public void testGetDate() {
         System.out.println("getDate");
-        Mood instance = null;
-        Calendar expResult = null;
+        Calendar date = Calendar.getInstance();
+        date.set(2018, 6, 12, 12, 12, 12);
+        Mood instance = new Mood(5, date, "was good");
+        Calendar expResult = date;
         Calendar result = instance.getDate();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of setDate method, of class Mood.
-     */
-    @Test
-    public void testSetDate() {
-        System.out.println("setDate");
-        Calendar date = null;
-        Mood instance = null;
-        instance.setDate(date);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }

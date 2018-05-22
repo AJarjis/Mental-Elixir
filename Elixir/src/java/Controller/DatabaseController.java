@@ -448,8 +448,10 @@ public class DatabaseController {
             stmt = conn.prepareStatement("SELECT * FROM mood WHERE username= ? "
                     + "AND date BETWEEN ? AND ?");
             stmt.setString(1, username);
-            stmt.setDate(2, new java.sql.Date(start.getTimeInMillis()));
-            stmt.setDate(3, new java.sql.Date(end.getTimeInMillis()));
+            Date d1 = new java.sql.Date(start.getTimeInMillis());
+            Date d2 = new java.sql.Date(end.getTimeInMillis());
+            stmt.setDate(2, d1);
+            stmt.setDate(3, d2);
             rs = stmt.executeQuery();
             while (rs.next()) {
                 int mood = rs.getInt("moodtype");
@@ -1086,5 +1088,11 @@ public class DatabaseController {
 //          for (Goal g : testGoal) {
 //              System.out.println("Desc: " + g.getDescription() + " Date: " + g.getTargetDate().getTime().toString());
 //        }
+        List<Mood> moods = new LinkedList<>();
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
+        start.set(2018, 4, 10);
+        end.set(2018, 6, 1);
+        moods = DatabaseController.getMoodsBetweenDates("john", start, end);
     }
 }
