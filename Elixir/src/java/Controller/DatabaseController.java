@@ -1031,6 +1031,18 @@ public class DatabaseController {
             attemptClose(stmt);
         }
     }
+    
+    public static Group getGroup(String groupName)
+    {
+        List<Group> groupList = getAllGroups();
+        for(Group g : groupList)
+        {
+            if(g.getGroupName() == groupName)
+                return g;
+        }
+        return null;
+        
+    }
 
     /**
      * *********************PROFILE CREATION*********************************
