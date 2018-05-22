@@ -95,13 +95,14 @@ input[type='checkbox'] {
 }
 
 /* Styling for a card when searching for a group */
-.groupCard {
+.groupCard .card {
     padding: 2%;
     margin-bottom: 3%;
 }
 .smallpic{
     opacity: 0;
 }
+<<<<<<< Updated upstream
 .heroPic
 
 body { 
@@ -436,3 +437,17 @@ body {
     margin-bottom: 2%;
 }
 
+.bad-dropdown-item:hover {
+    color: #FDFFFC !important;
+    background-color: #E71D36 !important;
+    transition: background-color 0.2s linear, color 0.2s linear;
+}
+
+.warning-dropdown-item:hover {
+    color: #FDFFFC !important;
+    background-color: #FF9F1C !important;
+    transition: background-color 0.2s linear, color 0.2s linear;
+}
+=======
+/* .heroPic  */
+>>>>>>> Stashed changes

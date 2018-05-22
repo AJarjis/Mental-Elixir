@@ -1,3 +1,5 @@
+<%@page import="Controller.DatabaseController"%>
+<%@page import="Controller.DatabaseController"%>
 <%@page import="Model.Activity"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -47,10 +49,28 @@
             <div class="container">
                 <h1 class="text-center">Groups</h1>
                 <input class="form-control" type="text" id="groupSearch" placeholder="Search for groups..">
-                <div id="listOfGroups" class="container">
+                <br />
+                <div id="listOfGroups" class="row">
                     <% List<Group> groups = DatabaseController.getAllGroups();
-
                         for (Group group : groups) {%>
+<<<<<<< Updated upstream
+                    <div class="col-md-6 groupCard">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h2><% out.print(group.getGroupName()); %></h2>
+                                    <p>
+                                        <% out.print(group.getDescription()); %>
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- TODO: must pass a parameter saying what group this is -->
+                                    <form action="JoinGroup" method="POST">
+
+                                        <input class="btn btn-outline-primary my-2 my-sm-0" id="joinGroup" type="submit" value="Join Group"></input>
+                                    </form>
+                                </div>
+=======
                     <div class="groupCard card">
                         <div class="row">
                             <div class="col-md-9">
@@ -60,11 +80,12 @@
                                 </p>
                             </div>
                             <div class="col-md-3">
-                                <!-- TODO: must pass a parameter saying what group this is -->
                                 <form action="JoinGroup" method="POST">
-
-                                    <input class="btn btn-primary" id="joinGroup" type="submit" value="Join Group"></input>
+                                    
+                                    <input class="btn btn-primary" id="joinGroup" name="<%=group.getGroupName()%>" type="submit" value="Join Group"></input>
+                                    
                                 </form>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>

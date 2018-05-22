@@ -83,10 +83,4 @@ public class Assessment {
 
         this.date = date;
     }
-    
-    @Override
-    public String toString(){
-        return "Score: " + this.score + " Date: " + this.date.toString();
-    }
-
 }

@@ -52,7 +52,7 @@ $(document).ready(function () {
     });
     
     $(function(){
-        $("#navBarPlaceholder").load("navBar.html");
+        $("#navBarPlaceholder").load("navBar.jsp");
       });
 });
 

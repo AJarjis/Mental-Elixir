@@ -86,8 +86,7 @@
                         <div class="collapsible-content">
                             <div class="content-inner">
                                 <p>
-                                    Please visit <a href="https://www.mind.org.uk/information-support/types-
-                                                    of-mental-health-problems/anger/about-anger/?o=6271#.Wv7GGPZFykQ">Advice on Anger</a> 
+                                    Please visit <a href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/anger/about-anger/?o=6271#.Wv7GGPZFykQ">Advice on Anger</a> 
                                     to gain a better understanding on anger. MIND will give detailed descriptions on:
                                     <ul>
                                         <li>What is Anger</li>
@@ -111,8 +110,7 @@
                                 </p>
                                 <p>
                                     This is a quote from a video transcript MIND recently undertook with a number of patients suffering 
-                                    from anxiety. <a href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/anxiety-
-                                                     and-panic-attacks/about-anxiety/?o=6272#.Wv7HnfZFykQ">Anxiety and Panic Attacks</a> is where 
+                                    from anxiety. <a href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/anxiety-and-panic-attacks/about-anxiety/?o=6272#.Wv7HnfZFykQ">Anxiety and Panic Attacks</a> is where 
                                                      you can find all of the up to date information on how to best relieve yourself of anxiety and 
                                                      deal with panic attacks. Hear first hand stories from people who have been or still are 
                                                      suffering from anxiety and/or maybe experience panic attacks. This article gives you the 
@@ -137,8 +135,7 @@
                                 </p>
                                 <p>
                                     Hear from Amy and other patients who suffer from depression at 
-                                    <a href="https://www.mind.org.uk/information-support/types-of-mental-
-                                       health-problems/depression/about-depression/?o=9109#.Wv7RZ_ZFykQ">Depression</a>. 
+                                    <a href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/depression/about-depression/?o=9109#.Wv7RZ_ZFykQ">Depression</a>. 
                                        Learn the different types of depression, the impact it can have on your life, and 
                                        watch a group of people talk with one another about their depression, and how they 
                                        are trying to deal with it to improve all aspects of their life, whether it be their
@@ -153,8 +150,7 @@
                         <div class="collapsible-content">
                             <div class="content-inner">
                                 <p>
-                                    <a href="https://www.mind.org.uk/information-support/tips-for-everyday-
-                                       living/loneliness/loneliness/?o=6287#.Wv7M2PZFykQ">Loneliness</a> isn't 
+                                    <a href="https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/loneliness/?o=6287#.Wv7M2PZFykQ">Loneliness</a> isn't 
                                        something that is directly considered as a mental health issue, however 
                                        it is something that affects many people and can lead onto mental health 
                                        issues, like those mentioned in the FAQs here. Following the link will
@@ -207,8 +203,7 @@
                         <div class="collapsible-content">
                             <div class="content-inner">
                                 <p>
-                                    <a href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/
-                                       post-traumatic-stress-disorder-ptsd/about-ptsd/?o=14567#.Wv7SkPZFykQ">Post Traumatic Stress Diorder - 
+                                    <a href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/post-traumatic-stress-disorder-ptsd/about-ptsd/?o=14567#.Wv7SkPZFykQ">Post Traumatic Stress Diorder - 
                                         also known as PTSD</a> is a type of anxiety disorder which usually comes about after being 
                                         involved in or witnesseing traumatic events. Common known causes of PTSD include coming 
                                         home from war, but are by no means limited to this, as things such as being in a bad car 
@@ -259,9 +254,8 @@
                                     unique to the individuals who feel them, and these feelings/thoughts can be overwhelming to the 
                                     individual. Men and LGBTQ are the two highest risk groups of individuals who are more likely to 
                                     take their own life, although it is not entirely clear why this is the case. If you have been 
-                                    feeling suicidal thoughts or know someone who may be, please visit <a href="https://www.
-                                    mind.org.uk/information-support/types-of-mental-health-problems/suicidal-feelings/about-
-                                    suicidal-feelings/?o=6813#.Wv7U3PZFykQ">this</a> link as soon as possible for the best 
+                                    feeling suicidal thoughts or know someone who may be, please visit 
+                                    <a href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/suicidal-feelings/about-suicidal-feelings/?o=6813#.Wv7U3PZFykQ">this</a> link as soon as possible for the best 
                                     support, advice and guideance available online to take you in the right direction.
                                 </p>
                             </div>
