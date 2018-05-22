@@ -50,7 +50,11 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+            <form action="closePoolServlet" method="POST">
+                <div class="card p-5">
+                    <input style="color: white" class="btn btn-primary" type="submit" value="Close Pooled Resourses">
+                </div>
+            </form>
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -348,18 +352,20 @@
                                                 <div class="quest-image text-center">
                                                     <img class="smallpic card-img-top" src="images/love.jpg" alt="Card image cap">
                                                 </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Five weeks of love</h5>
-                                                    <p class="card-text">Spend five weeks strengthening the bonds of your relationship.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Give Compliments Daily</li>
-                                                    <li class="list-group-item">Do something together</li>
-                                                    <li class="list-group-item">Do your partner a favour</li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
+                                                <form>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Five weeks of love</h5>
+                                                        <p class="card-text">Spend five weeks strengthening the bonds of your relationship.</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Give Compliments Daily</li>
+                                                        <li class="list-group-item">Do something together</li>
+                                                        <li class="list-group-item">Do your partner a favour</li>
+                                                    </ul>
+                                                    <div class="card-body">
+                                                        <input type="submit" class="btn btn-success" value="Accept Adventure">
+                                                    </div>
+                                                </form>
                                             </div>
                                             <!--
                                             <div class="card">
@@ -669,7 +675,7 @@
 
                 </div>
             </div>
-                                
+
             <!-----------------------------------Test Zone End----------------------------------->
 
 

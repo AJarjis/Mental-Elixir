@@ -13,7 +13,6 @@ Author      : Ali Jarjis
 package Servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +35,14 @@ public class AddActivityServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
+        // Get goal description
+        // boolean completionStatus = false;
+        // Get each list item
+        // Loop through each item and then
+            // create activity(null, item.description
+        // Create goal
+        // Add goal to database
+        // Redirect page
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
