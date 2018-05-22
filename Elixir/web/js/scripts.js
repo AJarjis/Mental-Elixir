@@ -1,6 +1,6 @@
-$(document).ready(function(){
-  // Add smooth scrolling to all links
-  $(".smoothScroll").on('click', function(event) {
+$(document).ready(function () {
+    // Add smooth scrolling to all links
+    $(".smoothScroll").on('click', function (event) {
 
         // Make sure this.hash has a value before overriding default behavior
         if (this.hash !== "") {
@@ -30,6 +30,30 @@ $(document).ready(function(){
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
+
+    // Hides nav bar upon scroll down and displays on scroll up
+    var lastScrollTop = 0;
+    var $navbar = $('#navBarPlaceholder');
+
+    $(function () {
+        $(window).scroll(function (event) {
+            var st = $(this).scrollTop();
+
+            if (st > lastScrollTop) { // scroll down
+                $navbar.addClass("fade-out");
+                $navbar.removeClass("fade-in");
+            } else { // scroll up
+                $navbar.addClass("fade-in");
+                $navbar.removeClass("fade-out");
+            }
+            
+            lastScrollTop = st;
+        });
+    });
+    
+    $(function(){
+        $("#navBarPlaceholder").load("navBar.html");
+      });
 });
 
 // PS! Replace this with your own channel ID
@@ -37,7 +61,7 @@ $(document).ready(function(){
 CLIENT_ID = '4sysLN7BDXXaxtbZ';
 
 const drone = new ScaleDrone(CLIENT_ID, {
-    data: { // Will be sent out as clientData via events
+    data: {// Will be sent out as clientData via events
         name: getRandomName(),
         color: getRandomColor(),
     },
@@ -70,7 +94,7 @@ drone.on('open', error => {
     });
 
     room.on('member_leave', ({
-        id
+    id
     }) => {
         const index = members.findIndex(member => member.id === id);
         members.splice(index, 1);
@@ -98,10 +122,10 @@ function getRandomName() {
     const adjs = ["autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark", "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter", "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue", "billowing", "broken", "cold", "damp", "falling", "frosty", "green", "long", "late", "lingering", "bold", "little", "morning", "muddy", "old", "red", "rough", "still", "small", "sparkling", "throbbing", "shy", "wandering", "withered", "wild", "black", "young", "holy", "solitary", "fragrant", "aged", "snowy", "proud", "floral", "restless", "divine", "polished", "ancient", "purple", "lively", "nameless"];
     const nouns = ["waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning", "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter", "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook", "butterfly", "bush", "dew", "dust", "field", "fire", "flower", "firefly", "feather", "grass", "haze", "mountain", "night", "pond", "darkness", "snowflake", "silence", "sound", "sky", "shape", "surf", "thunder", "violet", "water", "wildflower", "wave", "water", "resonance", "sun", "wood", "dream", "cherry", "tree", "fog", "frost", "voice", "paper", "frog", "smoke", "star"];
     return (
-        adjs[Math.floor(Math.random() * adjs.length)] +
-        "_" +
-        nouns[Math.floor(Math.random() * nouns.length)]
-    );
+            adjs[Math.floor(Math.random() * adjs.length)] +
+            "_" +
+            nouns[Math.floor(Math.random() * nouns.length)]
+            );
 }
 
 function getRandomColor() {

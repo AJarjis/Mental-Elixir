@@ -102,14 +102,14 @@
                                 <form class="form-horizontal" action="Login" method="POST">
                                     <div class="form-group ">
                                         <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                            <div class="input-group-addon"><i class="fa fa-user"></i><span class="form-label">Username</span></div>
                                             <input type="text" class="form-control" placeholder="Username" required="required" value="" name="userNameLog">
                                             <span class="inputError">${errorMessages.userNameLog}</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-key"></i></div>
+                                            <div class="input-group-addon"><i class="fa fa-key"></i><span class="form-label">Password</span></div>
                                             <input type="password" class="form-control" placeholder="Password" required="required" name="passwordLog">
                                             <span class="inputError">${errorMessages.passwordLog}</span>
                                         </div>
@@ -123,42 +123,42 @@
                                     <span>${errorMessages.errorMain}</span>
                                     <div class="form-group ">
                                         <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                            <div class="input-group-addon"><i class="fa fa-user"></i><span class="form-label">Username</span></div>
                                             <input type="text" name="userName" class="form-control" placeholder="Username" required="required" value="">
                                             <span class="inputError">${errorMessages.userName}</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-male"></i></div>
+                                            <div class="input-group-addon"><i class="fa fa-male"></i><span class="form-label">First Name</span></div>
                                             <input type="text" name="firstName" class="form-control" placeholder="First name" required="required" value="">
                                             <span class="inputError">${errorMessages.firstName}</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-male"></i></div>
+                                            <div class="input-group-addon"><i class="fa fa-male"></i><span class="form-label">Surname</span></div>
                                             <input type="text" name="surname" class="form-control" placeholder="Surname" required="required" value="">
                                             <span class="inputError">${errorMessages.surname}</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                            <div class="input-group-addon"><i class="fa fa-envelope"></i><span class="form-label">Email</span></div>
                                             <input type="email" name="email" class="form-control" placeholder="Email" required="required" value="">
                                             <span class="inputError">${errorMessages.email}</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                            <div class="input-group-addon"><i class="fa fa-lock"></i><span class="form-label">Password</span></div>
                                             <input type="password" name="password" class="form-control" placeholder="Password" required="required">
                                             <span class="inputError">${errorMessages.password}</span>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                            <div class="input-group-addon"><i class="fa fa-lock"></i><span class="form-label">Confirm Password</span></div>
                                             <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" required="required">
                                             <span class="inputError">${errorMessages.confirmPassword}</span>
                                         </div>
@@ -208,7 +208,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" 
                 integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" 
         crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" 
+              integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" 
+              crossorigin="anonymous">
         <script src="js/scripts.js"></script>
+
     </body>
 
 </html>
