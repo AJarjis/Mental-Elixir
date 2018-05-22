@@ -101,6 +101,13 @@ public class DatabaseController {
             System.exit(0);
         }
     }
+    
+    /**
+     * Close pooled resources
+     */
+    public static void closePool(){
+        pool.close();
+    }
 
     /**
      * ********************ACCOUNT DATABASE COMMANDS**************************
@@ -1023,6 +1030,18 @@ public class DatabaseController {
             attemptClose(conn);
             attemptClose(stmt);
         }
+    }
+    
+    public static Group getGroup(String groupName)
+    {
+        List<Group> groupList = getAllGroups();
+        for(Group g : groupList)
+        {
+            if(g.getGroupName() == groupName)
+                return g;
+        }
+        return null;
+        
     }
 
     /**
