@@ -36,7 +36,7 @@
 
     <body>
 
-        <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        <nav class="naiveBar navbar navbar-expand-md navbar-light bg-light fixed-top">
 
             <span id="title" class="navbar-text" style="font-size: 30px">elixir</span>
             <a class="navbar-brand" href="#">

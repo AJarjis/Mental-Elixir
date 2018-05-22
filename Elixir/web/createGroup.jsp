@@ -55,7 +55,7 @@
 
 
     <body>
-        <div id="navBarPlaceholder"></div>
+        <div id="navBarPlaceholder" class="naiveBar"></div>
 
         <div class="flex-container p-5" style="background-color: #FDFFFC">
             <div class="container" style="width: 80%; background-color: #FDFFFC">
@@ -80,6 +80,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="flex-container pt-5 text-center">
+            <img src="images/heroes.jpeg" style="width: 100%;">
+        </div>
+                            
         <div class="flex-container" style="background-color: #011627">
             <!--Footer-->
             <footer class="page-footer font-small blue pt-4 mt-4">

@@ -33,7 +33,7 @@ $(document).ready(function () {
 
     // Hides nav bar upon scroll down and displays on scroll up
     var lastScrollTop = 0;
-    var $navbar = $('#navBarPlaceholder');
+    var $navbar = $('.naiveBar');
 
     $(function () {
         $(window).scroll(function (event) {

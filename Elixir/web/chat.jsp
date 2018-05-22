@@ -1,9 +1,7 @@
-<%@page import="Controller.DatabaseController"%>
-<%@page import="Controller.DatabaseController"%>
 <%@page import="Model.Activity"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
-<%@page import="Model.Group"%>
+<%@page import="Model.Goal"%>
 <%@page import="java.util.List"%>
 <%@page import="Controller.UserController"%>
 <%@page import="Model.User"%>
@@ -32,6 +30,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script> 
 
         <!-- Custom styles for this template -->
         <style type="text/css">
@@ -42,40 +41,27 @@
 
 
     <body>
-
-        <div class="naiveBar" id="navBarPlaceholder"></div>
-
-        <main role="main" class="flex-container">
-            <div class="container">
-                <h1 class="text-center">Groups</h1>
-                <input class="form-control" type="text" id="groupSearch" placeholder="Search for groups..">
-                <br />
-                <div id="listOfGroups" class="row">
-                    <% List<Group> groups = DatabaseController.getAllGroups();
-
-                        for (Group group : groups) {%>
-                    <div class="col-md-6 groupCard">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h2><% out.print(group.getGroupName()); %></h2>
-                                    <p>
-                                        <% out.print(group.getDescription()); %>
-                                    </p>
-                                </div>
-                                <div class="col-md-4">
-                                    <!-- TODO: must pass a parameter saying what group this is -->
-                                    <form action="JoinGroup" method="POST">
-
-                                        <input class="btn btn-outline-primary my-2 my-sm-0" id="joinGroup" type="submit" value="Join Group"></input>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <%}%>
+        <main>
+            <div class="naiveBar" id="navBarPlaceholder"></div>
+            <div class="container-flex pt-5  bg-secondary">
+                <h3 class="text-center text-light">Need a chat? </h3>
+                <h5 class="text-center text-light ml-5 mr-5">
+                    Our anonymous chat service is here for when you need someone to talk to with no judgement and no expectations. 
+                    Please be polite and respectful to those you meet. 
+                </h5>
+                <div class="chat container p-5">
+                    <div class="members-count bg-light">-</div>
+                    <div class="members-list bg-light">-</div>
+                    <div class="messages bg-light"></div>
+                    <form class="message-form" onsubmit="return false;">
+                        <input class="message-form__input" placeholder="Type a message.." type="text" />
+                        <input class="message-form__button" value="Send" type="submit" />
+                    </form>
                 </div>
             </div>
+
+
+            <!-----------------------------------Test Zone End----------------------------------->
 
 
             <div class="flex-container pt-5 text-center">

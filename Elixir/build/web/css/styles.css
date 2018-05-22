@@ -22,9 +22,9 @@ input {
     margin-bottom: 1.2rem 0;
 }
 
-input[type='checkbox'] {
+/*input[type='checkbox'] {
     display: none;
-}
+}*/
 
 .lbl-toggle {
     display: block;
@@ -99,10 +99,6 @@ input[type='checkbox'] {
     padding: 2%;
     margin-bottom: 3%;
 }
-.smallpic{
-    opacity: 0;
-}
-.heroPic
 
 body { 
 
@@ -219,8 +215,8 @@ body {
 
 .moodModal img:hover { 
     cursor: pointer; 
-/*    opacity: 1;
-    transition: opacity 2s;*/
+    /*    opacity: 1;
+        transition: opacity 2s;*/
 } 
 
 .chart { 
@@ -234,15 +230,15 @@ body {
 }
 
 .fade-in {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.3s linear;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s linear;
 }
 
 .fade-out {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 0.3s, opacity 0.3s linear;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.3s, opacity 0.3s linear;
 }
 
 body {
@@ -362,7 +358,7 @@ body {
 }
 
 .smallpic {
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 .heroPic {
@@ -427,7 +423,7 @@ body {
 
 .form-label {
     margin-left: 4%;
-    
+
     font-size: 85%;
 }
 
@@ -446,4 +442,14 @@ body {
     color: #FDFFFC !important;
     background-color: #FF9F1C !important;
     transition: background-color 0.2s linear, color 0.2s linear;
+}
+
+.quest-image {
+    background-color: #011627;
+    background: linear-gradient(rgba(1, 22, 39, 1), rgba(231, 29, 54, 0));
+
+}
+
+.quest-image img {
+    width: 100%;
 }
