@@ -53,13 +53,13 @@ public class AddMood extends HttpServlet {
         UserController user = (UserController) session.getAttribute("user");
         
         // Create mood and set as mood controller
-<<<<<<< Updated upstream
+
         MoodController mc = new MoodController(Integer.parseInt(moodType));
         mc.setNotes(note);
-=======
+
         //MoodController mc = new MoodController(MoodTypes.convertToMoodType(moodType));
         //mc.setNotes(note);
->>>>>>> Stashed changes
+
         
         // Update database with mood
 //        DatabaseController.addMoodEntry(user.getUserName(), mc.getMood());

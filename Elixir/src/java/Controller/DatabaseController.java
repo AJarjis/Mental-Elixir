@@ -1094,5 +1094,8 @@ public class DatabaseController {
         start.set(2018, 4, 10);
         end.set(2018, 6, 1);
         moods = DatabaseController.getMoodsBetweenDates("john", start, end);
+        for (Mood mood : moods) {
+            System.out.println("Mood:" + mood.getNotes());
+        }
     }
 }
