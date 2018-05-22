@@ -71,7 +71,7 @@
 
     <body>
 
-        <div id="navBarPlaceholder"></div>
+        <div class="naiveBar" id="navBarPlaceholder"></div>
 
         <div class="flex-container p-5" style="background-color: #FDFFFC">
             <div class="container" style="width: 80%; background-color: #FDFFFC">

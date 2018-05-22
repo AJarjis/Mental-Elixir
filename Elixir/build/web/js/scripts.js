@@ -1,10 +1,6 @@
 $(document).ready(function () {
     // Add smooth scrolling to all links
-<<<<<<< Updated upstream
     $(".smoothScroll").on('click', function (event) {
-=======
-    $("a").on('click', function (event) {
->>>>>>> Stashed changes
 
         // Make sure this.hash has a value before overriding default behavior
         if (this.hash !== "") {
@@ -34,11 +30,10 @@ $(document).ready(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
-<<<<<<< Updated upstream
 
     // Hides nav bar upon scroll down and displays on scroll up
     var lastScrollTop = 0;
-    var $navbar = $('#navBarPlaceholder');
+    var $navbar = $('.naiveBar');
 
     $(function () {
         $(window).scroll(function (event) {
@@ -59,8 +54,6 @@ $(document).ready(function () {
     $(function(){
         $("#navBarPlaceholder").load("navBar.jsp");
       });
-=======
->>>>>>> Stashed changes
 });
 
 // PS! Replace this with your own channel ID
@@ -68,11 +61,7 @@ $(document).ready(function () {
 CLIENT_ID = '4sysLN7BDXXaxtbZ';
 
 const drone = new ScaleDrone(CLIENT_ID, {
-<<<<<<< Updated upstream
     data: {// Will be sent out as clientData via events
-=======
-    data: { // Will be sent out as clientData via events
->>>>>>> Stashed changes
         name: getRandomName(),
         color: getRandomColor(),
     },
@@ -105,11 +94,7 @@ drone.on('open', error => {
     });
 
     room.on('member_leave', ({
-<<<<<<< Updated upstream
     id
-=======
-        id
->>>>>>> Stashed changes
     }) => {
         const index = members.findIndex(member => member.id === id);
         members.splice(index, 1);
@@ -137,17 +122,10 @@ function getRandomName() {
     const adjs = ["autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark", "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter", "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue", "billowing", "broken", "cold", "damp", "falling", "frosty", "green", "long", "late", "lingering", "bold", "little", "morning", "muddy", "old", "red", "rough", "still", "small", "sparkling", "throbbing", "shy", "wandering", "withered", "wild", "black", "young", "holy", "solitary", "fragrant", "aged", "snowy", "proud", "floral", "restless", "divine", "polished", "ancient", "purple", "lively", "nameless"];
     const nouns = ["waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning", "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter", "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook", "butterfly", "bush", "dew", "dust", "field", "fire", "flower", "firefly", "feather", "grass", "haze", "mountain", "night", "pond", "darkness", "snowflake", "silence", "sound", "sky", "shape", "surf", "thunder", "violet", "water", "wildflower", "wave", "water", "resonance", "sun", "wood", "dream", "cherry", "tree", "fog", "frost", "voice", "paper", "frog", "smoke", "star"];
     return (
-<<<<<<< Updated upstream
             adjs[Math.floor(Math.random() * adjs.length)] +
             "_" +
             nouns[Math.floor(Math.random() * nouns.length)]
             );
-=======
-        adjs[Math.floor(Math.random() * adjs.length)] +
-        "_" +
-        nouns[Math.floor(Math.random() * nouns.length)]
-    );
->>>>>>> Stashed changes
 }
 
 function getRandomColor() {
