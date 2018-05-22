@@ -341,18 +341,20 @@
                                                 <div class="quest-image text-center">
                                                     <img class="smallpic card-img-top" src="images/love.jpg" alt="Card image cap">
                                                 </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Five weeks of love</h5>
-                                                    <p class="card-text">Spend five weeks strengthening the bonds of your relationship.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Give Compliments Daily</li>
-                                                    <li class="list-group-item">Do something together</li>
-                                                    <li class="list-group-item">Do your partner a favour</li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
+                                                <form>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Five weeks of love</h5>
+                                                        <p class="card-text">Spend five weeks strengthening the bonds of your relationship.</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Give Compliments Daily</li>
+                                                        <li class="list-group-item">Do something together</li>
+                                                        <li class="list-group-item">Do your partner a favour</li>
+                                                    </ul>
+                                                    <div class="card-body">
+                                                        <input type="submit" class="btn btn-success" value="Accept Adventure">
+                                                    </div>
+                                                </form>
                                             </div>
                                             <!--
                                             <div class="card">
@@ -662,7 +664,7 @@
 
                 </div>
             </div>
-                                
+
             <!-----------------------------------Test Zone End----------------------------------->
 
 
