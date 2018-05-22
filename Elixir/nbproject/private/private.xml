@@ -3,29 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/src/java/Model/Group.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/src/java/Servlets/closePoolServlet.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/test/Model/MoodTest.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/web/index.jsp</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/test/Model/GoalTest.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/test/Controller/DatabaseControllerTest.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/test/Model/ProfileTest.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/test/Model/UserTest.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/src/java/Controller/DatabaseController.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/test/Model/AssessmentTest.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/web/goal.jsp</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/src/java/Servlets/RegisterUserServlet.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/src/java/Servlets/GoalServlet.java</file>
-            <file>file:/C:/Users/kyklos/Documents/GitHub/softwaredev-code/Elixir/test/Model/GroupTest.java</file>
-=======
-            <file>file:/C:/Users/Kieran/Documents/Kraken/softwaredev-code/Elixir/src/java/Servlets/JoinGroup.java</file>
-            <file>file:/C:/Users/Kieran/Documents/Kraken/softwaredev-code/Elixir/web/groupPage.jsp</file>
-            <file>file:/C:/Users/Kieran/Documents/Kraken/softwaredev-code/Elixir/src/java/Controller/DatabaseController.java</file>
-            <file>file:/C:/Users/Kieran/Documents/Kraken/softwaredev-code/Elixir/src/java/Servlets/CreateGroup.java</file>
-            <file>file:/C:/Users/Kieran/Documents/Kraken/softwaredev-code/Elixir/web/createGroup.jsp</file>
-            <file>file:/C:/Users/Kieran/Documents/Kraken/softwaredev-code/Elixir/web/groups.jsp</file>
->>>>>>> Stashed changes
+            <file>file:/C:/Users/AJarj/Git%20Projects/University%20Work/Software%20Engineering/softwaredev-code/Elixir/web/index.jsp</file>
+            <file>file:/C:/Users/AJarj/Git%20Projects/University%20Work/Software%20Engineering/softwaredev-code/Elixir/src/java/Servlets/AddActivityServlet.java</file>
+            <file>file:/C:/Users/AJarj/Git%20Projects/University%20Work/Software%20Engineering/softwaredev-code/Elixir/src/java/Servlets/LoginServlet.java</file>
         </group>
     </open-files>
 </project-private>

@@ -12,19 +12,26 @@ Author      : Ali Jarjis
 
 package Servlets;
 
+import Controller.DatabaseController;
+import Controller.UserController;
+import Model.Activity;
+import Model.Goal;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Ali Jarjis
  */
 @WebServlet(name="AddActivityServlet", urlPatterns={"/AddActivity"})
-public class AddActivityServlet extends HttpServlet {
+public class AddGoalServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,14 +42,30 @@ public class AddActivityServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        // Get goal description
-        // boolean completionStatus = false;
-        // Get each list item
-        // Loop through each item and then
-            // create activity(null, item.description
+        // Get goal and activities
+        String goalString = request.getParameter("goal");
+        String activitiesStrings [] = request.getParameterValues("activity");
+        
+        // Create activity for activities
+        List<Activity> activities = new ArrayList();
+        for (int i = 0; i < activitiesStrings.length; i++) {
+            Activity act = new Activity(null, activitiesStrings[i]);
+            activities.add(act);
+        }
+      
         // Create goal
+        Goal goal = new Goal(activities, goalString);
+        
+        // Load in currently logged in user
+        HttpSession session = request.getSession();
+        UserController user = (UserController) session.getAttribute("user");
+        
         // Add goal to database
+        DatabaseController.addGoalEntry(goal, user.getUserName());
+        user.getProfile().addGoal(goal);
+        
         // Redirect page
+        response.sendRedirect("index.jsp");
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

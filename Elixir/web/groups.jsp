@@ -65,8 +65,8 @@
                                 <div class="col-md-4">
                                     <!-- TODO: must pass a parameter saying what group this is -->
                                     <form action="JoinGroup" method="POST">
-
-                                        <input class="btn btn-primary" id="joinGroup" type="submit" value="<%=group.getGroupName()%>"></input>
+                                        <input style="display:none" name="joinGroup" value="<%=group.getGroupName()%>" />
+                                        <input class="btn btn-primary" type="submit" value="Join Group"></input>
                                     </form>
                                 </div>
 

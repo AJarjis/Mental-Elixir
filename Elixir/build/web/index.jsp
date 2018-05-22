@@ -345,280 +345,175 @@
                                                 <div class="quest-image text-center">
                                                     <img class="smallpic card-img-top" src="images/love.jpg" alt="Card image cap">
                                                 </div>
-                                                <form>
+                                                <form action="AddActivity" method="POST">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">Five weeks of love</h5>
+                                                        <h5 class="card-title">Five Weeks of Love</h5>
+                                                        <input style="display:none" name="goal" value="Five Weeks of Love">
                                                         <p class="card-text">Spend five weeks strengthening the bonds of your relationship.</p>
                                                     </div>
                                                     <ul class="list-group list-group-flush">
                                                         <li class="list-group-item">Give Compliments Daily</li>
+                                                        <input style="display:none" name="activity" value="Give Compliments Daily">
                                                         <li class="list-group-item">Do something together</li>
+                                                        <input style="display:none" name="activity" value="Do something together">
                                                         <li class="list-group-item">Do your partner a favour</li>
+                                                        <input style="display:none" name="activity" value="Do your partner a favour">
                                                     </ul>
                                                     <div class="card-body">
                                                         <input type="submit" class="btn btn-success" value="Accept Adventure">
                                                     </div>
                                                 </form>
                                             </div>
-                                            <!--
-                                            <div class="card">
-                                            <div class="quest-image text-center">
-                                                <img class="smallpic card-img-top" src="images/love.jpg" alt="Card image cap">
-                                            </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Five weeks of love</h5>
-                                                    <p class="card-text">Spend five weeks strengthening the bonds of your relationship.</p>
-                                                </div>
-            
-                                                <li class="list-group-item">Give Compliments Daily</li>
-                                                <li class="list-group-item">Do something together</li>
-                                                <li class="list-group-item">Do your partner a favour</li>
-            
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
-                                            </div>
-                                            -->
                                         </div>
                                         <div class="carousel-item">
                                             <div class="card">
                                                 <div class="quest-image text-center">
                                                     <img class="smallpic card-img-top" src="images/breakfastOfChampions.png" alt="Card image cap">
                                                 </div>
-
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Healthy Morning Habits</h5>
-                                                    <p class="card-text">Set yourself up for a successful day with a positive morning. </p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Compose a healthy breakfast</li>
-                                                    <li class="list-group-item">Find a stretch routine</li>
-                                                    <li class="list-group-item">Drink Water when you wake up</li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Finish Adventure</a>
-                                                </div>
+                                                <form action="AddActivity" method="POST">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Healthy Morning Habits</h5>
+                                                        <input style="display:none" name="goal" value="Healthy Morning Habits">
+                                                        <p class="card-text">Set yourself up for a successful day with a positive morning.</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Compose a healthy breakfast.</li>
+                                                        <input style="display:none" name="activity" value="Compose a healthy breakfast.">
+                                                        <li class="list-group-item">Find a stretch routine.</li>
+                                                        <input style="display:none" name="activity" value="Find a stretch routine.">
+                                                        <li class="list-group-item">Drink Water when you wake up.</li>
+                                                        <input style="display:none" name="activity" value="Drink Water when you wake up.">
+                                                    </ul>
+                                                    <div class="card-body">
+                                                        <input type="submit" class="btn btn-success" value="Accept Adventure">
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-
-                                        <!--
-                                        <div class="card">
-                                        <div class="quest-image text-center">
-                                            <img class="smallpic card-img-top" src="images/breakfastOfChampions.png" alt="Card image cap">
-                                        </div>
-                                            <div class="card-body">
-                                                <h5 class="card-title">Healthy Morning Habits</h5>
-                                                <p class="card-text">Set yourself up for a successful day with a positive morning. </p>
-                                            </div>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">Compose a healthy breakfast</li>
-                                                <li class="list-group-item">Find a stretch routine</li>
-                                                <li class="list-group-item">Drink Water when you wake up</li>
-                                            </ul>
-                                            <div class="card-body">
-                                                <a href="#" class="card-link">Finish Adventure</a>
-                                            </div>
-                                        </div>
-                                        -->
                                         <div class="carousel-item">
                                             <div class="card">
                                                 <div class="quest-image text-center">
                                                     <img class="smallpic card-img-top" src="images/Vain.jpg" alt="Card image cap">
                                                 </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Learn to love yourself</h5>
-                                                    <p class="card-text">Reflect on your successes to help build your self-esteem.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Write down three things I did well today.</li>
-                                                    <li class="list-group-item">Write down three things I appreciate about myself</li>
-                                                    <li class="list-group-item">Write down three things I appreciate about others</li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
+                                                <form action="AddActivity" method="POST">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Learn to Love Yourself</h5>
+                                                        <input style="display:none" name="goal" value="Learn to Love Yourself">
+                                                        <p class="card-text">Reflect on your successes to help build your self-esteem.</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Write down three things I did well today.</li>
+                                                        <input style="display:none" name="activity" value="Write down three things I did well today.">
+                                                        <li class="list-group-item">Write down three things I appreciate about myself.</li>
+                                                        <input style="display:none" name="activity" value="Write down three things I appreciate about myself.">
+                                                        <li class="list-group-item">Write down three things I appreciate about others.</li>
+                                                        <input style="display:none" name="activity" value="Write down three things I appreciate about others.">
+                                                    </ul>
+                                                    <div class="card-body">
+                                                        <input type="submit" class="btn btn-success" value="Accept Adventure">
+                                                    </div>
+                                                </form>
                                             </div>
-
-                                            <!--
-                                              <div class="card">
-                                            <div class="quest-image text-center">
-                                                <img class="smallpic card-img-top" src="images/Vain.jpg" alt="Card image cap">
-                                            </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Learn to love yourself</h5>
-                                                    <p class="card-text">Reflect on your successes to help build your self-esteem.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Write down three things I did well today.</li>
-                                                    <li class="list-group-item">Write down three things I appreciate about myself</li>
-                                                    <li class="list-group-item">Write down three things I appreciate about others</li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
-                                            </div>
-                                            -->
                                         </div>
                                         <div class="carousel-item">
                                             <div class="card">
                                                 <div class="quest-image text-center">
                                                     <img class="smallpic card-img-top" src="images/angry.jpg" alt="Card image cap">
                                                 </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Understand my Mood</h5>
-                                                    <p class="card-text">Make sure to reflect on your mood three times a day for a least a week.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Rate in the morning</li>
-                                                    <li class="list-group-item">Rate in the afternoon</li>
-                                                    <li class="list-group-item">Rate in the evening</li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
+                                                <form action="AddActivity" method="POST">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Understand my Mood</h5>
+                                                        <input style="display:none" name="goal" value="Understand my Mood">
+                                                        <p class="card-text">Make sure to reflect on your mood three times a day for a least a week.</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Rate in the morning.</li>
+                                                        <input style="display:none" name="activity" value="Rate in the morning.">
+                                                        <li class="list-group-item">Rate in the afternoon.</li>
+                                                        <input style="display:none" name="activity" value="Rate in the afternoon.">
+                                                        <li class="list-group-item">Rate in the evening.</li>
+                                                        <input style="display:none" name="activity" value="Rate in the evening.">
+                                                    </ul>
+                                                    <div class="card-body">
+                                                        <input type="submit" class="btn btn-success" value="Accept Adventure">
+                                                    </div>
+                                                </form>
                                             </div>
-
-                                            <!--
-                                             <div class="card">
-                                            <div class="quest-image text-center">
-                                                <img class="smallpic card-img-top" src="images/angry.jpg" alt="Card image cap">
-                                            </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Understand my Mood</h5>
-                                                    <p class="card-text">Make sure to reflect on your mood three times a day for a least a week.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Rate in the morning</li>
-                                                    <li class="list-group-item">Rate in the afternoon</li>
-                                                    <li class="list-group-item">Rate in the evening</li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
-                                            </div>
-                                            -->
-
                                         </div>
                                         <div class="carousel-item">
                                             <div class="card">
                                                 <div class="quest-image text-center">
                                                     <img class="smallpic card-img-top" src="images/worried.jpg" alt="Card image cap">
                                                 </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Step out of your comfort zone</h5>
-                                                    <p class="card-text">Take some risks and see what the world could have in store.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Start a dialogue with an unknown person</li>
-                                                    <li class="list-group-item">Say yes to something you would normally say No to</li>
-                                                    <li class="list-group-item">Smile and say hi to three strangers</li>
-                                                </ul>
-
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
+                                                <form action="AddActivity" method="POST">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Step Out Of Your Comfort Zone</h5>
+                                                        <input style="display:none" name="goal" value="Step Out Of Your Comfort Zone">
+                                                        <p class="card-text">Take some risks and see what the world could have in store.</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Start a dialogue with an unknown person.</li>
+                                                        <input style="display:none" name="activity" value="Start a dialogue with an unknown person.">
+                                                        <li class="list-group-item">Say yes to something you would normally say no to.</li>
+                                                        <input style="display:none" name="activity" value="Say yes to something you would normally say no to.">
+                                                        <li class="list-group-item">Smile and say hi to three strangers.</li>
+                                                        <input style="display:none" name="activity" value="Smile and say hi to three strangers.">
+                                                    </ul>
+                                                    <div class="card-body">
+                                                        <input type="submit" class="btn btn-success" value="Accept Adventure">
+                                                    </div>
+                                                </form>
                                             </div>
-
-                                            <!--
-                                            <div class="card">
-                                            <div class="quest-image text-center">
-                                                <img class="smallpic card-img-top" src="images/worried.jpg" alt="Card image cap">
-                                            </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Step out of your comfort zone</h5>
-                                                    <p class="card-text">Take some risks and see what the world could have in store.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Start a dialogue with an unknown person</li>
-                                                    <li class="list-group-item">Say yes to something you would normally say No to</li>
-                                                    <li class="list-group-item">Smile and say hi to three strangers</li>
-                                                </ul>
-            
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
-                                            </div>
-                                            -->
                                         </div>
                                         <div class="carousel-item">
                                             <div class="card">
                                                 <div class="quest-image text-center">
                                                     <img class="smallpic card-img-top" src="images/runninglate.jpg" alt="Card image cap">
                                                 </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Be on time</h5>
-                                                    <p class="card-text">Being punctual can help you take control of your situation. Give it a go.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Estimate and track your time</li>
-                                                    <li class="list-group-item">Plan to and then arrive 15 mins early</li>
-                                                    <li class="list-group-item">Do something useful while you wait
-                                                    </li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
+                                                <form action="AddActivity" method="POST">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Be on Time</h5>
+                                                        <input style="display:none" name="goal" value="Be on Time">
+                                                        <p class="card-text">Being punctual can help you take control of your situation. Give it a go.</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Estimate and track your time.</li>
+                                                        <input style="display:none" name="activity" value="Estimate and track your time.">
+                                                        <li class="list-group-item">Plan to and then arrive 15 mins early.</li>
+                                                        <input style="display:none" name="activity" value="Plan to and then arrive 15 mins early.">
+                                                        <li class="list-group-item">Do something useful while you wait.</li>
+                                                        <input style="display:none" name="activity" value="Do something useful while you wait.">
+                                                    </ul>
+                                                    <div class="card-body">
+                                                        <input type="submit" class="btn btn-success" value="Accept Adventure">
+                                                    </div>
+                                                </form>
                                             </div>
-
-                                            <!--
-                                            <div class="card">
-                                            <div class="quest-image text-center">
-                                                <img class="smallpic card-img-top" src="images/runninglate.jpg" alt="Card image cap">
-                                            </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Be on time</h5>
-                                                    <p class="card-text">Being punctual can help you take control of your situation. Give it a go.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Estimate and track your time</li>
-                                                    <li class="list-group-item">Plan to and then arrive 15 mins early</li>
-                                                    <li class="list-group-item">Do something useful while you wait
-                                                    </li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
-                                            </div>
-                                            -->
                                         </div>
                                         <div class="carousel-item">
                                             <div class="card">
                                                 <div class="quest-image text-center">
                                                     <img class="smallpic card-img-top" src="images/charity.jpg" alt="Card image cap">
                                                 </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Do more good and feel better </h5>
-                                                    <p class="card-text">Taking care of others can be the thing that helps us be happier with ourselves.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Do a good deed for a friend</li>
-                                                    <li class="list-group-item">Do a good deed for a stranger</li>
-                                                    <li class="list-group-item">Do a good deed for a stranger, without telling anyone</li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
+                                                <form action="AddActivity" method="POST">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Do More Good and Feel Better</h5>
+                                                        <input style="display:none" name="goal" value="Do More Good and Feel Better">
+                                                        <p class="card-text">Taking care of others can be the thing that helps us be happier with ourselves.</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">Do a good deed for a friend.</li>
+                                                        <input style="display:none" name="activity" value="Do a good deed for a friend.">
+                                                        <li class="list-group-item">Do a good deed for a stranger.</li>
+                                                        <input style="display:none" name="activity" value="Do a good deed for a stranger.">
+                                                        <li class="list-group-item">Do a good deed for a stranger, without telling anyone.</li>
+                                                        <input style="display:none" name="activity" value="Do a good deed for a stranger, without telling anyone.">
+                                                    </ul>
+                                                    <div class="card-body">
+                                                        <input type="submit" class="btn btn-success" value="Accept Adventure">
+                                                    </div>
+                                                </form>
                                             </div>
-
-                                            <!--
-                                            <div class="card">
-                                            <div class="quest-image text-center">
-                                                <img class="smallpic card-img-top" src="images/charity.jpg" alt="Card image cap">
-                                            </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Do more good and feel better </h5>
-                                                    <p class="card-text">Taking care of others can be the thing that helps us be happier with ourselves.</p>
-                                                </div>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item">Do a good deed for a friend</li>
-                                                    <li class="list-group-item">Do a good deed for a stranger</li>
-                                                    <li class="list-group-item">Do a good deed for a stranger, without telling anyone</li>
-                                                </ul>
-                                                <div class="card-body">
-                                                    <a href="#" class="card-link">Accept Adventure</a>
-                                                </div>
-                                            </div>
-                                            -->
                                         </div>
 
 
@@ -639,18 +534,30 @@
                                     %>
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link" data-toggle="collapse" data-target="#<%=i%>" aria-expanded="true" aria-controls="collapseOne">
-                                                    <% out.print(g.getDescription());%>
-                                                </button>
-                                            </h5>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h3 class="mb-0">
+                                                        <button class="btn btn-link" data-toggle="collapse" data-target="#<%=i%>" aria-expanded="true" aria-controls="collapseOne">
+                                                            <% out.print(g.getDescription());%>
+                                                        </button>
+                                                    </h3>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    <form action="DeleteGoal" method="POST">
+                                                        <input style="display:none" name="goal" value="<%=g%>">
+                                                        <button type="submit" class="btn btn-outline-success" value="Completed Quest">
+                                                            <i class="fas fa-check-square"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div id="<%=i%>" class="collapse" aria-labelledby="<%=i%>" data-parent="#accordion">
                                             <div class="card-body">
                                                 <div class="list-group">
                                                     <%  List<Activity> activities = g.getActivities();
                                                         for (Activity a : activities) {%>
-                                                    <a href="" class="list-group-item list-group-item-action"><% out.print(a.getDescription()); %></a>
+                                                    <a class="list-group-item list-group-item-action"><% out.print(a.getDescription()); %></a>
                                                     <%}%>
                                                 </div>
                                             </div>
