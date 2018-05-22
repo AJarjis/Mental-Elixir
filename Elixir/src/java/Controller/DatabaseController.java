@@ -101,6 +101,13 @@ public class DatabaseController {
             System.exit(0);
         }
     }
+    
+    /**
+     * Close pooled resources
+     */
+    public static void closePool(){
+        pool.close();
+    }
 
     /**
      * ********************ACCOUNT DATABASE COMMANDS**************************

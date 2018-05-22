@@ -90,6 +90,7 @@
 
         </main>
         <!-- /.container -->
+        <span style="display:none" id="userName"><% out.print(user.getUserName()); %></span>
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
