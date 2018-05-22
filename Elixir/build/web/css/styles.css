@@ -92,7 +92,7 @@ input[type='checkbox'] {
 }
 
 /* Styling for a card when searching for a group */
-.groupCard {
+.groupCard .card {
     padding: 2%;
     margin-bottom: 3%;
 }
