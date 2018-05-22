@@ -127,21 +127,21 @@
                             <img class="d-block img-fluid" src="images/hero1.jpg" alt="First slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>"Before you can battle the Darklord you must first conquer your own demons"</h5>
-                                <p>- Shaky the Wise</p>
+                                <p>- Sit Monty Fortesque</p>
                             </div>
                         </div>
                         <div class="heroPic carousel-item">
                             <img class="d-block img-fluid" src="images/hero2.jpg" alt="Second slide">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>"A true hero is someone who has looked at the Darkness inside themselves and defeated it with acceptance, calmness and positivity"</h5>
-                                <p>- Ali the Gay Cleric</p>
+                                <p>- Alijar Jis - Cleric of the fifth order</p>
                             </div>
                         </div>
                         <div class="heroPic carousel-item">
                             <img class="d-block img-fluid" src="images/hero3.jpg" alt="Third slide">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>"SMASH THE FUCKER!!"</h5>
-                                <p>- A Talking Bear</p>
+                                <h5>"GRRRAAAAArrrrRRooooooooroooww"</h5>
+                                <p>- A Bear</p>
                             </div>
                         </div>
                     </div>
@@ -187,7 +187,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-primary">Save Rating</button>
                                     </div>
                                 </div>
                             </div>
@@ -202,17 +202,18 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Rating 2 - Struggling Along</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+                                        Sure, things could be worse but they could most definitely be  a lot better. <br><br>Sometimes your favourite wizard gets impaled by a Trogg, sometimes you lose your sharpest sword off a cliff
+                                        and sometimes Daisy , the farmers daughter, laughs at you and runs off with that Elven archer you hated.<br><br> Whatever the cause, the outlook feels pretty bleak right now. Best gather together your team of adventurers and treat yourselves to a nice banquet and some time to unwind.
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-primary">Save Rating</button>
                                     </div>
                                 </div>
                             </div>
@@ -230,17 +231,19 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Rating 3 - Neither here nor there</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+                                        You battled past that ogre and beat the scales off the dragon. But, to be honest, the hoard of treasure is just....well....its just okay. Its not exactly disappointing, but it also isn't anything very special.<br><br>
+                                        Some days just feel ordinary and this is one of those. If you really think about it there is lots on your adventures that has been fantastic. On the other hand, your new boots are pretty uncomfortable and the dwarf that came along is a little annoying.<br><br> Neither really happy or unhappy. Let's hope that more exciting adventures are just around the corner.
+                                        
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-primary">Save Rating</button>
                                     </div>
                                 </div>
                             </div>
@@ -258,17 +261,19 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Rating 4 - No worries...nearly.</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+                                        The quest is complete. You brought the innkeeper back his lost barrels from that band of thieves and he is letting you and your friends eat and drink for free.<br><br>
+                                        The villagers love you. You have the chair closest to the fire and the the innkeepers dog is asleep at your feet. Exhausted, relaxed and appreciated. <br><br>Life is pretty good right now, apart from that damned dwarf
+                                        is singing Dwarven drinking songs and keeps standing on your feet when he dances.
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-primary">Save Rating</button>
                                     </div>
                                 </div>
                             </div>
@@ -285,17 +290,19 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Rating 5 - The City is Yours!</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+                                        You did it. You did it all. <br><br>You rescued the lost children, you saved the city from the band of marauding barbarians, you single handedly beat Krogg the BoneBreaker and now his mighty, magical sword
+                                        "The Punisher" is yours to wield and command. The throne of the kingdom is yours for the taking, your true love is next to you and you are starting to suspect that you may be an immortal demi-god.<br><br>
+                                        For today, not a thing in the world is wrong. Time to sit on your new throne and reflect on this moment and consider how good life can be when you keep on adventuring.
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-primary">Save Rating</button>
                                     </div>
                                 </div>
                             </div>
