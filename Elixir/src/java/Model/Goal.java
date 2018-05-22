@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class Goal {
     public Goal(List<Activity> activities, Calendar targetDate) {
         this.activities = activities;
         this.targetDate = targetDate;
-        this.activities = new LinkedList<>();
+        this.description = "No description";
     }
     
     /**
@@ -155,28 +154,4 @@ public class Goal {
     public boolean removeActivity(Activity activity){
         return this.activities.remove(activity);
     }
-    
-    /**
-     * Not sure what this method needs to do. More clarification needed.
-     * @param user 
-     */
-   public void recommendGoal(User user){
-       //Not entiery sure what needs to be here0
-   }  
-   
-    @Override
-   public String toString(){
-       String date = "";
-       if(this.targetDate == null)
-       {
-           date = "null";
-       }else{
-           date = this.targetDate.toString();
-        } 
-       return "\nGoal Description: " + this.description
-               + "\n Target Date: " +  date
-               + "\n Completion Stat: " + this.completionStatus;
-   }
-    
-    
 }

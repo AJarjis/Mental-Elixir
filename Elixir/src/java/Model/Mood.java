@@ -17,7 +17,7 @@ import java.util.Date;
  *
  *****************************************************************************
  */
-//TODO: CHANGE ALL DATES TO CALENDAR!!!!
+
 public class Mood {
 
     /**
@@ -120,18 +120,6 @@ public class Mood {
     public void setDate(Calendar date) {
         
         this.date = date;
-    }
-    
-    /**
-     * Method to return mood info for debug
-     * @return 
-     */
-    @Override
-    public String toString(){
-        return "Mood: " + this.moodType 
-                + "\nDate: " + (this.date != null ? this.date.toString() : "N/A") 
-                + "\nNotes: " + (this.notes != null ? this.notes : "N/A")
-                + "\n";
     }
 
 }

@@ -109,12 +109,5 @@ public class Activity {
         
         this.completionStatus = completionStatus;
     }
-    
-    @Override
-    public String toString(){
-        return "ActivityType: " + this.activityType.convertToString() 
-                + " Description: " + this.description 
-                + " Status: " + this.completionStatus;
-    }
 
 }
