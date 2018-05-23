@@ -93,10 +93,10 @@
         new Chart(document.getElementById("myChart"), {
             type: 'line',
             data: {
-                labels: ["15/6", "16/6", "17/6", "18/6", "19/6", "20/6", "20/6", "21/6", "22/6", "23/6"],
+                labels: [" ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
                 datasets: [{
                         data: jsData,
-                        label: "Fear",
+                        label: "Contentment",
                         borderColor: "#3e95cd",
                         fill: false
                     }
