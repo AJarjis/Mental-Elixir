@@ -92,31 +92,35 @@
 
                         </div>
                     </div><%}%>
-
-
-                    <div class="flex-container pt-5 text-center">
-                        <img src="images/heroes.jpeg" style="width: 100%;">
-                    </div>
-
-                    <div class="flex-container" style="background-color: #011627">
-                        <!--Footer-->
-                        <footer class="page-footer font-small blue pt-4 mt-4">
-
-                            <!--Footer Links-->
-
-                            <!--/.Footer Links-->
-
-                            <!--Copyright-->
-                            <div class="footer-copyright py-3 text-center" style="color : white;">
-                                © 2018 Copyright:
-                                <a href="https://mentalelixir.co.uk"> MentalElixir.co.uk </a>
-                            </div>
-                            <!--/.Copyright-->
-
-                        </footer>
-                        <!--/.Footer-->
-                    </div>
                 </div>
+            </div>
+
+
+            <div class="flex-container pt-5 text-center">
+                <img src="images/heroes.jpeg" style="width: 100%;">
+            </div>
+
+            <div class="flex-container" style="background-color: #011627">
+                <!--Footer-->
+                <footer class="page-footer font-small blue pt-4 mt-4">
+
+                    <!--Footer Links-->
+
+                    <!--/.Footer Links-->
+
+                    <!--Copyright-->
+                    <div class="footer-copyright py-3 text-center" style="color : white;">
+                        © 2018 Copyright:
+                        <a href="https://mentalelixir.co.uk"> MentalElixir.co.uk </a>
+                    </div>
+                    <!--/.Copyright-->
+
+                </footer>
+                <!--/.Footer-->
+            </div>
+
+
+
 
 
         </main>
