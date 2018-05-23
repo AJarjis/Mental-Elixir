@@ -325,7 +325,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row chart p-5 justify-content-center">
+                <div class="container pt-4 rounded chart border border-secondary bg-light justify-content-center">
                     <div id="chartDiv"></div>
                 </div>
             </div>
@@ -333,7 +333,7 @@
             <!-----------------------------------Test Zone Start--------------------------------->
             <div id="adventures" class="container-flex bg-danger p-4">
                 <div class="container bg-light rounded" id="goals">
-                    <div class="container pt-5 m text-center text-secondary">
+                    <div class="container pt-5 text-center text-secondary">
                         <h1>
                             Choose your own Adventure.
                         </h1>
