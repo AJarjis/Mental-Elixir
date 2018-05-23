@@ -347,9 +347,13 @@ body {
     background-color: #F3A341;
 }
 
+.moodModal img {
+    ;
+}
+
 .moodModal img:hover {
     cursor: pointer;
-    background: url("../images/mood/redOne.png");
+    opacity: 0.1;
 
 }
 

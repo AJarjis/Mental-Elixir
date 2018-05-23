@@ -52,11 +52,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <form action="closePoolServlet" method="POST">
-                <div class="card p-5">
-                    <input style="color: white" class="btn btn-primary" type="submit" value="Close Pooled Resourses">
-                </div>
-            </form>
+
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -165,14 +161,14 @@
                 </div>
             </div>
 
-            <div class="container-fluid pb-5" id="moods">
+            <div class="container p-5" id="moods">
                 <h1 class="text-center text-light pt-5">How is your Adventure?</h1>
                 <h5 class="text-center text-light pl-5 pr-5">Sometimes an Adventurer can feel full of strength and jubilation and sometimes they may just want to sit in a cave (after wrestling the Bear inside into submission) and hide from the world. How full is your potion?</h5>
                 <br>
                 <h5 class="text-center text-light pl-5 pr-5">Click on the bottles below to rate your adventure contentment.</h5>
-                <div class="row justify-content-center p-3">
+                <div class="row justify-content-around p-3">
 
-                    <div id="moodModalOne " class="moodModal col-lg-1 col-md-2 col-sm-2">
+                    <div id="moodModalOne " class="moodModal col-lg-1 col-md-2 col-xs-2">
                         <!-- Button trigger modal -->
                         <a data-toggle="modal" data-target="#exampleModalCenter1">
                             <img class="img-fluid" id="conOne" src="images/mood/conOne.png" >
