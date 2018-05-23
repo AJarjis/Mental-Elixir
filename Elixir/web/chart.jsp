@@ -146,18 +146,4 @@
             chart.update();
         }
     </script>
-
-    <!––
-    Check dateFrom < dateTo
-    Pull dates from date picker
-    run date_diff_indays on those dates
-    for each day
-    Add each day to a stringArray
-    Add data for that day into intArray
-    Put stringArray into "labels"
-    Put intArray into "data" of RADIO BUTTON    
-    Draw Chart
-
-    --->
-
 </body>

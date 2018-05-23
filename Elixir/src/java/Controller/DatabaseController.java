@@ -49,7 +49,6 @@ public class DatabaseController {
             pool.setJdbcUrl(URL);
             pool.setUser(USER);
             pool.setPassword(PASS);
-            pool.setMaxPoolSize(10);
             pool.setMinPoolSize(1);
             System.out.println("STUFF IN STATIC");
         } catch (PropertyVetoException e) {
@@ -225,9 +224,9 @@ public class DatabaseController {
             stmt.setString(1, username);
             rsTemp = stmt.executeQuery();
             while (rsTemp.next()) {
-                String usrName = rsTemp.getString("Username");
-                String firstName = rsTemp.getString("FirstName");
-                String surname = rsTemp.getString("Surname");
+                String usrName = rsTemp.getString("username");
+                String firstName = rsTemp.getString("firstName");
+                String surname = rsTemp.getString("surname");
                 String email = rsTemp.getString("email");
                 String password = rsTemp.getString("password");
                 user = new User(usrName, firstName, surname, email, password);
@@ -868,16 +867,19 @@ public class DatabaseController {
         rs = null;
         conn = null;
         List<Group> groupList = new LinkedList<>();
+        List<User> userList = new LinkedList<>();
         try {
             conn = pool.getConnection();
             stmt = conn.prepareStatement("SELECT * FROM trackergroup");
             rs = stmt.executeQuery();
             while (rs.next()) {
                 String groupName = rs.getString("groupname");
+                System.out.println(groupName);
+                userList = getUsersFromGroup(groupName);
                 String description = rs.getString("description");
                 String username = rs.getString("ownerusername");
                 User tempUsr = selectUser(username);
-                Group tempGroup = new Group(groupName, description, tempUsr);
+                Group tempGroup = new Group(groupName, description, tempUsr, userList);
                 groupList.add(tempGroup);
             }
         } catch (SQLException e) {
@@ -891,6 +893,35 @@ public class DatabaseController {
         return groupList;
     }
 
+    
+    
+    public static List<User> getUsersFromGroup(String groupname) {
+        stmt = null;
+        ResultSet rsTemp = null;
+        conn = null;
+        List<User> groupUsers = new LinkedList<>();
+        try {
+            conn = pool.getConnection();
+            stmt = conn.prepareStatement("SELECT * FROM usergroup WHERE groupname = ?");
+            stmt.setString(1, groupname);
+            rsTemp = stmt.executeQuery();
+            while (rsTemp.next()) {
+                String username = rsTemp.getString("username");
+                User user = DatabaseController.getUserByUsername(username);
+                groupUsers.add(user);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        } finally {
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rsTemp);
+        }
+        return groupUsers;
+    }
+            
+            
     /**
      * Method used to get all the groups that belong to the user
      *
@@ -1054,12 +1085,11 @@ public class DatabaseController {
     public static Group getGroup(String groupName) {
         List<Group> groupList = getAllGroups();
         for (Group g : groupList) {
-            if (g.getGroupName() == groupName) {
+            if (g.getGroupName().equals(groupName)) {
                 return g;
             }
         }
         return null;
-
     }
 
     /**
@@ -1109,8 +1139,8 @@ public class DatabaseController {
 //        List<Group> testUserGroups = DatabaseController
 //                .getAllGroupsThatBelongToUser("FirstRec");
 //        DatabaseController.addUserToGroup("FirstRec", "other Cool GHuys");
-//        List<Group> testPartOfGroups = DatabaseController
-//                .getAllGroupsThatTheUserIsPartOf("FirstRec");
+        List<Group> testPartOfGroups = DatabaseController
+                .getAllGroupsThatTheUserIsPartOf("john");
 //        System.out.println("GoalID: " + DatabaseController
 //                .getGoalID("Improve general wellbeing", "FirstRec"));
 //          List<Goal> testGoal = DatabaseController.getAllGoalsForUser("IronMan");
@@ -1120,18 +1150,21 @@ public class DatabaseController {
 //        System.out.println("ASSESSMENT LIST: " + assmt.toString());
 //        System.out.println("ACT LIST:\n " + act.toString());
 //        System.out.println("GOAL LIST: \n" + testGoal.toString());
-//        System.out.println("PART OF GROUPS: \n" + testPartOfGroups);
+        System.out.println("PART OF GROUPS: \n" + testPartOfGroups);
+        for (Group testPartOfGroup : testPartOfGroups) {
+            System.out.println("Groupname" + testPartOfGroup.getGroupName());
+        }
 //          for (Goal g : testGoal) {
 //              System.out.println("Desc: " + g.getDescription() + " Date: " + g.getTargetDate().getTime().toString());
 //        }
-        List<Mood> moods = new LinkedList<>();
-        Calendar start = Calendar.getInstance();
-        Calendar end = Calendar.getInstance();
-        start.set(2018, 4, 10);
-        end.set(2018, 6, 1);
-        moods = DatabaseController.getMoodsBetweenDates("john", start, end);
-        for (Mood mood : moods) {
-            System.out.println("Mood:" + mood.getNotes());
-        }
+//        List<Mood> moods = new LinkedList<>();
+//        Calendar start = Calendar.getInstance();
+//        Calendar end = Calendar.getInstance();
+//        start.set(2018, 4, 10);
+//        end.set(2018, 6, 1);
+//        moods = DatabaseController.getMoodsBetweenDates("john", start, end);
+//        for (Mood mood : moods) {
+//            System.out.println("Mood:" + mood.getNotes());
+//        }
     }
 }
