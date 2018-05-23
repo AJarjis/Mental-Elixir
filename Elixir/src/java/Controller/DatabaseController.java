@@ -49,6 +49,7 @@ public class DatabaseController {
             pool.setJdbcUrl(URL);
             pool.setUser(USER);
             pool.setPassword(PASS);
+            pool.setMaxPoolSize(30);
             pool.setMinPoolSize(1);
             System.out.println("STUFF IN STATIC");
         } catch (PropertyVetoException e) {
@@ -1083,13 +1084,32 @@ public class DatabaseController {
     }
 
     public static Group getGroup(String groupName) {
-        List<Group> groupList = getAllGroups();
-        for (Group g : groupList) {
-            if (g.getGroupName().equals(groupName)) {
-                return g;
+        stmt = null;
+        rs = null;
+        conn = null;
+        Group group = null;
+        try {
+            conn = pool.getConnection();
+            stmt = conn.prepareStatement("SELECT * FROM trackergroup WHERE groupname = ?");
+            stmt.setString(1, groupName);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                String groupname = rs.getString("groupname");
+                List <User> userList = getUsersFromGroup(groupName);
+                String description = rs.getString("description");
+                String username = rs.getString("ownerusername");
+                User tempUsr = selectUser(username);
+                group = new Group(groupName, description, tempUsr, userList);
             }
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        } finally {
+            attemptClose(conn);
+            attemptClose(stmt);
+            attemptClose(rs);
         }
-        return null;
+        return group;
     }
 
     /**
