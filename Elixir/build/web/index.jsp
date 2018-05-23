@@ -52,11 +52,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <form action="closePoolServlet" method="POST">
-                <div class="card p-5">
-                    <input style="color: white" class="btn btn-primary" type="submit" value="Close Pooled Resourses">
-                </div>
-            </form>
+
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
