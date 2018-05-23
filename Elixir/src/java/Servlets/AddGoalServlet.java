@@ -20,6 +20,7 @@ import Model.Goal;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,9 +46,13 @@ public class AddGoalServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                 throws ServletException, IOException {
+        
+        try{
         HttpSession session = request.getSession();
         UserController user = (UserController) session.getAttribute("user");
 
+   
         // Get goal and activities
         String goalString = request.getParameter("goal");
         String activitiesStrings[] = request.getParameterValues("activity");
@@ -92,7 +97,13 @@ public class AddGoalServlet extends HttpServlet {
 //        }
         // Redirect page
         response.sendRedirect("index.jsp");
-    }
+        }
+        catch(Exception e)
+        {
+            RequestDispatcher rd = request.getRequestDispatcher("Logout");
+                rd.forward(request,response);
+        }
+    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

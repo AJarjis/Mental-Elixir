@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,41 +45,46 @@ public class CreateGroup extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Stores any errors that occur for view to access
-        Map<String, String> errorMessages = new HashMap();
-        request.setAttribute("errorMessages", errorMessages);
-        // Convert mood type to actual enum mood type
-        String groupName = request.getParameter("groupName");
+        try {
+            // Stores any errors that occur for view to access
+            Map<String, String> errorMessages = new HashMap();
+            request.setAttribute("errorMessages", errorMessages);
+            // Convert mood type to actual enum mood type
+            String groupName = request.getParameter("groupName");
 
-        // Grabs note about mood
-        String groupDescription = request.getParameter("groupDescription");
+            // Grabs note about mood
+            String groupDescription = request.getParameter("groupDescription");
 
-        if (groupName.trim().isEmpty()) {
-            errorMessages.put("errorMain", "Please enter a group name");
-        } else if (DatabaseController.alreadyGroup(groupName)) {
-            errorMessages.put("errorMain", "Group name is already taken.");
-        } else if (groupDescription.trim().isEmpty()) {
-            errorMessages.put("errorMain", "Please enter a group description");
-        }
-        if (errorMessages.isEmpty()) {
-            // Load in currently logged in user
-            HttpSession session = request.getSession();
-            UserController user = (UserController) session.getAttribute("user");
+            if (groupName.trim().isEmpty()) {
+                errorMessages.put("errorMain", "Please enter a group name");
+            } else if (DatabaseController.alreadyGroup(groupName)) {
+                errorMessages.put("errorMain", "Group name is already taken.");
+            } else if (groupDescription.trim().isEmpty()) {
+                errorMessages.put("errorMain", "Please enter a group description");
+            }
+            if (errorMessages.isEmpty()) {
+                // Load in currently logged in user
+                HttpSession session = request.getSession();
+                UserController user = (UserController) session.getAttribute("user");
 
-            // Create mood and set as mood controller
-            Group group = new Group(groupName, groupDescription, user.getUser());
+                // Create mood and set as mood controller
+                Group group = new Group(groupName, groupDescription, user.getUser());
 
-            // Update database with mood
-            DatabaseController.addGroup(group);
+                // Update database with mood
+                DatabaseController.addGroup(group);
 
-            // Add mood to user's profile
-            ProfileController pc = new ProfileController(user.getProfile());
+                // Add mood to user's profile
+                ProfileController pc = new ProfileController(user.getProfile());
 
-            // Redirects user to profile page and prevents resubmitting
-            response.sendRedirect("groups.jsp");
-        } else {
-            request.getRequestDispatcher("createGroup.jsp")
-                    .forward(request, response);
+                // Redirects user to profile page and prevents resubmitting
+                response.sendRedirect("groups.jsp");
+            } else {
+                request.getRequestDispatcher("createGroup.jsp")
+                        .forward(request, response);
+            }
+        } catch (Exception e) {
+            RequestDispatcher rd = request.getRequestDispatcher("Logout");
+            rd.forward(request, response);
         }
     }
 
@@ -96,9 +102,8 @@ public class CreateGroup extends HttpServlet {
             throws ServletException, IOException {
         request.setAttribute("errorMessages", null);
         request.getRequestDispatcher("createGroup.jsp")
-                    .forward(request, response);
-        
-        
+                .forward(request, response);
+
     }
 
     /**
