@@ -52,7 +52,12 @@
                 <br />
                 <div id="listOfGroups" class="row">
                     <% List<Group> groups = DatabaseController.getAllGroups();
-                        for (Group group : groups) {%>
+
+                        List<Group> usersGroups = DatabaseController.getAllGroupsThatBelongToUser(user.getUserName());
+                        for (Group group : groups) {
+                            boolean joined = false;
+
+                    %>
                     <div class="col-md-6 groupCard">
                         <div class="card">
                             <div class="row">
@@ -62,12 +67,24 @@
                                         <% out.print(group.getDescription());%>
                                     </p>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4">`
                                     <!-- TODO: must pass a parameter saying what group this is -->
+                                    <% for (Group uGroup : usersGroups) {
+                                            if (uGroup.getGroupName().equals(group.getGroupName())) {
+                                                joined = true;
+                                            }
+                                        }
+                                        if (joined) {%>
+                                    <form action="ViewGroup" method="POST">
+                                        <input style="display:none" name="viewGroup" value="<%=group.getGroupName()%>" />
+                                        <input class="btn btn-success" type="submit" value="View Guild"></input>
+                                    </form>
+                                    <%} else {%>
                                     <form action="JoinGroup" method="POST">
                                         <input style="display:none" name="joinGroup" value="<%=group.getGroupName()%>" />
-                                        <input class="btn btn-primary" type="submit" value="Join Group"></input>
+                                        <input class="btn btn-primary" type="submit" value="Join Guild"></input>
                                     </form>
+                                    <%}%>
                                 </div>
 
 
