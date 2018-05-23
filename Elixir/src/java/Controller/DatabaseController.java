@@ -49,7 +49,6 @@ public class DatabaseController {
             pool.setJdbcUrl(URL);
             pool.setUser(USER);
             pool.setPassword(PASS);
-            pool.setMaxPoolSize(10);
             pool.setMinPoolSize(1);
             System.out.println("STUFF IN STATIC");
         } catch (PropertyVetoException e) {
@@ -225,9 +224,9 @@ public class DatabaseController {
             stmt.setString(1, username);
             rsTemp = stmt.executeQuery();
             while (rsTemp.next()) {
-                String usrName = rsTemp.getString("Username");
-                String firstName = rsTemp.getString("FirstName");
-                String surname = rsTemp.getString("Surname");
+                String usrName = rsTemp.getString("username");
+                String firstName = rsTemp.getString("firstName");
+                String surname = rsTemp.getString("surname");
                 String email = rsTemp.getString("email");
                 String password = rsTemp.getString("password");
                 user = new User(usrName, firstName, surname, email, password);
@@ -875,6 +874,7 @@ public class DatabaseController {
             rs = stmt.executeQuery();
             while (rs.next()) {
                 String groupName = rs.getString("groupname");
+                System.out.println(groupName);
                 userList = getUsersFromGroup(groupName);
                 String description = rs.getString("description");
                 String username = rs.getString("ownerusername");
@@ -906,12 +906,8 @@ public class DatabaseController {
             stmt.setString(1, groupname);
             rsTemp = stmt.executeQuery();
             while (rsTemp.next()) {
-                String usrName = rsTemp.getString("Username");
-                String firstName = rsTemp.getString("FirstName");
-                String surname = rsTemp.getString("Surname");
-                String email = rsTemp.getString("email");
-                String password = rsTemp.getString("password");
-                User user = new User(usrName, firstName, surname, email, password);
+                String username = rsTemp.getString("username");
+                User user = DatabaseController.getUserByUsername(username);
                 groupUsers.add(user);
             }
         } catch (SQLException e) {
