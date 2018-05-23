@@ -10,16 +10,12 @@
  ***************************************************************************** */
 package Servlets;
 
-import Controller.ActivityController;
 import Controller.DatabaseController;
 import Controller.GoalController;
 import Controller.UserController;
 import Model.Activity;
 import Model.ActivityTypes;
-import Model.Goal;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,34 +42,29 @@ public class AddGoalServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                 throws ServletException, IOException {
-        
-        try{
-        HttpSession session = request.getSession();
-        UserController user = (UserController) session.getAttribute("user");
+        try {
+            HttpSession session = request.getSession();
+            UserController user = (UserController) session.getAttribute("user");
 
-   
-        // Get goal and activities
-        String goalString = request.getParameter("goal");
-        String activitiesStrings[] = request.getParameterValues("activity");
+            // Get goal and activities
+            String goalString = request.getParameter("goal");
+            String activitiesStrings[] = request.getParameterValues("activity");
 
-        // Add goal entry to the database
-        GoalController goal = new GoalController(goalString);
-        DatabaseController.addGoalEntry(goal.getGoal(), user.getUserName());
+            // Add goal entry to the database
+            GoalController goal = new GoalController(goalString);
+            DatabaseController.addGoalEntry(goal.getGoal(), user.getUserName());
 
-        int goalID = DatabaseController.getGoalID(
-                goal.getGoal().getDescription(), user.getUserName());
+            int goalID = DatabaseController.getGoalID(
+                    goal.getGoal().getDescription(), user.getUserName());
 
-        // Create activity for activities
-        for (int i = 0; i < activitiesStrings.length; i++) {
-            Activity act = new Activity(ActivityTypes.Body, activitiesStrings[i]);
-            DatabaseController.addActivityEntry(act, goalID);
-            goal.addActivity(act);
-        }
-        
-        user.getProfile().addGoal(goal.getGoal());
-        
-        
+            // Create activity for activities
+            for (int i = 0; i < activitiesStrings.length; i++) {
+                Activity act = new Activity(ActivityTypes.Body, activitiesStrings[i]);
+                DatabaseController.addActivityEntry(act, goalID);
+                goal.addActivity(act);
+            }
+
+            user.getProfile().addGoal(goal.getGoal());
 
 //        // Load in currently logged in user
 //        HttpSession session = request.getSession();
@@ -95,15 +86,13 @@ public class AddGoalServlet extends HttpServlet {
 //            // Using the goal id add the activities
 //            DatabaseController.addActivityEntry(activities.get(i), goalID);
 //        }
-        // Redirect page
-        response.sendRedirect("index.jsp");
-        }
-        catch(Exception e)
-        {
+            // Redirect page
+            response.sendRedirect("index.jsp");
+        } catch (Exception e) {
             RequestDispatcher rd = request.getRequestDispatcher("Logout");
-                rd.forward(request,response);
+            rd.forward(request, response);
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
