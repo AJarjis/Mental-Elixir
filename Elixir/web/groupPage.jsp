@@ -55,7 +55,7 @@
                         <h3>Allies</h3>
                         <% for (User u : group.getMembers()) {
                         %>
-                        <div class="card">
+                        <div class="card" style="margin-bottom: 1%">
                             <b>Username: </b><% out.print(u.getUserName()); %>
                         </div>
                         <%}%>
