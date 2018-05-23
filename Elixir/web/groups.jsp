@@ -47,8 +47,8 @@
 
         <main role="main" class="flex-container">
             <div class="container">
-                <h1 class="text-center">Groups</h1>
-                <input class="form-control" type="text" id="groupSearch" placeholder="Search for groups..">
+                <h1 class="text-center">Guilds</h1>
+                <input class="form-control" type="text" id="groupSearch" placeholder="Search for guilds..">
                 <br />
                 <div id="listOfGroups" class="row">
                     <% List<Group> groups = DatabaseController.getAllGroups();

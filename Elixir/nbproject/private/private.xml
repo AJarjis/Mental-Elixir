@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -16,3 +17,21 @@
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/DatabaseController.java</file>
+            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/ActivityController.java</file>
+            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/GroupController.java</file>
+            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/test/Model/GroupTest.java</file>
+            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/test/Model/MoodTest.java</file>
+            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Controller/GoalController.java</file>
+            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/Group.java</file>
+            <file>file:/home/kyklos/Desktop/Uni%202017-18/SoftwareEngPart2/softwaredev-code/Elixir/src/java/Model/Mood.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> master
