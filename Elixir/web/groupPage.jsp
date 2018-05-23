@@ -18,14 +18,14 @@
         <title>Group Page</title>
     </head>
     <body>
-        <% GroupController group = (GroupController) session.getAttribute("group "); %>
-        <h1><%=group.getGroupName()%></h1>
-        <p><%=group.getDescription()%></p>
+        <% GroupController group = (GroupController) session.getAttribute("group"); %>
+        <h1><% out.print(group.getGroupName()); %></h1>
+        <p><% out.print(group.getDescription()); %></p>
         <% for(User u : group.getMembers())
         {
             %>
-            <p><%=u.getFirstName()%></p>
-            <p><%=u.getSurname()%></p>
+            <p><% out.print(u.getFirstName()); %></p>
+            <p><% out.print(u.getSurname());%></p>
         <%}%>
     </body>
 </html>

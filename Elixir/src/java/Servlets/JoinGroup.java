@@ -41,22 +41,28 @@ public class JoinGroup extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-
+        // Grab user
         HttpSession session = request.getSession();
         UserController user = (UserController) session.getAttribute("user");
         
+        // Get group user wishes to join
         String groupName = request.getParameter("joinGroup");
         
+        // Add user to group in database
         DatabaseController.addUserToGroup(user.getUserName(), groupName);
+        
+        // Retrieve group from database
         Group group = DatabaseController.getGroup(groupName);
+        
+        // Update user's groups
+        user.getProfile().addPartOfGroup(group);
+        
+        // Create groupController
         GroupController groupController = new GroupController(group);
+        groupController.addMember(user.getUser());
         session.setAttribute("group", groupController);
         
-        
-        response.sendRedirect("groups.jsp");
-
-
-        
+        response.sendRedirect("groupPage.jsp");
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
