@@ -29,7 +29,7 @@ import java.beans.PropertyVetoException;
 
 public class DatabaseController {
 
-    private static final String URL 
+    private static final String URL
             = "jdbc:postgresql://elixir-ver2.postgres"
             + ".database.azure.com:5432/postgres";
     private static final String USER = "elixir@elixir-ver2";
@@ -38,15 +38,16 @@ public class DatabaseController {
     private static PreparedStatement stmt = null;
     private static ResultSet rs = null;
     private static ComboPooledDataSource pool;
+
     /**
      * Start of the Pooled connection initialization
      */
-    static{
+    static {
         try {
             pool = new ComboPooledDataSource();
             pool.setDriverClass("org.postgresql.Driver"); //loads the jdbc driver
             pool.setJdbcUrl(URL);
-            pool.setUser(USER);   
+            pool.setUser(USER);
             pool.setPassword(PASS);
             pool.setMaxPoolSize(10);
             pool.setMinPoolSize(1);
@@ -62,13 +63,15 @@ public class DatabaseController {
      */
     /**
      * Method to close result set
-     * @param o 
+     *
+     * @param o
      */
-    static void attemptClose(ResultSet o)
-    {
-	try
-	    { if (o != null) o.close();}
-	catch (SQLException e){ 
+    static void attemptClose(ResultSet o) {
+        try {
+            if (o != null) {
+                o.close();
+            }
+        } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
@@ -76,13 +79,15 @@ public class DatabaseController {
 
     /**
      * Method to close statement
-     * @param o 
+     *
+     * @param o
      */
-    static void attemptClose(Statement o)
-    {
-	try
-	    { if (o != null) o.close();}
-	catch (SQLException e){ 
+    static void attemptClose(Statement o) {
+        try {
+            if (o != null) {
+                o.close();
+            }
+        } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
@@ -90,22 +95,24 @@ public class DatabaseController {
 
     /**
      * Method to close connection
-     * @param o 
+     *
+     * @param o
      */
-    static void attemptClose(Connection o)
-    {
-	try
-	    { if (o != null) o.close();}
-	catch (SQLException e){ 
+    static void attemptClose(Connection o) {
+        try {
+            if (o != null) {
+                o.close();
+            }
+        } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
     }
-    
+
     /**
      * Close pooled resources
      */
-    public static void closePool(){
+    public static void closePool() {
         pool.close();
     }
 
@@ -132,16 +139,17 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
-        
+
     }
 
     /**
      * Method to check if the username passed in has an account associated with
      * it in the database
+     *
      * @param username
      * @return true if account does not exist false if it does
      */
@@ -177,7 +185,7 @@ public class DatabaseController {
      * @param dataToUpdate new data to be used in SQL
      * @param username
      */
-    public static void updateUser(String fieldName, 
+    public static void updateUser(String fieldName,
             String dataToUpdate, String username) {
         stmt = null;
         conn = null;
@@ -191,7 +199,7 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
@@ -347,14 +355,15 @@ public class DatabaseController {
         }
         return userDetails;
     }
-    
+
     /**
-     * Method that deletes an account that is associated with the username 
-     * passed. The delete will delete all the records that are associated with 
+     * Method that deletes an account that is associated with the username
+     * passed. The delete will delete all the records that are associated with
      * the account deleted.
-     * @param username 
+     *
+     * @param username
      */
-    public static void deleteUser(String username){
+    public static void deleteUser(String username) {
         stmt = null;
         conn = null;
         try {
@@ -365,7 +374,7 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
@@ -385,9 +394,9 @@ public class DatabaseController {
         conn = null;
         try {
             conn = pool.getConnection();
-            stmt = conn.prepareStatement("INSERT INTO mood (mood_id," +
-"                + moodtype, notes, date, username)" +
-"                + VALUES (DEFAULT , ?, ?, DEFAULT , ?)");
+            stmt = conn.prepareStatement("INSERT INTO mood (mood_id,"
+                    + "moodtype, notes, date, username)"
+                    + "VALUES (DEFAULT , ?, ?, DEFAULT , ?)");
             stmt.setInt(1, mood.getMoodType());
             stmt.setString(2, mood.getNotes());
             stmt.setString(3, username);
@@ -395,7 +404,7 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
@@ -436,16 +445,17 @@ public class DatabaseController {
         }
         return moodList;
     }
-    
+
     /**
      * Allows retrieval of moods for a user between said dates
+     *
      * @param username
      * @param start
      * @param end
-     * @return 
+     * @return
      */
-    public static List<Mood> getMoodsBetweenDates(String username, 
-            Calendar start, Calendar end){
+    public static List<Mood> getMoodsBetweenDates(String username,
+            Calendar start, Calendar end) {
         stmt = null;
         rs = null;
         conn = null;
@@ -503,7 +513,7 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
@@ -511,28 +521,32 @@ public class DatabaseController {
 
     /**
      * Method that lets a mood type to be modified
+     *
      * @param username
-     * @param moodType 
-     * @param date 
+     * @param moodType
+     * @param date
      */
     public static void updateMoodType(String username, MoodTypes moodType, Calendar date) {
-        updateMoodTable(username, date,"moodtype", moodType.toString());
+        updateMoodTable(username, date, "moodtype", moodType.toString());
     }
 
     /**
      * Method that allows notes of a mood entry to be modified
+     *
      * @param username
-     * @param notes 
-     * @param date 
+     * @param notes
+     * @param date
      */
     public static void updateNotes(String username, String notes, Calendar date) {
         updateMoodTable(username, date, "notes", notes);
     }
+
     /**
      * Method that allows all moods logged for a user to be deleted
-     * @param username 
+     *
+     * @param username
      */
-     public static void deleteAllMoods(String username){
+    public static void deleteAllMoods(String username) {
         stmt = null;
         conn = null;
         try {
@@ -543,12 +557,12 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
-     }
-    
+    }
+
     /**
      * *******************ASSESSMENT DATABASE COMMANDS************************
      */
@@ -571,16 +585,18 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
     }
+
     /**
-     * Method to retrieve all assessments that are stored on the database
-     * for the desired user
+     * Method to retrieve all assessments that are stored on the database for
+     * the desired user
+     *
      * @param username
-     * @return 
+     * @return
      */
     public static List<Assessment> getAllAssessmentsForUser(String username) {
         stmt = null;
@@ -634,7 +650,7 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
@@ -690,22 +706,22 @@ public class DatabaseController {
         try {
             conn = pool.getConnection();
             if (entry.getTargetDate() == null) {
-            stmt = conn.prepareStatement("INSERT INTO goal (completion_status, target_date, description, username)"
-                + "VALUES  (DEFAULT , DEFAULT, ?, ?)");
-            stmt.setString(1, entry.getDescription());
-            stmt.setString(2, username);
+                stmt = conn.prepareStatement("INSERT INTO goal (completion_status, target_date, description, username)"
+                        + "VALUES  (DEFAULT , DEFAULT, ?, ?)");
+                stmt.setString(1, entry.getDescription());
+                stmt.setString(2, username);
             } else {
-            stmt = conn.prepareStatement("INSERT INTO goal (completion_status, target_date, description, username)"
-                + "VALUES  (DEFAULT , ?, ?, ?)");
-            stmt.setDate(1, new java.sql.Date(entry.getTargetDate().getTimeInMillis()));
-            stmt.setString(2, entry.getDescription());
-            stmt.setString(3, username);
-        }
+                stmt = conn.prepareStatement("INSERT INTO goal (completion_status, target_date, description, username)"
+                        + "VALUES  (DEFAULT , ?, ?, ?)");
+                stmt.setDate(1, new java.sql.Date(entry.getTargetDate().getTimeInMillis()));
+                stmt.setString(2, entry.getDescription());
+                stmt.setString(3, username);
+            }
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
@@ -737,8 +753,8 @@ public class DatabaseController {
                     date.setTime(rs.getTimestamp("target_date"));
                 }
                 String description = rs.getString("description");
-                List<Activity> aList = 
-                        DatabaseController.getAllActivitiesForGoal(goal_id);
+                List<Activity> aList
+                        = DatabaseController.getAllActivitiesForGoal(goal_id);
                 Goal temp = new Goal(stat, date, description, aList);
                 goalList.add(temp);
                 date = Calendar.getInstance();
@@ -790,13 +806,14 @@ public class DatabaseController {
             return goalID;
         }
     }
-    
+
     /**
      * Method that allows a goal entry to be deleted from the database
+     *
      * @param entry
-     * @param username 
+     * @param username
      */
-    public static void deleteGoal(Goal entry, String username){
+    public static void deleteGoal(Goal entry, String username) {
         stmt = null;
         conn = null;
         try {
@@ -807,7 +824,7 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
@@ -827,7 +844,7 @@ public class DatabaseController {
         try {
             conn = pool.getConnection();
             stmt = conn.prepareStatement("INSERT INTO trackergroup (groupname, description, ownerusername) "
-                + "VALUES (?, ?, ?)");
+                    + "VALUES (?, ?, ?)");
             stmt.setString(1, group.getGroupName());
             stmt.setString(2, group.getDescription());
             stmt.setString(3, group.getCreator().getUserName());
@@ -835,7 +852,7 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
@@ -908,17 +925,17 @@ public class DatabaseController {
         }
         return groupList;
     }
+
     /**
      * Checks if a group already exists
+     *
      * @param groupName
      * @return false if group doesn't exist, true if it does.
      */
     public static boolean alreadyGroup(String groupName) {
         List<Group> groupList = getAllGroups();
-        for(Group group : groupList)
-        {
-            if(group.getGroupName().equals(groupName))
-            {
+        for (Group group : groupList) {
+            if (group.getGroupName().equals(groupName)) {
                 return true;
             }
         }
@@ -937,14 +954,14 @@ public class DatabaseController {
         try {
             conn = pool.getConnection();
             stmt = conn.prepareStatement("INSERT INTO usergroup "
-                + "(username, groupname) VALUES (?, ?)");
+                    + "(username, groupname) VALUES (?, ?)");
             stmt.setString(1, username);
             stmt.setString(2, groupName);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
@@ -986,12 +1003,13 @@ public class DatabaseController {
         }
         return groupList;
     }
-    
+
     /**
      * Method that allows the deletion of any user owned group/s
-     * @param entry 
+     *
+     * @param entry
      */
-    public static void deleteOwnGroup(Group entry){
+    public static void deleteOwnGroup(Group entry) {
         stmt = null;
         conn = null;
         try {
@@ -1002,46 +1020,46 @@ public class DatabaseController {
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
     }
-    
+
     /**
      * Method that allows deletion of a group that the user is part of
+     *
      * @param entry
-     * @param username 
+     * @param username
      */
-    public static void deletePartOfGroup(Group entry, String username){
+    public static void deletePartOfGroup(Group entry, String username) {
         stmt = null;
         conn = null;
         try {
             conn = pool.getConnection();
             stmt = conn.prepareStatement("DELETE FROM usergroup WHERE groupname = ?"
-                + "AND username = ?");
+                    + "AND username = ?");
             stmt.setString(1, entry.getGroupName());
             stmt.setString(2, username);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
-        } finally{
+        } finally {
             attemptClose(conn);
             attemptClose(stmt);
         }
     }
-    
-    public static Group getGroup(String groupName)
-    {
+
+    public static Group getGroup(String groupName) {
         List<Group> groupList = getAllGroups();
-        for(Group g : groupList)
-        {
-            if(g.getGroupName() == groupName)
+        for (Group g : groupList) {
+            if (g.getGroupName() == groupName) {
                 return g;
+            }
         }
         return null;
-        
+
     }
 
     /**
@@ -1064,7 +1082,6 @@ public class DatabaseController {
                 getAllGroupsThatBelongToUser(username);
         List<Group> partOfGroupsTemp = DatabaseController.
                 getAllGroupsThatTheUserIsPartOf(username);
-
 
         Profile existingProfile
                 = new Profile(goalsTemp, moodsTemp, asmtTemp,

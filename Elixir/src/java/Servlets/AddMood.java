@@ -42,11 +42,6 @@ public class AddMood extends HttpServlet {
             throws ServletException, IOException {
         // Convert mood type to actual enum mood type
         String moodType = request.getParameter("moodType");
-
-        // Grabs note about mood
-        String note = request.getParameter("note");
-
-        // TODO: Perform error checks on data provided
         
         // Load in currently logged in user
         HttpSession session = request.getSession();
@@ -54,16 +49,13 @@ public class AddMood extends HttpServlet {
         
         // Create mood and set as mood controller
         MoodController mc = new MoodController(Integer.parseInt(moodType));
-        mc.setNotes(note);
-        //MoodController mc = new MoodController(MoodTypes.convertToMoodType(moodType));
-        //mc.setNotes(note);
         
         // Update database with mood
-//        DatabaseController.addMoodEntry(user.getUserName(), mc.getMood());
+        DatabaseController.addMoodEntry(user.getUserName(), mc.getMood());
         
         // Add mood to user's profile
         ProfileController pc = new ProfileController(user.getProfile());
-        //pc.addMood(mc.getMood());
+        pc.addMood(mc.getMood());
         
         // Redirects user to profile page and prevents resubmitting
         response.sendRedirect("index.jsp");

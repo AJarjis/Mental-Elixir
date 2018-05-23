@@ -31,6 +31,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
   
 
         <!-- Custom styles for this template -->
@@ -192,7 +193,9 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save Rating</button>
+                                        <form action="AddMood" method="POST">
+                                            <button type="submit" class="btn btn-primary" name="moodType" value="1">Save Rating</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +221,9 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save Rating</button>
+                                        <form action="AddMood" method="POST">
+                                            <button type="submit" class="btn btn-primary" name="moodType" value="2">Save Rating</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -248,7 +253,9 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save Rating</button>
+                                        <form action="AddMood" method="POST">
+                                            <button type="submit" class="btn btn-primary" name="moodType" value="3">Save Rating</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -278,7 +285,9 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save Rating</button>
+                                        <form action="AddMood" method="POST">
+                                            <button type="submit" class="btn btn-primary" name="moodType" value="4">Save Rating</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -307,7 +316,9 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save Rating</button>
+                                        <form action="AddMood" method="POST">
+                                            <button type="submit" class="btn btn-primary" name="moodType" value="5">Save Rating</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

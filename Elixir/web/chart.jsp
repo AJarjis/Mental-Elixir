@@ -27,14 +27,14 @@
 </head>
 <body>
     <div class="container">
-        <canvas id="myChart" max-width="450" max-height="225">    
+        <canvas id="myChart" max-width="900" max-height="400">    
         </canvas>
     </div>
-    <form>
+<!--    <form>
         <input name="dateFrom" type="date" value="2018-05-10">
         <input name="dateTo" type="date" value="2018-05-23">
         <input type="submit">
-    </form>
+    </form>-->
 
     <%
         //Creates default cals
@@ -75,20 +75,28 @@
         {
             data.add(mood.getMoodType());
         }
-
     %>
     <!-- prints the cals for debugging -->
     <p> <%=data%> </p>
     <p> <%=cal.getTime()%> </p>
     <p> <%=calTo.getTime()%> </p>
     <script>
+        var jsData = [];
+        
+        <% for (int i=0; i < data.size(); i++) {%>
+                <%int moodValue = data.get(i);%>
+                jsData.push(<%=moodValue%>);
+        <% } %>
+            
+        console.log(jsData);
+        
         new Chart(document.getElementById("myChart"), {
             type: 'line',
             data: {
-                //labels: ["15/6", "16/6", "17/6", "18/6", "19/6", "20/6", "20/6", "21/6", "22/6", "23/6"],
+                labels: ["15/6", "16/6", "17/6", "18/6", "19/6", "20/6", "20/6", "21/6", "22/6", "23/6"],
                 datasets: [{
-                        data: <%=data%>,
-                        //label: "Fear",
+                        data: jsData,
+                        label: "Fear",
                         borderColor: "#3e95cd",
                         fill: false
                     }
