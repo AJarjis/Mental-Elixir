@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /*****************************************************************************
@@ -45,6 +46,7 @@ public class Group {
         this.groupName = groupName;
         this.description = description;
         this.creator = creator;
+        this.members = new LinkedList<>();
     }
     
     /**

@@ -72,13 +72,8 @@ body {
 .jumbotron h1 {
     font-size: 6em;
 }
-<<<<<<< Updated upstream
-
-/*@media (max-width: @screen-xs) {
-=======
 /*
 @media (max-width: @screen-xs) {
->>>>>>> Stashed changes
     body {
         font-size: 10px;
     }

@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="smoothScroll nav-link" href="index.jsp#moods">Moods</a>
@@ -25,6 +25,9 @@
                     <a class="smoothScroll dropdown-item" href="createGroup.jsp">Create Guild</a>
                     <a class="smoothScroll dropdown-item" href="groups.jsp">Join Guild</a>
                 </div>
+            </li>
+            <li class="nav-item">
+                <a class="smoothScroll nav-link" href="chat.jsp">Chat</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq.jsp">Help & Support</a>

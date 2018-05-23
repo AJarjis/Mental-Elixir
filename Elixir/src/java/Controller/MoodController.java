@@ -12,9 +12,7 @@
 package Controller;
 
 import Model.Mood;
-import Model.MoodTypes;
 import java.util.Calendar;
-import java.util.Date;
 
 public class MoodController {
 

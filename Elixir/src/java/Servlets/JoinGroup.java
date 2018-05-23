@@ -12,6 +12,10 @@ Author      : Ali Jarjis
 
 package Servlets;
 
+import Controller.DatabaseController;
+import Controller.GroupController;
+import Controller.UserController;
+import Model.Group;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,8 +41,29 @@ public class JoinGroup extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        // Grab user
+        HttpSession session = request.getSession();
+        UserController user = (UserController) session.getAttribute("user");
+        
+        // Get group user wishes to join
+        String groupName = request.getParameter("joinGroup");
 
         
+        // Retrieve group from database
+        Group group = DatabaseController.getGroup(groupName);
+                
+        // Add user to group in database
+        DatabaseController.addUserToGroup(user.getUserName(), groupName);
+        
+        // Update user's groups
+        user.getProfile().addPartOfGroup(group);
+        
+        // Create groupController
+        GroupController groupController = new GroupController(group);
+        groupController.addMember(user.getUser());
+        session.setAttribute("group", groupController);
+        
+        response.sendRedirect("groupPage.jsp");
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

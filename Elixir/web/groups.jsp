@@ -43,7 +43,7 @@
 
     <body>
 
-        <div id="navBarPlaceholder"></div>
+        <div class="naiveBar" id="navBarPlaceholder"></div>
 
         <main role="main" class="flex-container">
             <div class="container">
@@ -53,69 +53,53 @@
                 <div id="listOfGroups" class="row">
                     <% List<Group> groups = DatabaseController.getAllGroups();
                         for (Group group : groups) {%>
-<<<<<<< Updated upstream
                     <div class="col-md-6 groupCard">
                         <div class="card">
                             <div class="row">
                                 <div class="col-md-8">
                                     <h2><% out.print(group.getGroupName()); %></h2>
                                     <p>
-                                        <% out.print(group.getDescription()); %>
+                                        <% out.print(group.getDescription());%>
                                     </p>
                                 </div>
                                 <div class="col-md-4">
                                     <!-- TODO: must pass a parameter saying what group this is -->
                                     <form action="JoinGroup" method="POST">
-
-                                        <input class="btn btn-outline-primary my-2 my-sm-0" id="joinGroup" type="submit" value="Join Group"></input>
+                                        <input style="display:none" name="joinGroup" value="<%=group.getGroupName()%>" />
+                                        <input class="btn btn-primary" type="submit" value="Join Group"></input>
                                     </form>
                                 </div>
-=======
-                    <div class="groupCard card">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <h2><% out.print(group.getGroupName()); %></h2>
-                                <p>
-                                    <% out.print(group.getDescription()); %>
-                                </p>
+
+
                             </div>
-                            <div class="col-md-3">
-                                <form action="JoinGroup" method="POST">
-                                    
-                                    <input class="btn btn-primary" id="joinGroup" name="<%=group.getGroupName()%>" type="submit" value="Join Group"></input>
-                                    
-                                </form>
->>>>>>> Stashed changes
-                            </div>
+
                         </div>
+                    </div><%}%>
+
+
+                    <div class="flex-container pt-5 text-center">
+                        <img src="images/heroes.jpeg" style="width: 100%;">
                     </div>
-                    <%}%>
+
+                    <div class="flex-container" style="background-color: #011627">
+                        <!--Footer-->
+                        <footer class="page-footer font-small blue pt-4 mt-4">
+
+                            <!--Footer Links-->
+
+                            <!--/.Footer Links-->
+
+                            <!--Copyright-->
+                            <div class="footer-copyright py-3 text-center" style="color : white;">
+                                © 2018 Copyright:
+                                <a href="https://mentalelixir.co.uk"> MentalElixir.co.uk </a>
+                            </div>
+                            <!--/.Copyright-->
+
+                        </footer>
+                        <!--/.Footer-->
+                    </div>
                 </div>
-            </div>
-
-
-            <div class="flex-container pt-5 text-center">
-                <img src="images/heroes.jpeg" style="width: 100%;">
-            </div>
-
-            <div class="flex-container" style="background-color: #011627">
-                <!--Footer-->
-                <footer class="page-footer font-small blue pt-4 mt-4">
-
-                    <!--Footer Links-->
-
-                    <!--/.Footer Links-->
-
-                    <!--Copyright-->
-                    <div class="footer-copyright py-3 text-center" style="color : white;">
-                        © 2018 Copyright:
-                        <a href="https://mentalelixir.co.uk"> MentalElixir.co.uk </a>
-                    </div>
-                    <!--/.Copyright-->
-
-                </footer>
-                <!--/.Footer-->
-            </div>
 
 
         </main>
