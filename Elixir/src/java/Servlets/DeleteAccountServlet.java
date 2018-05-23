@@ -39,6 +39,8 @@ public class DeleteAccountServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        
+        try{
         HttpSession session = request.getSession();
         UserController user = (UserController) session.getAttribute("user");
         
@@ -46,6 +48,12 @@ public class DeleteAccountServlet extends HttpServlet {
         
         RequestDispatcher rd = request.getRequestDispatcher("Logout");
         rd.forward(request,response);
+        }
+        catch(Exception e)
+        {
+            RequestDispatcher rd = request.getRequestDispatcher("Logout");
+        rd.forward(request,response);
+        }
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
