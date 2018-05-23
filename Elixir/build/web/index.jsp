@@ -69,7 +69,7 @@
                         <a class="smoothScroll nav-link" href="#adventures">Adventures</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Guilds</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Guilds</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <a class="smoothScroll dropdown-item" href="createGroup.jsp">Create Guild</a>
                             <a class="smoothScroll dropdown-item" href="groups.jsp">Join Guild</a>
@@ -84,7 +84,7 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
                             <p class="dropdown-header"><b>Username: </b><% out.print(user.getUserName()); %></p>
                             <p class="dropdown-header"><b>Name: </b><% out.print(user.getFullName()); %></p>

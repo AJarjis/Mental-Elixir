@@ -99,6 +99,9 @@ public class RegisterUserServlet extends HttpServlet {
             request.getRequestDispatcher("registration.jsp")
                     .forward(request, response);
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        } catch (Exception e) {
+            RequestDispatcher rd = request.getRequestDispatcher("Logout");
+            rd.forward(request, response);
         }
     }
 

@@ -17,6 +17,7 @@ import Controller.UserController;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,54 +43,59 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        // Stores any errors that occur for view to access
-        Map<String, String> errorMessages = new HashMap();
-        request.setAttribute("errorMessages", errorMessages);
+        try {
+            // Stores any errors that occur for view to access
+            Map<String, String> errorMessages = new HashMap();
+            request.setAttribute("errorMessages", errorMessages);
 
-        // Retreives the data of a new user to register from form
-        String userName = request.getParameter("userNameLog").toLowerCase();
-        String password = request.getParameter("passwordLog");
+            // Retreives the data of a new user to register from form
+            String userName = request.getParameter("userNameLog").toLowerCase();
+            String password = request.getParameter("passwordLog");
 
-        // Checks if username is valid
-        if (userName == null || userName.trim().isEmpty()) {
-            errorMessages.put("userNameLog", "Please enter a valid username.");
-        } else if (password == null || password.trim().isEmpty()) {
-            errorMessages.put("passwordLog", "Please enter a valid password.");
-        } else {
-            // Get password stored in the database assosiated with username
-            String hashedPass = DatabaseController.getPasswordForLogin(userName);
-
-            if (hashedPass != null) {
-                // Check if password is correct
-                boolean passChk = AccessController.login(userName,
-                        password, hashedPass);
-                if (!passChk) {
-                    errorMessages.put("passwordLog", "Incorrect Password.");
-                }
+            // Checks if username is valid
+            if (userName == null || userName.trim().isEmpty()) {
+                errorMessages.put("userNameLog", "Please enter a valid username.");
+            } else if (password == null || password.trim().isEmpty()) {
+                errorMessages.put("passwordLog", "Please enter a valid password.");
             } else {
-                errorMessages.put("userNameLog", "Username does not exist.");
+                // Get password stored in the database assosiated with username
+                String hashedPass = DatabaseController.getPasswordForLogin(userName);
+
+                if (hashedPass != null) {
+                    // Check if password is correct
+                    boolean passChk = AccessController.login(userName,
+                            password, hashedPass);
+                    if (!passChk) {
+                        errorMessages.put("passwordLog", "Incorrect Password.");
+                    }
+                } else {
+                    errorMessages.put("userNameLog", "Username does not exist.");
+                }
             }
-        }
 
-        // Registers user if no errors occur
-        if (errorMessages.isEmpty()) {
-            
-            // Creates new user controller and logs them in
-            UserController userController
-                    = new UserController(DatabaseController.
-                            getUserByUsername(userName));
-            userController.setProfile(DatabaseController.
-                    getUserProfile(userName));
+            // Registers user if no errors occur
+            if (errorMessages.isEmpty()) {
 
-            // Creates a session for logged in user
-            HttpSession session = request.getSession();
-            session.setAttribute("user", userController);
+                // Creates new user controller and logs them in
+                UserController userController
+                        = new UserController(DatabaseController.
+                                getUserByUsername(userName));
+                userController.setProfile(DatabaseController.
+                        getUserProfile(userName));
 
-            // Redirects user to profile page and prevents resubmitting
-            response.sendRedirect("index.jsp");
-        } else {
-            request.getRequestDispatcher("registration.jsp")
-                    .forward(request, response);
+                // Creates a session for logged in user
+                HttpSession session = request.getSession();
+                session.setAttribute("user", userController);
+
+                // Redirects user to profile page and prevents resubmitting
+                response.sendRedirect("index.jsp");
+            } else {
+                request.getRequestDispatcher("registration.jsp")
+                        .forward(request, response);
+            }
+        } catch (Exception e) {
+            RequestDispatcher rd = request.getRequestDispatcher("Logout");
+            rd.forward(request, response);
         }
     }
 
