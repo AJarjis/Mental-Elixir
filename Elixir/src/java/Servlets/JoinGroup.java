@@ -47,12 +47,13 @@ public class JoinGroup extends HttpServlet {
         
         // Get group user wishes to join
         String groupName = request.getParameter("joinGroup");
-        
-        // Add user to group in database
-        DatabaseController.addUserToGroup(user.getUserName(), groupName);
+
         
         // Retrieve group from database
         Group group = DatabaseController.getGroup(groupName);
+                
+        // Add user to group in database
+        DatabaseController.addUserToGroup(user.getUserName(), groupName);
         
         // Update user's groups
         user.getProfile().addPartOfGroup(group);
