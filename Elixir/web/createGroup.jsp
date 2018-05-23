@@ -62,12 +62,12 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-8 mb-5 ">
                         <div class="card-body">
-                            <span>${errorMessages.errorMain}</span>
                             <h5 style="color: gray">Create Group</h5>
                             <form action="CreateGroup" method="POST">
                                 <div class="form-group">
                                     <label style="color: gray" for="groupName">Group Name:</label>
                                     <input class="form-control" type="text" name="groupName" id="groupName">
+                                    <span class="inputError">${errorMessages.errorMain}</span>
                                 </div>
                                 <div class="form-group">
                                     <label style="color: gray" for="groupDescription">Description:</label>
